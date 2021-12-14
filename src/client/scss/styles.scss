@@ -1,8 +1,177 @@
-@import "../scss/_variable";
 @import "../scss/_reset";
+@import "../scss/__variable";
+@import "../scss/__mixin";
 
-body {
-  background: $red;
+
+
+.create-form {
+  width: 600px;
+  margin: 0 auto;
+  margin-top: 50px;
+
+  .input-title {
+    display: inline-block;
+    border: none;
+    width: 600px;
+    height: 30px; 
+    font-size: $font-20;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .select-box { 
+    width: 220px;
+    height: 35px;
+    background-color: #EBEBEB;
+    color: $dark-gray;
+    font-size: $font-14;
+    border-radius: 10px;
+    border: none;
+    text-align: left; 
+    i{
+      float: right;
+      margin-right: 5px;
+    }
+  }
+ 
+  ul { 
+    li{
+      margin: 15px 0;
+      display: inline-block;
+      font-size: $font-10;
+      width: 75px;
+      height: 25px;
+      background-color: $yellow;
+      border-radius: 5px;
+      text-align: center;
+      line-height: 2.7;
+      margin-right: 2px;
+    }
+  }
+ 
+  .info-wrap {
+    font-size: $font-12;
+    color: $dark-gray;
+    line-height: 2;
+    
+    dd, dt {
+      margin: 5px 0;
+    }
+    .date {
+      display: inline-block;
+      margin-right: 10px;
+    }
+    .date .end-date {
+      margin: 0 10px;
+    }
+  }
+
+  .info-wrap.two{
+
+    .location, .recruit{
+      display: inline-block; 
+      margin-right: 10px;
+    }
+
+    .date, .location-content {
+      display: inline-block;
+    }
+     
+    .recruit {  
+      display: inline-block;
+      div {
+        display: inline-block;
+      }
+    } 
+    .select-box.location, 
+    .select-box.number {
+      width: 120px;
+      height: 25px;
+      font-size: $font-12;
+      border: 1px solid $dark-gray;
+      background-color: #ebebeb;
+      border-radius: 3px;
+      padding: 5px;
+      box-sizing: border-box;
+    }
+  }
+  .input-text {
+    width: 600px;
+    height: 300px;
+    border: 1px solid #ebebeb;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    box-sizing: border-box;
+    text-align: left; 
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  .buttons {
+    float: right;
+    border: none;
+    width: 75px;
+    height: 25px;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  .buttons.submit {
+    background-color: $yellow;
+  }
+  .buttons.cancel {
+    background-color: #ebebeb;
+    margin-right: 10px;
+  }
 }
 
-
+// modal
+// modal background 
+.modal { 
+  position: fixed;  
+  z-index: 1;  
+  left: 0;
+  top: 0;
+  width: 100%;  
+  height: 100%;  
+  overflow: auto;  
+  background-color: rgb(0,0,0);  
+  background-color: rgba(0,0,0,0.4);  
+}
+.modal-content {
+  background-color: #fefefe;
+  border: 1px solid #ebebeb; 
+  border-radius: 10px;
+  margin: 15% auto;  
+  padding: 20px;
+  border: 1px solid #888;
+  width: 490px;
+  height:300px; 
+  text-align: center; 
+  
+  p {
+    font-size: $font-20;
+    font-weight: bold;
+    line-height: 5;
+  }
+  .modal-button {
+    display: block;
+    margin: 0 auto;
+    width: 250px;
+    height: 40px;
+    border-radius: 35px;
+    border-style: none;
+    font-size: $font-14;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .modal-button.yes{
+    background-color: #F25C05;
+    color: white;
+    margin-top: 60px;
+  }
+  .modal-button.no{
+    background-color: #ebebeb;
+    color: $dark-gray; 
+    margin-top: 15px;
+  }
+}

@@ -1,0 +1,225 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after {
+  content: '';
+  content: none;
+}
+
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.create-form {
+  width: 600px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.create-form .input-title {
+  display: inline-block;
+  border: none;
+  width: 600px;
+  height: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.create-form .select-box {
+  width: 220px;
+  height: 35px;
+  background-color: #EBEBEB;
+  color: #888888;
+  font-size: 14px;
+  border-radius: 10px;
+  border: none;
+  text-align: left;
+}
+
+.create-form .select-box i {
+  float: right;
+  margin-right: 5px;
+}
+
+.create-form ul li {
+  margin: 15px 0;
+  display: inline-block;
+  font-size: 10px;
+  width: 75px;
+  height: 25px;
+  background-color: #FFC971;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 2.7;
+  margin-right: 2px;
+}
+
+.create-form .info-wrap {
+  font-size: 12px;
+  color: #888888;
+  line-height: 2;
+}
+
+.create-form .info-wrap dd, .create-form .info-wrap dt {
+  margin: 5px 0;
+}
+
+.create-form .info-wrap .date {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.create-form .info-wrap .date .end-date {
+  margin: 0 10px;
+}
+
+.create-form .info-wrap.two .location, .create-form .info-wrap.two .recruit {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.create-form .info-wrap.two .date, .create-form .info-wrap.two .location-content {
+  display: inline-block;
+}
+
+.create-form .info-wrap.two .recruit {
+  display: inline-block;
+}
+
+.create-form .info-wrap.two .recruit div {
+  display: inline-block;
+}
+
+.create-form .info-wrap.two .select-box.location,
+.create-form .info-wrap.two .select-box.number {
+  width: 120px;
+  height: 25px;
+  font-size: 12px;
+  border: 1px solid #888888;
+  background-color: #ebebeb;
+  border-radius: 3px;
+  padding: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.create-form .input-text {
+  width: 600px;
+  height: 300px;
+  border: 1px solid #ebebeb;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-align: left;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.create-form .buttons {
+  float: right;
+  border: none;
+  width: 75px;
+  height: 25px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.create-form .buttons.submit {
+  background-color: #FFC971;
+}
+
+.create-form .buttons.cancel {
+  background-color: #ebebeb;
+  margin-right: 10px;
+}
+
+.modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  border: 1px solid #ebebeb;
+  border-radius: 10px;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 490px;
+  height: 300px;
+  text-align: center;
+}
+
+.modal-content p {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 5;
+}
+
+.modal-content .modal-button {
+  display: block;
+  margin: 0 auto;
+  width: 250px;
+  height: 40px;
+  border-radius: 35px;
+  border-style: none;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal-content .modal-button.yes {
+  background-color: #F25C05;
+  color: white;
+  margin-top: 60px;
+}
+
+.modal-content .modal-button.no {
+  background-color: #ebebeb;
+  color: #888888;
+  margin-top: 15px;
+}
+/*# sourceMappingURL=styles.css.map */

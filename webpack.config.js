@@ -2,8 +2,8 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const htmlPageNames = ["subpage"];
-const jsFileNames = ["main", "subpage"];
+const htmlPageNames = ["subpage", "create"];
+const jsFileNames = ["main", "subpage", "create"];
 
 const multipleHtmlPlugins = htmlPageNames.map((name) => {
   return new HtmlWebpackPlugin({
@@ -18,12 +18,11 @@ const getEntry = () => {
   const multipleEntryJs = jsFileNames.forEach((name) => {
     const src = `./src/client/js/${name}.js`;
     entry[name] =src;
-  });  
+  });
   return entry;
 };
-console.log(getEntry())
+console.log(getEntry());
 
-  
 module.exports = {
   mode:"development",
   entry: getEntry(),
@@ -39,14 +38,12 @@ module.exports = {
       filename: "css/styles.css",
     }),
 
-     new HtmlWebpackPlugin({
+    new HtmlWebpackPlugin({
       template: "./src/client/html/index.html",
       filename: "html/index.html",
       chunks: ["main"],
     }),
   ].concat(multipleHtmlPlugins),
-  
-  
   module: {
     rules: [
       {
@@ -65,4 +62,3 @@ module.exports = {
     ],
   },
 };
-

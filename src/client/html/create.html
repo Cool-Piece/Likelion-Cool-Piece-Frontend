@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../scss/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <title>스터디 생성</title>
+</head>
+<body>
+    <!-- nav 추후 추가 -->
+    <nav></nav>
+    <article>
+        <form action="" class="create-form">
+            <input type="text" class="input-title" placeholder="제목을 입력해주세요">
+            <button class="select-box type">
+                모집 유형을 선택해주세요
+                <i class="fas fa-sort-down"></i>
+            </button>
+            <ul class="tag-type">
+                <li>면접</li>
+                <li>프로젝트</li>
+                <li>스터디</li>
+            </ul>
+            <button class="select-box stacks">
+                기술을 선택해주세요
+                <i class="fas fa-sort-down"></i>
+            </button>
+            <ul class="stack-type">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>Node.js</li>
+                <li>React</li>
+            </ul> 
+               <dl class="info-wrap one">
+                    <dt class="date">기간</dt>
+                    <dd class="date">
+                        <label for="">시작일</label>
+                        <input type="date" class="start-date">
+                        <label for="" class="end-date">종료일</label>
+                        <input type="date">
+                    </dd> 
+               </dl> 
+                <dl class="info-wrap two">
+                    <dt class = "location">지역</dt>
+                    <dd class = "location-content">
+                        <button class="select-box location">
+                            지역 선택
+                            <i class="fas fa-sort-down"></i>
+                        </button>
+                    </dd>
+                    <dt class = "recruit">모집인원</dt>
+                    <dd class = "recruit">
+                        <input type="number" class="select-box number" placeholder="모집 인원 선택" min="1" max="30"></input>
+                    </dd> 
+                </dl>
+            <textarea class = "input-text" placeholder="상세 내용을 입력해주세요 (최대 500자)"></textarea>
+            <button class = "buttons submit"type="button">등록</button>
+            <button class = "buttons cancel"type="submit">취소</button>
+        </form>
+    </article>
+    <!-- modal -->
+    <div id="myModal" class="modal">
+        <!-- modal content -->
+        <div class="modal-content">
+            <p>등록하시겠어요?</p>
+            <button class="modal-button yes">네!</button>
+            <button class="modal-button no">조금만 더 생각해볼게요</button>
+        </div>
+    </div>
+</body>
+</html>
