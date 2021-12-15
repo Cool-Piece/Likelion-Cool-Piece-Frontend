@@ -3,8 +3,9 @@
 @import "../scss/__mixin";
 
 
-
+// 전체 폼 스타일링 
 .create-form {
+  position: relative;
   width: 600px;
   margin: 0 auto;
   margin-top: 50px;
@@ -19,6 +20,7 @@
     margin-bottom: 20px;
   }
 
+  // 셀렉트박스 버튼
   .select-box { 
     width: 220px;
     height: 35px;
@@ -33,7 +35,44 @@
       margin-right: 5px;
     }
   }
- 
+  // 셀렉트박스 하단 요소
+  .selection-container { 
+    display: none;
+    position: absolute;
+    left:0; 
+    margin-top: 5px;
+    width: 220px;
+    background-color: #fff;
+    border: 1px solid #ebebeb;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 5px;
+    .languages {
+      width: 100%;
+      height: 30px;
+      margin: 0;
+      background-color: transparent;
+      .selections {
+        width: 100%;
+        height: 30px;
+        background-color: transparent;
+        border-style: none;
+        cursor:pointer;
+      }
+    }
+    .languages:hover {
+      background-color:#ebebeb;
+    }
+  }
+  // 셀렉트박스 요소 누르면 생성 
+  .selection-container.type.clicked {
+    display: block;
+  }
+  .selection-container.language.clicked {
+    display: block;
+  }
+
+  // 스터디유형, 태그 스타일링 
   ul { 
     li{
       margin: 15px 0;
@@ -60,6 +99,80 @@
     .date {
       display: inline-block;
       margin-right: 10px;
+
+      .date-picker {
+        position: relative;
+        width: 180px;
+        height: 25px;
+        background-color: #fff; 
+        border: 1px solid #ebebeb;
+        border-radius: 5px;
+        cursor: pointer;
+        user-select: none;
+        text-align: center;
+
+        .selected-date {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #000;
+        }  
+        .dates{ 
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0; 
+          right: 0;
+          background: #fff;
+        }
+        .dates.active{  
+          display: block;
+        }
+        .dates {
+          .month {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #eee;
+            .arrows {
+              width: 15px;
+              height: 15px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              color: #313131;
+              font-size: $font-10;
+            }
+            .arrows:hover {
+              background-color: #f3f3f3;
+            }
+            .arrows:active {
+              background-color: $yellow;
+            } 
+          }
+          .days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            height: 180px;
+            border: 1px solid #f3f3f3;
+            
+            .day {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              color: #313131;
+            }
+            .day.selected {
+              background-color: $yellow; 
+            }
+          }
+        }
+      }
+      .date-picker:hover {
+        background-color: #f3f3f3;
+      }
     }
     .date .end-date {
       margin: 0 10px;
@@ -72,11 +185,44 @@
       display: inline-block; 
       margin-right: 10px;
     }
-
     .date, .location-content {
       display: inline-block;
     }
-     
+    .location-content {
+      position: relative;
+      .selection-location { 
+        display: none; 
+        position: absolute;
+        left:0; 
+        margin-top: 5px;
+        width:120px;
+        background-color: #fff;
+        border: 1px solid #ebebeb;
+        border-radius: 5px;
+        box-sizing: border-box;
+        padding: 5px;
+        .locations {
+          width: 100%;
+          margin: 0; 
+          background-color: transparent;
+          .location { 
+            height: 20px;
+            margin: 0;
+            background-color: transparent;
+            border-style: none;
+            height: 30px;
+          }
+        }
+        .locations:hover {
+          background-color: #ebebeb;
+        }
+      }
+      .selection-location.clicked {
+        display: block;
+      }
+    }
+    
+
     .recruit {  
       display: inline-block;
       div {
@@ -94,7 +240,13 @@
       padding: 5px;
       box-sizing: border-box;
     }
-  }
+      }
+
+
+
+    }
+  
+
   .input-text {
     width: 600px;
     height: 300px;
@@ -121,8 +273,7 @@
   .buttons.cancel {
     background-color: #ebebeb;
     margin-right: 10px;
-  }
-}
+  } 
 
 // modal
 // modal background 

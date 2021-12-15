@@ -14,19 +14,45 @@
     <article>
         <form action="" class="create-form">
             <input type="text" class="input-title" placeholder="제목을 입력해주세요">
+            <!-- 셀렉트박스: 모집유형  -->
             <button class="select-box type">
                 모집 유형을 선택해주세요
                 <i class="fas fa-sort-down"></i>
             </button>
+            <ul class="selection-container type">
+                <li class="languages">
+                    <button class="selections">면접</button>
+                </li>
+                <li class="languages">
+                    <button class="selections">프로젝트</button>
+                </li>
+                <li class="languages">
+                    <button class="selections">스터디</button>
+                </li>
+            </ul>
+            <!-- 선택한 태그 -->
             <ul class="tag-type">
                 <li>면접</li>
                 <li>프로젝트</li>
                 <li>스터디</li>
             </ul>
+             <!-- 셀렉트박스: 기술  -->
             <button class="select-box stacks">
                 기술을 선택해주세요
                 <i class="fas fa-sort-down"></i>
             </button>
+            <ul class="selection-container language">
+                <li class="languages">
+                    <button class="selections">Javascript</button>
+                </li>
+                <li class="languages">
+                    <button class="selections">Javascript</button>
+                </li>
+                <li class="languages">
+                    <button class="selections">Javascript</button>
+                </li>
+            </ul>
+            <!-- 선택한 태그 -->
             <ul class="stack-type">
                 <li>HTML</li>
                 <li>CSS</li>
@@ -34,15 +60,31 @@
                 <li>Node.js</li>
                 <li>React</li>
             </ul> 
+            <!-- 상세 정보 -->
+                    <!-- 기간 -->
                <dl class="info-wrap one">
                     <dt class="date">기간</dt>
                     <dd class="date">
                         <label for="">시작일</label>
-                        <input type="date" class="start-date">
+
+                        <!-- 시작일 선택 date picker -->
+                        <div class="date-picker">
+                            <div class="selected-date">2021 / 12 / 15</div>
+                            <div class="dates">
+                                <div class="month"> 
+                                    <div class="arrows prev-month">&lt;</div>
+                                    <div class="mth"></div>
+                                    <div class="arrows next-month">&gt;</div>
+                                </div>
+                                <div class="days"></div>
+                            </div>
+                        </div>
+
                         <label for="" class="end-date">종료일</label>
                         <input type="date">
                     </dd> 
                </dl> 
+                    <!-- 지역 -->
                 <dl class="info-wrap two">
                     <dt class = "location">지역</dt>
                     <dd class = "location-content">
@@ -50,6 +92,17 @@
                             지역 선택
                             <i class="fas fa-sort-down"></i>
                         </button>
+                        <!-- 셀렉트박스 요소  -->
+                        <ul class="selection-location">
+                            <li class="locations">
+                                <button class="location">
+                                    성남
+                                </button>
+                            </li>
+                            <li class="locations">
+                                <button class="location">서울</button>
+                            </li>
+                        </ul>
                     </dd>
                     <dt class = "recruit">모집인원</dt>
                     <dd class = "recruit">
@@ -70,5 +123,7 @@
             <button class="modal-button no">조금만 더 생각해볼게요</button>
         </div>
     </div>
+
+    <script src="../js/create.js"></script>
 </body>
 </html>
