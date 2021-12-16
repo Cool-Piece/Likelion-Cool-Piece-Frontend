@@ -1,8 +1,10 @@
 @import "../scss/_variable";
 @import "../scss/_reset";
+@import "../scss/header";
+@import "../scss/mainPage";
 
 body {
-  background: $red;
+    overflow-x: hidden;
 }
 
 

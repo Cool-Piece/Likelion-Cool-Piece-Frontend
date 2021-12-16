@@ -15,15 +15,13 @@ const multipleHtmlPlugins = htmlPageNames.map((name) => {
 
 const getEntry = () => {
   const entry = {};
-  const multipleEntryJs = jsFileNames.forEach((name) => {
+  jsFileNames.forEach((name) => {
     const src = `./src/client/js/${name}.js`;
     entry[name] =src;
-  });  
+  });
   return entry;
 };
-console.log(getEntry())
 
-  
 module.exports = {
   mode:"development",
   entry: getEntry(),
@@ -39,14 +37,13 @@ module.exports = {
       filename: "css/styles.css",
     }),
 
-     new HtmlWebpackPlugin({
+    new HtmlWebpackPlugin({
       template: "./src/client/html/index.html",
       filename: "html/index.html",
       chunks: ["main"],
     }),
   ].concat(multipleHtmlPlugins),
-  
-  
+
   module: {
     rules: [
       {
@@ -65,4 +62,3 @@ module.exports = {
     ],
   },
 };
-
