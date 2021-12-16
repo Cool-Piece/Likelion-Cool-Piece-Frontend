@@ -76,7 +76,7 @@ table {
   margin-right: 5px;
 }
 
-.create-form .selection-container {
+.create-form .selection-container.language {
   display: none;
   position: absolute;
   left: 0;
@@ -90,14 +90,14 @@ table {
   padding: 5px;
 }
 
-.create-form .selection-container .languages {
+.create-form .selection-container.language .languages {
   width: 100%;
   height: 30px;
   margin: 0;
   background-color: transparent;
 }
 
-.create-form .selection-container .languages .selections {
+.create-form .selection-container.language .languages .selections {
   width: 100%;
   height: 30px;
   background-color: transparent;
@@ -105,19 +105,72 @@ table {
   cursor: pointer;
 }
 
-.create-form .selection-container .languages:hover {
+.create-form .selection-container.language .languages:hover {
   background-color: #ebebeb;
 }
 
-.create-form .selection-container.type.clicked {
-  display: block;
+.create-form .selection-container.type {
+  display: none;
+  position: absolute;
+  left: 0;
+  margin-top: 5px;
+  width: 220px;
+  background-color: #fff;
+  border: 1px solid #ebebeb;
+  border-radius: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 5px;
 }
 
-.create-form .selection-container.language.clicked {
-  display: block;
+.create-form .selection-container.type .stacks {
+  width: 100%;
+  height: 30px;
+  margin: 0;
+  background-color: transparent;
 }
 
-.create-form ul li {
+.create-form .selection-container.type .stacks .selections {
+  width: 100%;
+  height: 30px;
+  background-color: transparent;
+  border-style: none;
+  cursor: pointer;
+}
+
+.create-form .selection-container.type .stacks:hover {
+  background-color: #ebebeb;
+}
+
+.create-form .selection-container.type.active {
+  display: block;
+  z-index: 30;
+}
+
+.create-form .selection-container.language.active {
+  display: block;
+  z-index: 30;
+}
+
+.create-form .tags {
+  width: 500px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.create-form .tags li {
+  position: relative;
   margin: 15px 0;
   display: inline-block;
   font-size: 10px;
@@ -127,7 +180,27 @@ table {
   border-radius: 5px;
   text-align: center;
   line-height: 2.7;
-  margin-right: 2px;
+  margin-right: 5px;
+}
+
+.create-form .tags li:hover {
+  background-color: #F27E88;
+}
+
+.create-form .info-wrap.one {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .create-form .info-wrap {
@@ -141,13 +214,29 @@ table {
 }
 
 .create-form .info-wrap .date {
-  display: inline-block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-right: 10px;
+}
+
+.create-form .info-wrap .date .start-date {
+  margin: 0 10px;
 }
 
 .create-form .info-wrap .date .date-picker {
   position: relative;
-  width: 180px;
+  width: 150px;
   height: 25px;
   background-color: #fff;
   border: 1px solid #ebebeb;
@@ -182,6 +271,7 @@ table {
   left: 0;
   right: 0;
   background: #fff;
+  z-index: 10;
 }
 
 .create-form .info-wrap .date .date-picker .dates.active {
@@ -230,7 +320,7 @@ table {
   display: grid;
   -ms-grid-columns: (1fr)[7];
       grid-template-columns: repeat(7, 1fr);
-  height: 180px;
+  height: 130px;
   border: 1px solid #f3f3f3;
 }
 
@@ -304,7 +394,7 @@ table {
   background-color: #ebebeb;
 }
 
-.create-form .info-wrap.two .location-content .selection-location.clicked {
+.create-form .info-wrap.two .location-content .selection-location.active {
   display: block;
 }
 
@@ -343,6 +433,10 @@ table {
   word-wrap: break-word;
 }
 
+.input-text.noresize {
+  resize: none;
+}
+
 .buttons {
   float: right;
   border: none;
@@ -364,7 +458,7 @@ table {
 .modal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 40;
   left: 0;
   top: 0;
   width: 100%;

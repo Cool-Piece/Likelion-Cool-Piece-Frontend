@@ -36,7 +36,7 @@
     }
   }
   // 셀렉트박스 하단 요소
-  .selection-container { 
+  .selection-container.language { 
     display: none;
     position: absolute;
     left:0; 
@@ -64,17 +64,55 @@
       background-color:#ebebeb;
     }
   }
-  // 셀렉트박스 요소 누르면 생성 
-  .selection-container.type.clicked {
-    display: block;
+
+  .selection-container.type { 
+    display: none;
+    position: absolute;
+    left:0; 
+    margin-top: 5px;
+    width: 220px;
+    background-color: #fff;
+    border: 1px solid #ebebeb;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 5px;
+    .stacks {
+      width: 100%;
+      height: 30px;
+      margin: 0;
+      background-color: transparent;
+      .selections {
+        width: 100%;
+        height: 30px;
+        background-color: transparent;
+        border-style: none;
+        cursor:pointer;
+      }
+    }
+    .stacks:hover {
+      background-color:#ebebeb;
+    }
   }
-  .selection-container.language.clicked {
+
+  // 셀렉트박스 요소 누르면 생성 
+  .selection-container.type.active {
     display: block;
+    z-index: 30; 
+  }
+  .selection-container.language.active {
+    display: block;
+    z-index: 30; 
   }
 
   // 스터디유형, 태그 스타일링 
-  ul { 
+  .tags { 
+    width: 500px; 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
     li{
+      position: relative;
       margin: 15px 0;
       display: inline-block;
       font-size: $font-10;
@@ -84,10 +122,20 @@
       border-radius: 5px;
       text-align: center;
       line-height: 2.7;
-      margin-right: 2px;
+      margin-right: 5px;
+    }
+    li:hover {
+      background-color: #F27E88;
     }
   }
- 
+
+  
+  .info-wrap.one {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+  }
   .info-wrap {
     font-size: $font-12;
     color: $dark-gray;
@@ -97,12 +145,19 @@
       margin: 5px 0;
     }
     .date {
-      display: inline-block;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
       margin-right: 10px;
+      
+      .start-date {
+        margin: 0 10px;
+      }
 
-      .date-picker {
+      .date-picker { 
         position: relative;
-        width: 180px;
+        width: 150px;
         height: 25px;
         background-color: #fff; 
         border: 1px solid #ebebeb;
@@ -126,6 +181,7 @@
           left: 0; 
           right: 0;
           background: #fff;
+          z-index: 10;
         }
         .dates.active{  
           display: block;
@@ -155,7 +211,7 @@
           .days {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            height: 180px;
+            height: 130px;
             border: 1px solid #f3f3f3;
             
             .day {
@@ -179,7 +235,7 @@
     }
   }
 
-  .info-wrap.two{
+  .info-wrap.two{ 
 
     .location, .recruit{
       display: inline-block; 
@@ -207,7 +263,7 @@
           background-color: transparent;
           .location { 
             height: 20px;
-            margin: 0;
+            margin:0;
             background-color: transparent;
             border-style: none;
             height: 30px;
@@ -217,7 +273,7 @@
           background-color: #ebebeb;
         }
       }
-      .selection-location.clicked {
+      .selection-location.active {
         display: block;
       }
     }
@@ -259,6 +315,11 @@
     white-space: pre-wrap;
     word-wrap: break-word;
   }
+
+  .input-text.noresize {
+    resize: none;
+  }
+
   .buttons {
     float: right;
     border: none;
@@ -280,7 +341,7 @@
 .modal { 
   display: none;
   position: fixed;  
-  z-index: 1;  
+  z-index: 40;  
   left: 0;
   top: 0;
   width: 100%;  
