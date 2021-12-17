@@ -2,9 +2,11 @@
 @import "../scss/_reset";
 @import "../scss/header";
 @import "../scss/mainPage";
+@import "../scss/footer";
 
 body {
     overflow-x: hidden;
+    font-family: $font_family;
 }
 
 

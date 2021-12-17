@@ -8,35 +8,95 @@
   <meta name="viewport"
     content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 
 <body>
-
-  <div id="root">
-    <header>
-      <nav class="navbar">
-        <div id="logo">
-          로고
-          <!-- TODO webpack 수정 후 이미지 작업 -->
-          <!-- <img src="../assets/image/logo.png" alt="로고"> -->
-        </div>
-        <ul class="navbar-list">
-          <li>면접</li>
-          <li>스터디</li>
-          <li>프로젝트</li>
-          <li>채팅</li>
-          <li class="sign login">로그인</li>
-        </ul>
-      </nav>
-      <div class="searchBar-wrap">
-        <div class="searchBar-input-wrap">
-          <input type="text" placeholder="어떤 스터디를 찾으시나요?" class="searchBar-input">
-        </div>
+  <header>
+    <nav class="navbar">
+      <div id="logo">
+        로고
+        <!-- TODO webpack 수정 후 이미지 작업 -->
+        <!-- <img src="../assets/image/logo.png" alt="로고"> -->
       </div>
-    </header>
-  </div>
-  
+      <ul class="navbar-list">
+        <li>면접</li>
+        <li>스터디</li>
+        <li>프로젝트</li>
+        <li>채팅</li>
+        <li class="sign login">로그인</li>
+      </ul>
+    </nav>
+    <div class="searchBar-wrap">
+      <div class="searchBar-input-wrap">
+        <input type="text" placeholder="어떤 스터디를 찾으시나요?" class="searchBar-input">
+      </div>
+    </div>
+  </header>
+  <main class="main-wrap">
+    <section>
+      <h1 class="blind">메인 페이지</h1>
+      <article class="category-wrap">
+        <h2 class="blind">스터디 카테고리 필터</h2>
+        <div class="categoryRecruit">
+          <input type="checkbox" id="recruiting">
+          <label for="recruiting"></label>
+          <input type="checkbox" id="recruited">
+          <label for="recruited"></label>
+        </div>
+        <ul class="categoryList">
+          <li class="categoryItem select">자바스크립트</li>
+          <li class="categoryItem">HTML / CSS</li>
+          <li class="categoryItem">React</li>
+          <li class="categoryItem">Node.js</li>
+          <li class="categoryItem">Typescript</li>
+        </ul>
+      </article>
+        <article class="study-wrap">
+          <h2 class="blind">스터디 모집 공고란</h2>
+          <ul class="studyList">
+            <li class="studyItem" title="클릭시 해당 스터디의 상세페이지로 이동합니다.">
+              <h3 class="studyItem-title">스터디 모집합니다(스터디 제목)</h3>
+              <div class="studyItem-like">
+                <!-- <img src="" alt="클릭시 해당 스터디를 관심목록에 추가합니다.">
+                <img src="" alt="클릭시 해당 스터디를 관심목록에서 제거합니다."> -->
+              </div>
+              <div class="studyItem-term">2021.12~2022.06(진행 기간)</div>
+              <div class="studyItem-participants">1 / 6</div>
+              <ul class="studyItem-stacks">
+                <li>React</li>
+                <li>자바스크립트</li>
+                <li>HTML</li>
+                <li>CSS</li>
+              </ul>
+              <dl class="studyItem-creator">
+                <dt>바찌윤</dt>
+                <dd>2021.12.11</dd>
+              </dl>
+            </li>
+            <li class="studyItem" title="클릭시 해당 스터디의 상세페이지로 이동합니다.">
+              <h3 class="studyItem-title">스터디 모집합니다(스터디 제목)</h3>
+              <div class="studyItem-like">
+              </div>
+              <div class="studyItem-term">2021.12~2022.06(진행 기간)</div>
+              <ul class="studyItem-stacks">
+                <li>React</li>
+                <li>자바스크립트</li>
+                <li>HTML</li>
+                <li>CSS</li>
+              </ul>
+              <div class="studyItem-participants">1 / 6</div>
+              <dl class="studyItem-creator">
+                <dt>바찌윤</dt>
+                <dd>2021.12.11</dd>
+              </dl>
+            </li>
+          </ul>
+        </article>
+      </section>
+    </main>
+  <footer>Copyright 2021. Likelion-CoolPiece all rights reserved. </footer>  
 </body>
-
 </html>

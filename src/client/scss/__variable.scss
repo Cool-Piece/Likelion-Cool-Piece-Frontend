@@ -1,7 +1,19 @@
 // color
 $red: red;
-$mustard: #FFC971;
+$mainColor: #FFC971;
+$defaultColor: #ebebeb;
 
 // calc variable
-$header_search_On: 205px;
+$header_search_On: 209px;
 $header_search_Off: 120px; 
+$footer_height: 150px;
+
+// font
+$font_family: 'Noto Sans KR', sans-serif;
+
+// ellipsis
+@mixin sellipsis { // single
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
