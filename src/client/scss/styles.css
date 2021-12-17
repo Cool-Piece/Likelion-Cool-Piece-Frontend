@@ -68,7 +68,9 @@ table {
   font-size: 14px;
   border-radius: 10px;
   border: none;
-  text-align: left;
+  text-align: center;
+  margin-bottom: 5px;
+  cursor: pointer;
 }
 
 .create-form .select-box i {
@@ -76,11 +78,16 @@ table {
   margin-right: 5px;
 }
 
+.create-form .select-box.type.active {
+  background-color: #D0DFF2;
+  color: #465E8C;
+}
+
 .create-form .selection-container.language {
   display: none;
   position: absolute;
   left: 0;
-  margin-top: 5px;
+  margin-top: 0;
   width: 220px;
   background-color: #fff;
   border: 1px solid #ebebeb;
@@ -113,7 +120,7 @@ table {
   display: none;
   position: absolute;
   left: 0;
-  margin-top: 5px;
+  margin-top: 0;
   width: 220px;
   background-color: #fff;
   border: 1px solid #ebebeb;
@@ -154,6 +161,7 @@ table {
 
 .create-form .tags {
   width: 500px;
+  height: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -184,23 +192,7 @@ table {
 }
 
 .create-form .tags li:hover {
-  background-color: #F27E88;
-}
-
-.create-form .info-wrap.one {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  background-color: #ebebeb;
 }
 
 .create-form .info-wrap {
@@ -209,7 +201,7 @@ table {
   line-height: 2;
 }
 
-.create-form .info-wrap dd, .create-form .info-wrap dt {
+.create-form .info-wrap li {
   margin: 5px 0;
 }
 
@@ -231,7 +223,7 @@ table {
 }
 
 .create-form .info-wrap .date .start-date {
-  margin: 0 10px;
+  margin-right: 10px;
 }
 
 .create-form .info-wrap .date .date-picker {
@@ -345,17 +337,37 @@ table {
   background-color: #f3f3f3;
 }
 
-.create-form .info-wrap .date .end-date {
+.create-form .info-wrap .date.end {
   margin: 0 10px;
+}
+
+.create-form .info-wrap .end-date {
+  margin-right: 14px;
+}
+
+.create-form .info-wrap.one {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .create-form .info-wrap.two .location, .create-form .info-wrap.two .recruit {
   display: inline-block;
-  margin-right: 10px;
 }
 
 .create-form .info-wrap.two .date, .create-form .info-wrap.two .location-content {
   display: inline-block;
+  margin: 0;
 }
 
 .create-form .info-wrap.two .location-content {
@@ -365,24 +377,27 @@ table {
 .create-form .info-wrap.two .location-content .selection-location {
   display: none;
   position: absolute;
-  left: 0;
-  margin-top: 5px;
-  width: 120px;
+  left: 18px;
+  width: 152px;
+  height: 150px;
   background-color: #fff;
   border: 1px solid #ebebeb;
   border-radius: 5px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 5px;
+  overflow-y: scroll;
 }
 
 .create-form .info-wrap.two .location-content .selection-location .locations {
   width: 100%;
   margin: 0;
   background-color: transparent;
+  text-align: center;
 }
 
 .create-form .info-wrap.two .location-content .selection-location .locations .location {
+  width: 100%;
   height: 20px;
   margin: 0;
   background-color: transparent;
@@ -400,19 +415,38 @@ table {
 
 .create-form .info-wrap.two .recruit {
   display: inline-block;
+  margin-left: 17px;
 }
 
 .create-form .info-wrap.two .recruit div {
   display: inline-block;
 }
 
-.create-form .info-wrap.two .select-box.location,
-.create-form .info-wrap.two .select-box.number {
-  width: 120px;
+.create-form .info-wrap.two .input-recruit {
+  display: inline-block;
+}
+
+.create-form .info-wrap.two .select-box.location {
+  width: 152px;
   height: 25px;
   font-size: 12px;
-  border: 1px solid #888888;
-  background-color: #ebebeb;
+  border: 1px solid #ebebeb;
+  background-color: #FFF;
+  border-radius: 3px;
+  padding: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-left: 18px;
+  color: #313131;
+}
+
+.create-form .info-wrap.two .select-box.number {
+  width: 50px;
+  height: 25px;
+  font-size: 12px;
+  border: 1px solid #ebebeb;
+  background-color: #FFF;
+  color: #313131;
   border-radius: 3px;
   padding: 5px;
   -webkit-box-sizing: border-box;
@@ -440,10 +474,12 @@ table {
 .buttons {
   float: right;
   border: none;
-  width: 75px;
-  height: 25px;
+  width: 100px;
+  height: 30px;
   border-radius: 5px;
   margin-top: 10px;
+  line-height: 2.3;
+  cursor: pointer;
 }
 
 .buttons.submit {

@@ -29,18 +29,25 @@
     font-size: $font-14;
     border-radius: 10px;
     border: none;
-    text-align: left; 
+    text-align: center; 
+    margin-bottom: 5px;
+    cursor: pointer;
     i{
       float: right;
       margin-right: 5px;
     }
   }
+  .select-box.type.active{
+  background-color: #D0DFF2; 
+  color: #465E8C;
+  }
+
   // 셀렉트박스 하단 요소
   .selection-container.language { 
     display: none;
     position: absolute;
     left:0; 
-    margin-top: 5px;
+    margin-top: 0;
     width: 220px;
     background-color: #fff;
     border: 1px solid #ebebeb;
@@ -69,7 +76,7 @@
     display: none;
     position: absolute;
     left:0; 
-    margin-top: 5px;
+    margin-top:0;
     width: 220px;
     background-color: #fff;
     border: 1px solid #ebebeb;
@@ -107,6 +114,7 @@
   // 스터디유형, 태그 스타일링 
   .tags { 
     width: 500px; 
+    height: 50px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -125,23 +133,16 @@
       margin-right: 5px;
     }
     li:hover {
-      background-color: #F27E88;
+      background-color: #ebebeb;
     }
   }
 
-  
-  .info-wrap.one {
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    align-items: center;
-  }
   .info-wrap {
     font-size: $font-12;
     color: $dark-gray;
     line-height: 2;
     
-    dd, dt {
+    li {
       margin: 5px 0;
     }
     .date {
@@ -152,7 +153,7 @@
       margin-right: 10px;
       
       .start-date {
-        margin: 0 10px;
+        margin-right: 10px;
       }
 
       .date-picker { 
@@ -230,43 +231,56 @@
         background-color: #f3f3f3;
       }
     }
-    .date .end-date {
+    .date.end {
       margin: 0 10px;
     }
+    .end-date {
+      margin-right: 14px;
+    }
+  }
+  .info-wrap.one {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
   }
 
   .info-wrap.two{ 
 
     .location, .recruit{
-      display: inline-block; 
-      margin-right: 10px;
-    }
+      display: inline-block;  
+    } 
     .date, .location-content {
       display: inline-block;
+      margin: 0;
     }
     .location-content {
       position: relative;
       .selection-location { 
         display: none; 
         position: absolute;
-        left:0; 
-        margin-top: 5px;
-        width:120px;
+        left:18px;  
+        width:152px;
+        height:150px;
         background-color: #fff;
         border: 1px solid #ebebeb;
         border-radius: 5px;
         box-sizing: border-box;
-        padding: 5px;
+        padding: 5px;  
+        overflow-y: scroll;
         .locations {
           width: 100%;
           margin: 0; 
           background-color: transparent;
+          text-align: center;
           .location { 
+            width: 100%;
             height: 20px;
             margin:0;
             background-color: transparent;
             border-style: none;
             height: 30px;
+            
           }
         }
         .locations:hover {
@@ -281,28 +295,40 @@
 
     .recruit {  
       display: inline-block;
+      margin-left: 17px;
       div {
         display: inline-block;
       }
     } 
-    .select-box.location, 
-    .select-box.number {
-      width: 120px;
+    .input-recruit {
+      display: inline-block;
+    }
+    .select-box.location {
+      width: 152px;
       height: 25px;
       font-size: $font-12;
-      border: 1px solid $dark-gray;
-      background-color: #ebebeb;
+      border: 1px solid #ebebeb;
+      background-color: #FFF;
+      border-radius: 3px;
+      padding: 5px;
+      box-sizing: border-box;
+      margin-left: 18px;
+      color: #313131;
+    }
+    .select-box.number{
+      width: 50px;
+      height: 25px;
+      font-size: $font-12;
+      border: 1px solid #ebebeb;
+      background-color: #FFF;
+      color: #313131;
       border-radius: 3px;
       padding: 5px;
       box-sizing: border-box;
     }
       }
-
-
-
     }
   
-
   .input-text {
     width: 600px;
     height: 300px;
@@ -323,10 +349,12 @@
   .buttons {
     float: right;
     border: none;
-    width: 75px;
-    height: 25px;
+    width: 100px;
+    height: 30px;
     border-radius: 5px;
     margin-top: 10px;
+    line-height: 2.3;
+    cursor: pointer;
   }
   .buttons.submit {
     background-color: $yellow;

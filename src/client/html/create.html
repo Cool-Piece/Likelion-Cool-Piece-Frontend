@@ -11,39 +11,31 @@
 <body>
     <!-- nav 추후 추가 -->
     <nav></nav>
-    <article>
+    <section>
         <form action="" class="create-form">
-            <input type="text" class="input-title" placeholder="제목을 입력해주세요">
+            <input type="text" class="input-title" placeholder="제목을 입력해주세요" required>
             <!-- 셀렉트박스: 모집유형  -->
            <div class="select-box parent">
                 <button class="select-box type">
                     모집 유형을 선택해주세요
                     <i class="fas fa-sort-down"></i>
                 </button>
-                <ul class="selection-container type">
-                    
-                </ul>
-           </div>
-            <!-- 선택한 태그 -->
-            <ul class="tags study-type">
-                <li>면접</li>  
-            </ul>
+                <ul class="selection-container type"></ul>
+           </div>  
+
              <!-- 셀렉트박스: 기술  -->
             <button class="select-box stacks">
                 기술을 선택해주세요
                 <i class="fas fa-sort-down"></i>
             </button>
-            <ul class="selection-container language">
-            </ul>
+            <ul class="selection-container language"></ul>
             <!-- 선택한 태그 -->
             <ul class="tags stack-type">
-                <li>HTML<i class="fas fa-times"></i></li> 
             </ul> 
             <!-- 상세 정보 -->
                     <!-- 기간 -->
-               <dl class="info-wrap one">
-                    <dt class="date">기간</dt>
-                    <dd class="date start">
+               <ul class="info-wrap one"> 
+                    <li class="date start">
                         <span class="start-date">시작일</span>
 
                         <!-- 시작일 선택 date picker -->
@@ -58,7 +50,7 @@
                                 <div class="days"></div>
                             </div>
                         </div>
-                    </dd>
+                    </li>
                     <dd class="date end">
                         <span class="end-date">종료일</span>
                         <!-- 종료일 선택 date picker -->
@@ -74,37 +66,28 @@
                             </div>
                         </div>
                     </dd> 
-               </dl> 
+               </ul> 
                     <!-- 지역 -->
-                <dl class="info-wrap two">
-                    <dt class = "location">지역</dt>
-                    <dd class = "location-content">
+               <ul class="info-wrap two">
+                    <li class = "location">지역</li>
+                    <li class = "location-content">
                         <button class="select-box location">
                             지역 선택
                             <i class="fas fa-sort-down"></i>
                         </button>
                         <!-- 셀렉트박스 요소  -->
-                        <ul class="selection-location">
-                            <li class="locations">
-                                <button class="location">
-                                    성남
-                                </button>
-                            </li>
-                            <li class="locations">
-                                <button class="location">서울</button>
-                            </li>
-                        </ul>
-                    </dd>
-                    <dt class = "recruit">모집인원</dt>
-                    <dd class = "recruit">
-                        <input type="number" class="select-box number" placeholder="모집 인원 선택" min="1" max="30"></input>
-                    </dd> 
-                </dl>
-            <textarea class = "input-text noresize" placeholder="상세 내용을 입력해주세요 (최대 500자)"></textarea>
+                        <ul class="selection-location"></ul>
+                    </li>
+                    <li class = "recruit">모집인원</li>
+                    <li class = "input-recruit">
+                        <input type="number" class="select-box number" placeholder="0" min="1" max="30" required></input>
+                    </li> 
+                </ul>
+            <textarea class = "input-text noresize" placeholder="상세 내용을 입력해주세요."></textarea>
             <button class = "buttons submit"type="button">등록</button>
             <button class = "buttons cancel"type="submit">취소</button>
         </form>
-    </article>
+    </section>
     <!-- modal -->
     <div id="myModal" class="modal">
         <!-- modal content -->
