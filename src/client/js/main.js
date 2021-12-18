@@ -8,7 +8,13 @@ if(document.querySelector(".main-wrap section").scrollHeight > window.innerHeigh
   const floatingButton = new FloatingButton().getButton();
   floatingButton.className = "main_floatingButton";
   document.querySelector("body").appendChild(floatingButton);
-  
+
+  floatingButton.addEventListener('click', (e) => {
+    if(e.currentTarget === floatingButton) {
+      document.scrollingElement.scrollTo(0, 0);
+    }
+  })
+
   // Refactor: 성능 개선
   document.addEventListener('scroll', e => {
     if(document.scrollingElement.scrollTop === 0) floatingButton.style.visibility = 'hidden';
