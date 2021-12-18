@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <title>스터디 생성</title>
 </head>
+
 <body>
     <!-- nav 추후 추가 -->
     <nav></nav>
     <section>
-        <form action="" class="create-form">
+        <form class="create-form">
             <input type="text" class="input-title" placeholder="제목을 입력해주세요" required>
             <!-- 셀렉트박스: 모집유형  -->
            <div class="select-box parent">
@@ -30,14 +31,12 @@
             </button>
             <ul class="selection-container language"></ul>
             <!-- 선택한 태그 -->
-            <ul class="tags stack-type">
-            </ul> 
+            <ul class="tags stack-type"></ul> 
             <!-- 상세 정보 -->
                     <!-- 기간 -->
                <ul class="info-wrap one"> 
                     <li class="date start">
                         <span class="start-date">시작일</span>
-
                         <!-- 시작일 선택 date picker -->
                         <div class="date-picker">
                             <div class="selected-date">2021 / 12 / 15</div>
@@ -69,8 +68,8 @@
                </ul> 
                     <!-- 지역 -->
                <ul class="info-wrap two">
-                    <li class = "location">지역</li>
-                    <li class = "location-content">
+                    <li class="location">지역</li>
+                    <li class="location-content">
                         <button class="select-box location">
                             지역 선택
                             <i class="fas fa-sort-down"></i>
@@ -78,14 +77,14 @@
                         <!-- 셀렉트박스 요소  -->
                         <ul class="selection-location"></ul>
                     </li>
-                    <li class = "recruit">모집인원</li>
-                    <li class = "input-recruit">
+                    <li class="recruit">모집인원</li>
+                    <li class="input-recruit">
                         <input type="number" class="select-box number" placeholder="0" min="1" max="30" required></input>
                     </li> 
                 </ul>
-            <textarea class = "input-text noresize" placeholder="상세 내용을 입력해주세요."></textarea>
-            <button class = "buttons submit"type="button">등록</button>
-            <button class = "buttons cancel"type="submit">취소</button>
+            <textarea class="input-text noresize" placeholder="상세 내용을 입력해주세요."></textarea>
+            <button class="buttons submit" type="button">등록</button>
+            <button class="buttons cancel" type="submit">취소</button>
         </form>
     </section>
     <!-- modal -->
@@ -100,4 +99,5 @@
 
     <script src="../js/create.js"></script>
 </body>
+
 </html>

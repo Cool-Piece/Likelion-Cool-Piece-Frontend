@@ -30,11 +30,11 @@ const months = ["January", "February", "March", "April", "May", "June", "July", 
 const locations = ["서울", "경기", "인천", "강원", "충북", "세종", "충남", "대전", "경북", "대구", "전남", "전북", "광주", "경남", "울산", "부산", "제주", "온라인"];
 
 // 셀렉트 박스 클릭 시 토글
-function toggleSelectBoxType(event){
+function toggleSelectBoxType(event) {
 	event.preventDefault();
-	selectionsType.classList.toggle("active"); 
+	selectionsType.classList.toggle("active");
 }
-function toggleSelectBoxStack(event){
+function toggleSelectBoxStack(event) {
 	event.preventDefault();
 	selectionsLanguage.classList.toggle("active");
 }
@@ -42,34 +42,34 @@ selectBoxType.addEventListener("click", toggleSelectBoxType);
 selectBoxStacks.addEventListener("click", toggleSelectBoxStack);
 
 // 스터디 유형 셀렉트 박스에 추가
-function addStudyType(){
-    studyType.forEach((item) => {
-        const li = document.createElement("li");
-        const button = document.createElement("button");
-        li.classList.add("stacks")
-        button.textContent = item;
-        button.classList.add("selections")
-        selectionsType.appendChild(li).appendChild(button);
-			});
+function addStudyType() {
+	studyType.forEach((item) => {
+		const li = document.createElement("li");
+		const button = document.createElement("button");
+		li.classList.add("stacks");
+		button.textContent = item;
+		button.classList.add("selections");
+		selectionsType.appendChild(li).appendChild(button);
+	});
 }
 addStudyType();
 
 // 스택, 기술 이름 셀렉트 박스에 추가
-function addStackType(){
-    stackType.forEach((item) => {
-        const li = document.createElement("li");
-        const button = document.createElement("button");
-        li.classList.add("languages")
-        button.textContent = item;
-        button.classList.add("selections");
-        selectionsLanguage.appendChild(li).appendChild(button);
-    });
+function addStackType() {
+	stackType.forEach((item) => {
+		const li = document.createElement("li");
+		const button = document.createElement("button");
+		li.classList.add("languages");
+		button.textContent = item;
+		button.classList.add("selections");
+		selectionsLanguage.appendChild(li).appendChild(button);
+	});
 }
 addStackType();
 
 // 스터디 유형 셀렉트 박스 선택 시 텍스트 변경
 selectionsType.addEventListener("click", (event) => {
-  if (event.target.nodeName === "BUTTON") { 
+  if (event.target.nodeName === "BUTTON") {
 		selectBoxType.textContent = `${event.target.textContent}`;
 		event.preventDefault();
 	}
@@ -79,23 +79,23 @@ selectionsType.addEventListener("click", (event) => {
 let tagList = [];
 // 스택 유형 셀렉트 박스 선택 시 태그 추가
 selectionsLanguage.addEventListener("click", (event) => {
-	// 중복확인
+// 중복확인
 	let flag = true;
-	tagList.forEach((tag)=> { 
-		if(event.target.textContent === tag){
+	tagList.forEach((tag) => {
+		if(event.target.textContent === tag) {
 			flag = false;
 		}
-	})  
-		// 확인 후 추가
-		if (flag){
-			if (event.target.nodeName === "BUTTON") {
-				const li = document.createElement("li");
-				stackTags.appendChild(li);
-				li.textContent = `${event.target.textContent}`;
-				tagList.push(event.target.textContent);
-				console.log(tagList);
-			}
+	})
+// 확인 후 추가
+	if (flag) {
+		if (event.target.nodeName === "BUTTON") {
+			const li = document.createElement("li");
+			stackTags.appendChild(li);
+			li.textContent = `${event.target.textContent}`;
+			tagList.push(event.target.textContent);
+			console.log(tagList);
 		}
+	}
 		event.preventDefault();
     selectionsLanguage.classList.remove("active");
 });
@@ -108,8 +108,7 @@ stackTags.addEventListener("click", (event) => {
 		removeTag = tagList.indexOf(event.target.textContent);
 		tagList.splice(removeTag, 1);
 	}
-})
-
+});
 
 // 데이트 피커 (변수들)
 let date = new Date();
@@ -132,13 +131,13 @@ selectedDateElementEnd.dataset.value = selectedDate;
 populateDates();
 populateDatesEnd();
 
-
 // 시작일 - 데이트 피커 버튼 클릭 시 토글
 function toggleStartDate(event) {
 	if (!checkEventPathForClass(event.path, "dates" )){
 		datesElement.classList.toggle("active");
 	}
 }
+
 // 종료일 - 데이트 피커 버튼 클릭 시 토글
 function toggleEndDate(event) {
 	if (!checkEventPathForClass(event.path, "dates" )){
@@ -147,44 +146,44 @@ function toggleEndDate(event) {
 }
 
 // 시작일 - 다음 월로 이동
-function goToNextMonth(event){
+function goToNextMonth(event) {
 	month++;
 	if (month > 11){
-	month = 0;
-	year++;
+		month = 0;
+		year++;
 	}
 	monthElement.textContent = months[month] + " " + year;
 	populateDates();
 }
 
 // 시작일 - 이전 월로 이동
-function goToPrevMonth(event){
+function goToPrevMonth(event) {
 	month--;
 	if (month < 0){
-	month = 11;
-	year--;
+		month = 11;
+		year--;
 	}
 	monthElement.textContent = months[month] + " " + year;
 	populateDates();
 }
 
 // 종료일 - 다음 월로 이동
-function goToNextMonthEnd(event){
+function goToNextMonthEnd(event) {
 	month++;
 	if (month > 11){
-	month = 0;
-	year++;
+		month = 0;
+		year++;
 	}
 	monthElementEnd.textContent = months[month] + " " + year;
 	populateDatesEnd();
 }
 
 // 종료일 - 이전 월로 이동
-function goToPrevMonthEnd(event){
+function goToPrevMonthEnd(event) {
 	month--;
 	if (month < 0){
-	month = 11;
-	year--;
+		month = 11;
+		year--;
 	}
 	monthElementEnd.textContent = months[month] + " " + year;
 	populateDatesEnd();
@@ -203,7 +202,7 @@ function populateDates(event) {
 	let amountDays = 31;
 
 	if (month == 1){
-			amountDays = 28;
+		amountDays = 28;
 	} 
 	if (month == 3){
 		amountDays = 30;
@@ -218,29 +217,29 @@ function populateDates(event) {
 		amountDays = 30;
 	}
 
-    for(let i = 0; i < amountDays; i++) {
-        const dayElement = document.createElement("div");
-        dayElement.classList.add("day");
-        dayElement.textContent = i + 1;
+  for(let i = 0; i < amountDays; i++) {
+    const dayElement = document.createElement("div");
+    dayElement.classList.add("day");
+    dayElement.textContent = i + 1;
 
-        if (selectedDay == (i + 1) && selectedYear == year && selectedMonth == month){
-            dayElement.classList.add("selected");
-        }
+  if (selectedDay == (i + 1) && selectedYear == year && selectedMonth == month){
+    dayElement.classList.add("selected");
+  }
 
-        dayElement.addEventListener("click", function() {
-            selectedDate = new Date(year + "-" + (month + 1) + "-" + (i + 1));
-            selectedDay = (i + 1);
-            selectedMonth = month;
-            selectedYear = year;
+  dayElement.addEventListener("click", function() {
+  	selectedDate = new Date(year + "-" + (month + 1) + "-" + (i + 1));
+    selectedDay = (i + 1);
+    selectedMonth = month;
+    selectedYear = year;
             
-            selectedDateElement.textContent = formatDate(selectedDate);
-            selectedDateElement.dataset.value = selectedDate;
+    selectedDateElement.textContent = formatDate(selectedDate);
+    selectedDateElement.dataset.value = selectedDate;
 
-            populateDates();
-        });
+    populateDates();
+	});
 
-        daysElement.appendChild(dayElement);
-    }
+  daysElement.appendChild(dayElement);
+  }
 }
 
 // 종료일 - 월별 일자 생성
@@ -248,90 +247,87 @@ function populateDatesEnd(event) {
 	daysElementEnd.innerHTML = "";
 	let amountDays = 31;
 
-    if (month == 1){
-        amountDays = 28;
+    if (month == 1) {
+    	amountDays = 28;
     } 
-		if (month == 3){
+		if (month == 3) {
 			amountDays = 30;
 		}
-		if (month == 5){
+		if (month == 5) {
 			amountDays = 30;
 		}
-		if (month == 8){
+		if (month == 8) {
 			amountDays = 30;
 		}
-		if (month == 10){
+		if (month == 10) {
 			amountDays = 30;
 		}
 
-    for(let i = 0; i < amountDays; i++) {
-        const endElement = document.createElement("div");
-        endElement.classList.add("day");
-        endElement.textContent = i + 1;
+    for (let i = 0; i < amountDays; i++) {
+      const endElement = document.createElement("div");
+      endElement.classList.add("day");
+      endElement.textContent = i + 1;
 
-        if (selectedDay == (i + 1) && selectedYear == year && selectedMonth == month){
-            endElement.classList.add("selected");
-        }
-
-        endElement.addEventListener("click", function() {
-            selectedDate = new Date(year + "-" + (month + 1) + "-" + (i + 1));
-            selectedDay = (i + 1);
-            selectedMonth = month;
-            selectedYear = year;
-            
-            selectedDateElementEnd.textContent = formatDate(selectedDate);
-            selectedDateElementEnd.dataset.value = selectedDate;
-
-            populateDatesEnd();
-        });
-
-        daysElementEnd.appendChild(endElement);
+    if (selectedDay == (i + 1) && selectedYear == year && selectedMonth == month){
+      endElement.classList.add("selected");
     }
+
+    endElement.addEventListener("click", function() {
+      selectedDate = new Date(year + "-" + (month + 1) + "-" + (i + 1));
+      selectedDay = (i + 1);
+      selectedMonth = month;
+      selectedYear = year;
+      selectedDateElementEnd.textContent = formatDate(selectedDate);
+      selectedDateElementEnd.dataset.value = selectedDate;
+
+      populateDatesEnd();
+  });
+		daysElementEnd.appendChild(endElement);
+  }
 }
 
 // 데이트 피커 선택 시 창 사라지는거 방지
 function checkEventPathForClass(path, selector) {
-	for(i=0; i < path.length; i++){
-	if (path[i].classList && path[i].classList.contains(selector)) {
-	return true;
- 	}
+	for (i=0; i < path.length; i++){
+		if (path[i].classList && path[i].classList.contains(selector)) {
+			return true;
+ 		}
 	}
-	return false;
+		return false;
 }
 
 // 셀렉트 박스에 일월년도 표시
 function formatDate(d) {
-    let day = d.getDate();
-    if (day < 10){
-        day = "0" + day;
-    }
+	let day = d.getDate();
+	if (day < 10){
+		day = "0" + day;
+  }
 
-    let month = d.getMonth() + 1;
-    if (month < 10){
-        month = "0" + month;
-    }
+	let month = d.getMonth() + 1;
+	if (month < 10){
+		month = "0" + month;
+  }
 
-    let year = d.getFullYear();
-
-    return month + " / " + day + " / " + year;
+	let year = d.getFullYear();
+	return month + " / " + day + " / " + year;
 }
 
 // 셀렉트 박스 지역 선택
-function toggleSelectBoxLocation(event){
-    event.preventDefault();
-    selectionsLocation.classList.toggle("active");
+function toggleSelectBoxLocation(event) {
+  event.preventDefault();
+  selectionsLocation.classList.toggle("active");
 }
 selectBoxLocation.addEventListener("click", toggleSelectBoxLocation);
 
 // 셀렉트 박스 지역 추가
-function addLocations(){
+function addLocations() {
 	locations.forEach((item) => {
-			const li = document.createElement("li");
-			const button = document.createElement("button");
-			li.classList.add("locations")
-			button.textContent = item;
-			button.classList.add("location");
-			selectionsLocation.appendChild(li).appendChild(button);
+		const li = document.createElement("li");
+		const button = document.createElement("button");
+		li.classList.add("locations");
+		button.textContent = item;
+		button.classList.add("location");
+		selectionsLocation.appendChild(li).appendChild(button);
 	});
 }
 addLocations();
