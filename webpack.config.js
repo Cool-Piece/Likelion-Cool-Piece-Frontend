@@ -2,8 +2,8 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const htmlPageNames = ["subpage"];
-const jsFileNames = ["main", "subpage"];
+const htmlPageNames = ["login"];
+const jsFileNames = ["main", "login"];
 
 const multipleHtmlPlugins = htmlPageNames.map((name) => {
   return new HtmlWebpackPlugin({
@@ -15,19 +15,17 @@ const multipleHtmlPlugins = htmlPageNames.map((name) => {
 
 const getEntry = () => {
   const entry = {};
-  const multipleEntryJs = jsFileNames.forEach((name) => {
+  jsFileNames.forEach((name) => {
     const src = `./src/client/js/${name}.js`;
-    entry[name] =src;
-  });  
+    entry[name] = src;
+  });
   return entry;
 };
-console.log(getEntry())
 
-  
 module.exports = {
-  mode:"development",
+  mode: "development",
   entry: getEntry(),
-  watch:true,
+  watch: true,
   output: {
     path: path.resolve(__dirname, "assets"),
     filename: "js/[name].js",
@@ -39,16 +37,28 @@ module.exports = {
       filename: "css/styles.css",
     }),
 
-     new HtmlWebpackPlugin({
+    new HtmlWebpackPlugin({
       template: "./src/client/html/index.html",
       filename: "html/index.html",
       chunks: ["main"],
     }),
   ].concat(multipleHtmlPlugins),
-  
-  
+
   module: {
     rules: [
+      {
+        test: /\.html$/,
+        use: {
+          loader: "html-loader",
+        },
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        type: "asset/resource",
+        generator: {
+          filename: "image/[name][ext]",
+        },
+      },
       {
         test: /\.js$/,
         use: {
@@ -65,4 +75,3 @@ module.exports = {
     ],
   },
 };
-
