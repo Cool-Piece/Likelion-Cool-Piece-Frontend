@@ -1,6 +1,7 @@
 import "../scss/styles.scss";
 import Category from "./category.js";
 import FloatingButton from "./floatingButton.js";
+import Card from "./card.js";
 
 const categoryComponent = new Category(document.querySelector(".categoryList"));
 
@@ -21,3 +22,5 @@ if(document.querySelector(".main-wrap section").scrollHeight > window.innerHeigh
     else floatingButton.style.visibility = 'visible';
   });
 }
+
+const cardListComponent = new Card(document.querySelector(".studyList"));

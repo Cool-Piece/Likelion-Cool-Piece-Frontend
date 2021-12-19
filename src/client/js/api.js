@@ -2,7 +2,7 @@ const BASE_URL = "";
 
 export const fetchCategory = () => fetch(`${BASE_URL}`)
 .then(res => {
-  if(res.status === 200) { // GET success status expect 200
+  if (res.status === 200) {
     return res.json();
   } else {
     throw new Error();
@@ -10,4 +10,12 @@ export const fetchCategory = () => fetch(`${BASE_URL}`)
 })
 .catch(error => {
   console.error(error);
+})
+
+export const fetchCard = () => fetch(`${BASE_URL}`)
+.then(res => {
+
+})
+.catch(error => {
+  console.error(errro);
 })
