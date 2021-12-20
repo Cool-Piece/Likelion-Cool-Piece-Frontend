@@ -2,15 +2,15 @@ import CardModel from './cardData';
 
 export default class Card {
   #data = [];
+  #viewData = [];
   #cardModel = null;
 
-  constructor($target) {
+  constructor({$target, initRenderData}) {
     this.$target = $target;
     this.#cardModel = new CardModel();
-    this.#data = this.#cardModel.getCardData();
-    
+    this.#data = this.#cardModel.getCardData();    
     this.#initAddEvents();
-    this.#render();
+    this.onFilter(initRenderData);
   }
 
   #initAddEvents() {
@@ -23,11 +23,39 @@ export default class Card {
   }
 
   #routeToPath(path) {
-    // TODO: host + path 로 routing!
+    // TODO: route 처리하기
+  }
+
+  onFilter(filterData) {
+    if (filterData.selectedItems.length == 0) {
+      this.#setState(this.#data);
+    } else {
+      let result = [];
+
+      this.#data.forEach(cardData => {
+        let include = false;
+        for(let cardSkill of cardData.skills) {
+          if (filterData.selectedItems.includes(cardSkill)) {
+            include = true;
+            break;
+          }
+        }
+        if (include) {
+          result.push(cardData);
+        }
+      })
+      
+      this.#setState(result);
+    }
+  }
+
+  #setState(nextState) {
+    this.#viewData = nextState;
+    this.#render();
   }
 
   #render() {
-    this.$target.innerHTML = this.#data.map(card => {
+    this.$target.innerHTML = this.#viewData.map(card => {
       return `
         <li class="studyItem" title="클릭시 해당 스터디의 상세페이지로 이동합니다." id=${card.id}>
           <h3 class="studyItem-title">${card.title}</h3>

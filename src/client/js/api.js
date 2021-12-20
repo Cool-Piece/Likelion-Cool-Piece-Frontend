@@ -1,4 +1,4 @@
-const BASE_URL = "";
+const BASE_URL = "https://coolpiece-git.herokuapp.com/";
 
 export const fetchCategory = () => fetch(`${BASE_URL}`)
 .then(res => {

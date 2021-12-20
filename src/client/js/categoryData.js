@@ -6,10 +6,10 @@ export default class CategoryData {
   constructor(){
     this.#setState([
       "JavaScript",
-      "NodeJs",
-      "NextJs",
-      "HTML5",
-      "CSS3",
+      "NodeJS",
+      "NextJS",
+      "HTML",
+      "CSS",
       "ReactJS",
       "Redux",
       "Redux-saga",
@@ -28,11 +28,4 @@ export default class CategoryData {
   getData(){
     return this.#data;
   }
-
-  // async #fetchData(){
-  //   return await fetchCategory()
-  //   .then(res => {
-  //     this.#setState(res);
-  //   })
-  // }
 }
