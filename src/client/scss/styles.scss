@@ -1,6 +1,6 @@
 @import "../scss/_reset";
 @import "../scss/__variable";
-@import "../scss/__mixin";
+@import "../scss/__mixin"; 
 
 
 // 전체 폼 스타일링 
@@ -154,7 +154,7 @@
       
       .start-date {
         margin-right: 10px;
-      }
+      } 
 
       .date-picker { 
         position: relative;
@@ -366,7 +366,7 @@
 
 // modal
 // modal background 
-.modal { 
+.modal {   
   display: none;
   position: fixed;  
   z-index: 40;  
@@ -415,4 +415,7 @@
     color: $dark-gray; 
     margin-top: 15px;
   }
+}
+.modal.on {
+  display: block;
 }

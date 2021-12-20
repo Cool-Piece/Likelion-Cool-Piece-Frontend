@@ -43,6 +43,11 @@ table {
   border-spacing: 0;
 }
 
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 .create-form {
   position: relative;
   width: 600px;
@@ -544,5 +549,9 @@ table {
   background-color: #ebebeb;
   color: #888888;
   margin-top: 15px;
+}
+
+.modal.on {
+  display: block;
 }
 /*# sourceMappingURL=styles.css.map */

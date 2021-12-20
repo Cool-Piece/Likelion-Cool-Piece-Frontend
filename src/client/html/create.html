@@ -9,35 +9,27 @@
     <title>스터디 생성</title>
 </head>
 
-<body>
-    <!-- nav 추후 추가 -->
+<body> 
     <nav></nav>
     <section>
-        <form class="create-form">
-            <input type="text" class="input-title" placeholder="제목을 입력해주세요" required>
-            <!-- 셀렉트박스: 모집유형  -->
+        <form action = "https://coolpiece-git.herokuapp.com/create" class="create-form" method = "POST">
+            <input type="text" class="input-title" placeholder="제목을 입력해주세요" required> 
            <div class="select-box parent">
-                <button class="select-box type">
+                <button type ="button" class="select-box type">
                     모집 유형을 선택해주세요
                     <i class="fas fa-sort-down"></i>
                 </button>
                 <ul class="selection-container type"></ul>
            </div>  
-
-             <!-- 셀렉트박스: 기술  -->
-            <button class="select-box stacks">
+            <button type ="button" class="select-box stacks">
                 기술을 선택해주세요
                 <i class="fas fa-sort-down"></i>
             </button>
-            <ul class="selection-container language"></ul>
-            <!-- 선택한 태그 -->
-            <ul class="tags stack-type"></ul> 
-            <!-- 상세 정보 -->
-                    <!-- 기간 -->
+            <ul class="selection-container language"></ul> 
+            <ul class="tags stack-type"></ul>  
                <ul class="info-wrap one"> 
                     <li class="date start">
-                        <span class="start-date">시작일</span>
-                        <!-- 시작일 선택 date picker -->
+                        <span class="start-date">시작일</span> 
                         <div class="date-picker">
                             <div class="selected-date">2021 / 12 / 15</div>
                             <div class="dates">
@@ -51,8 +43,7 @@
                         </div>
                     </li>
                     <dd class="date end">
-                        <span class="end-date">종료일</span>
-                        <!-- 종료일 선택 date picker -->
+                        <span class="end-date">종료일</span> 
                         <div class="date-picker">
                             <div class="selected-date"></div>
                             <div class="dates">
@@ -65,16 +56,14 @@
                             </div>
                         </div>
                     </dd> 
-               </ul> 
-                    <!-- 지역 -->
+               </ul>  
                <ul class="info-wrap two">
                     <li class="location">지역</li>
                     <li class="location-content">
-                        <button class="select-box location">
+                        <button type ="button" class="select-box location">
                             지역 선택
                             <i class="fas fa-sort-down"></i>
-                        </button>
-                        <!-- 셀렉트박스 요소  -->
+                        </button> 
                         <ul class="selection-location"></ul>
                     </li>
                     <li class="recruit">모집인원</li>
@@ -83,17 +72,15 @@
                     </li> 
                 </ul>
             <textarea class="input-text noresize" placeholder="상세 내용을 입력해주세요."></textarea>
-            <button class="buttons submit" type="button">등록</button>
-            <button class="buttons cancel" type="submit">취소</button>
+            <button class="buttons submit" type="submit">등록</button>
+            <button class="buttons cancel" type="button">취소</button>
         </form>
-    </section>
-    <!-- modal -->
-    <div id="myModal" class="modal">
-        <!-- modal content -->
+    </section> 
+    <div class="modal"> 
         <div class="modal-content">
             <p>등록하시겠어요?</p>
-            <button class="modal-button yes">네!</button>
-            <button class="modal-button no">조금만 더 생각해볼게요</button>
+            <button type ="button" class="modal-button yes">네!</button>
+            <button type ="button" class="modal-button no">조금만 더 생각해볼게요</button>
         </div>
     </div>
 
