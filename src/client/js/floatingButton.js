@@ -16,6 +16,19 @@ export default class FloatingButton {
     floatingButton.appendChild(wrap);
     floatingButton.appendChild(arrow);
     this.#floatingButton = floatingButton;
+
+    this.#floatingButton.addEventListener("click", event => {
+      if (event.currentTarget === this.$floatingButton) {
+        document.scrollingElement.scrollTo(0, 0);
+      }
+    })
+
+    document.querySelector("body").appendChild(this.#floatingButton);
+    // Refactor: 성능 개선
+    document.addEventListener('scroll', () => {
+      if(document.scrollingElement.scrollTop === 0) this.#floatingButton.style.visibility = 'hidden';
+      else this.#floatingButton.style.visibility = 'visible';
+    });
   }
 
   getButton() {
