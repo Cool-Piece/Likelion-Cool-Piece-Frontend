@@ -30,6 +30,7 @@ module.exports = {
     path: path.resolve(__dirname, "assets"),
     filename: "js/[name].js",
     clean: true,
+    assetModuleFilename: "image/[name][ext]"
   },
 
   plugins: [
