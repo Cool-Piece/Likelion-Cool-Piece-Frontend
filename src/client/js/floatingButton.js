@@ -18,7 +18,7 @@ export default class FloatingButton {
     this.#floatingButton = floatingButton;
 
     this.#floatingButton.addEventListener("click", event => {
-      if (event.currentTarget === this.$floatingButton) {
+      if (event.currentTarget === this.#floatingButton) {
         document.scrollingElement.scrollTo(0, 0);
       }
     })
