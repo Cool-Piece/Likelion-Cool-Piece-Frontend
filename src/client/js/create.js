@@ -100,8 +100,7 @@ selectionsLanguage.addEventListener("click", (event) => {
       const li = document.createElement("li");
       stackTags.appendChild(li);
       li.textContent = `${event.target.textContent}`;
-      tagList.push(event.target.textContent);
-      console.log(tagList);
+      tagList.push(event.target.textContent); 
     }
   }
   event.preventDefault();
@@ -348,7 +347,6 @@ selectionsLocation.addEventListener("click", (event) => {
   selectionsLocation.classList.remove("active");
 });
 
-console.log(submitButton);
 
 // 작성 클릭 시 모달창 오픈
 submitButton.addEventListener("click", function(event) {
