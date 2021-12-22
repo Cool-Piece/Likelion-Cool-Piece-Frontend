@@ -26,8 +26,11 @@ export default class FloatingButton {
     document.querySelector("body").appendChild(this.#floatingButton);
     // Refactor: 성능 개선
     document.addEventListener('scroll', () => {
-      if(document.scrollingElement.scrollTop === 0) this.#floatingButton.style.visibility = 'hidden';
-      else this.#floatingButton.style.visibility = 'visible';
+      if (document.scrollingElement.scrollTop === 0) {
+        this.#floatingButton.style.visibility = 'hidden';
+      } else {
+        this.#floatingButton.style.visibility = 'visible';
+      }
     });
   }
 
