@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../scss/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <title>스터디 생성</title>
+</head>
+
+<body> 
+    <nav></nav>
+    <section>
+        <form action = "https://coolpiece-git.herokuapp.com/create" class="create-form" method = "POST">
+            <input type="text" class="input-title" placeholder="제목을 입력해주세요" required> 
+           <div class="select-box parent">
+                <button type ="button" class="select-box type">
+                    모집 유형을 선택해주세요
+                    <i class="fas fa-sort-down"></i>
+                </button>
+                <ul class="selection-container type"></ul>
+           </div>  
+            <button type ="button" class="select-box stacks">
+                기술을 선택해주세요
+                <i class="fas fa-sort-down"></i>
+            </button>
+            <ul class="selection-container language"></ul> 
+            <ul class="tags stack-type"></ul>  
+               <ul class="info-wrap one"> 
+                    <li class="date start">
+                        <span class="start-date">시작일</span> 
+                        <div class="date-picker">
+                            <div class="selected-date">2021 / 12 / 15</div>
+                            <div class="dates">
+                                <div class="month"> 
+                                    <div class="arrows prev-month">&lt;</div>
+                                    <div class="mth"></div>
+                                    <div class="arrows next-month">&gt;</div>
+                                </div>
+                                <div class="days"></div>
+                            </div>
+                        </div>
+                    </li>
+                    <dd class="date end">
+                        <span class="end-date">종료일</span> 
+                        <div class="date-picker">
+                            <div class="selected-date"></div>
+                            <div class="dates">
+                                <div class="month"> 
+                                    <div class="arrows prev-month">&lt;</div>
+                                    <div class="mth"></div>
+                                    <div class="arrows next-month">&gt;</div>
+                                </div>
+                                <div class="days"></div>
+                            </div>
+                        </div>
+                    </dd> 
+               </ul>  
+               <ul class="info-wrap two">
+                    <li class="location">지역</li>
+                    <li class="location-content">
+                        <button type ="button" class="select-box location">
+                            지역 선택
+                            <i class="fas fa-sort-down"></i>
+                        </button> 
+                        <ul class="selection-location"></ul>
+                    </li>
+                    <li class="recruit">모집인원</li>
+                    <li class="input-recruit">
+                        <input type="number" class="select-box number" placeholder="0" min="1" max="30" required></input>
+                    </li> 
+                </ul>
+            <textarea class="input-text noresize" placeholder="상세 내용을 입력해주세요."></textarea>
+            <button class="buttons submit" type="submit">등록</button>
+            <button class="buttons cancel" type="button">취소</button>
+        </form>
+    </section> 
+    <div class="modal"> 
+        <div class="modal-content">
+            <p>등록하시겠어요?</p>
+            <button class="modal-button yes" type ="button" >네!</button>
+            <button class="modal-button no" type ="button">조금만 더 생각해볼게요</button>
+        </div>
+    </div>
+
+    <script src="../js/create.js"></script>
+</body>
+
+</html>

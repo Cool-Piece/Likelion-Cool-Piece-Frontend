@@ -1,5 +1,6 @@
 // color
 $red: red;
+$yellow: #FFC971; 
 $mainColor: #FFC971;
 $defaultColor: #ebebeb;
 
@@ -10,6 +11,16 @@ $footer_height: 150px;
 
 // font
 $font_family: 'Noto Sans KR', sans-serif;
+
+// font-colors
+$dark-gray: #888888; 
+$black: #000; 
+
+// font-sizes
+$font-20: 20px;
+$font-14: 14px; 
+$font-12: 12px; 
+$font-10: 10px; 
 
 // ellipsis
 @mixin sellipsis { // single
