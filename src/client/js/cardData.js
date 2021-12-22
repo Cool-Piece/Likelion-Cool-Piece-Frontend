@@ -1,5 +1,3 @@
-import { fetchCard } from "./api.js";
-
 export default class CardModel {
   #data = [];
 
@@ -26,6 +24,8 @@ const dummyData = [
     due_date: "2021-12-25",
     participant: ["리액션 짱 박지윤", "면접선배 임관식 쩔어", "집중쩔어 김준호", "빡고수 별님"],
     skills: ["JavaScript"],
+    study_status: true,
+    study_type: 'study'
   },
   {
     title: "빡고수 지윤님의 스터디",
@@ -36,16 +36,20 @@ const dummyData = [
     due_date: "2021-12-25",
     participant: ["리액션 짱 박지윤", "면접선배 임관식 쩔어", "집중쩔어 김준호", "빡고수 별님"],
     skills: ["JavaScript", "CSS"],
+    study_status: false,
+    study_type: 'study'
   },
   {
-    title: "무뇌 김준호의 스터디",
+    title: "무뇌 김준호의 프로젝트",
     creator: "멋피스",
     createdAt: "2021-12-18",
     total: 6,
     start_date: "2021-12-20",
     due_date: "2021-12-25",
     participant: ["리액션 짱 박지윤", "면접선배 임관식 쩔어", "집중쩔어 김준호", "빡고수 별님"],
-    skills: ["React", "NodeJS"],
+    skills: ["ReactJS", "NodeJS"],
+    study_status: true,
+    study_type: 'project'
   },
   {
     title: "빡고수 한별님의 스터디2",
@@ -55,10 +59,12 @@ const dummyData = [
     start_date: "2021-12-20",
     due_date: "2021-12-25",
     participant: ["리액션 짱 박지윤", "면접선배 임관식 쩔어", "집중쩔어 김준호", "빡고수 별님"],
-    skills: ["React", "NextJS"],
+    skills: ["ReactJS", "NextJS"],
+    study_status: true,
+    study_type: 'study'
   },
   {
-    title: "빡고수 한별님의 스터디3",
+    title: "빡고수 한별님의 프로젝트3",
     creator: "멋피스",
     createdAt: "2021-12-18",
     total: 6,
@@ -66,6 +72,8 @@ const dummyData = [
     due_date: "2021-12-25",
     participant: ["리액션 짱 박지윤", "면접선배 임관식 쩔어", "집중쩔어 김준호", "빡고수 별님"],
     skills: ["VueJS", "CSS", "HTML"],
+    study_status: true,
+    study_type: 'project'
   },
   {
     title: "빡고수 지윤님의 스터디2",
@@ -76,19 +84,23 @@ const dummyData = [
     due_date: "2021-12-25",
     participant: ["리액션 짱 박지윤", "면접선배 임관식 쩔어", "집중쩔어 김준호", "빡고수 별님"],
     skills: ["CSS", "JavaScript", "Vuex"],
+    study_status: false,
+    study_type: 'study'
   },
   {
-    title: "빡고수 지윤님의 스터디3",
+    title: "빡고수 지윤님의 프로젝트3",
     creator: "멋피스",
     createdAt: "2021-12-18",
     total: 6,
     start_date: "2021-12-20",
     due_date: "2021-12-25",
     participant: ["리액션 짱 박지윤", "면접선배 임관식 쩔어", "집중쩔어 김준호", "빡고수 별님"],
-    skills: ["JavaScript", "React", "Redux", "Redux-saga"],
+    skills: ["JavaScript", "ReactJS", "Redux", "Redux-saga"],
+    study_status: false,
+    study_type: 'project'
   },
   {
-    title: "청강 달인 김준호의 스터디",
+    title: "청강 달인 김준호의 프로젝트",
     creator: "멋피스",
     createdAt: "2021-12-18",
     total: 6,
@@ -96,5 +108,7 @@ const dummyData = [
     due_date: "2021-12-25",
     participant: ["리액션 짱 박지윤", "면접선배 임관식 쩔어", "집중쩔어 김준호", "빡고수 별님"],
     skills: ["NextJS"],
+    study_status: true,
+    study_type: 'project'
   }
 ]

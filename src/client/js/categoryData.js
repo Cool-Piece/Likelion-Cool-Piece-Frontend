@@ -1,5 +1,3 @@
-import { fetchCategory } from './api';
-
 export default class CategoryData {
   #data = [];
 

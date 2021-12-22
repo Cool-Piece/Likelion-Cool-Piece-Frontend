@@ -1,12 +1,20 @@
 import "../scss/styles.scss";
 import Category from "./category.js";
 import FloatingButton from "./floatingButton.js";
+import InitButton from "./initButton.js";
 import Card from "./card.js";
+import Search from './search.js';
 
 class Main {
   $floatingButton = null;
   constructor($target) {
     this.$target = $target;
+
+    this.$initButton = new InitButton({
+      $target: this.$target.querySelector(".category-wrap"),
+      initFilter: () => this.$category.initialize(),
+      initCard: () => this.$card.initialize()
+    })
 
     this.$category = new Category({
       $target: this.$target.querySelector(".categoryList"),
@@ -15,8 +23,13 @@ class Main {
   
     this.$card = new Card({
       $target: this.$target.querySelector(".studyList"),
-      initRenderData: this.$category.getSelectedCategory()
+      initFilterData: this.$category.getSelectedCategory()
     });
+
+    this.$search = new Search({
+      $target: document.querySelector(".searchBar-input"),
+      onSearch: (keyword) => this.$card.onSearch(keyword)
+    })
 
     const floatingButton = new FloatingButton().getButton();
     floatingButton.className = "main_floatingButton";

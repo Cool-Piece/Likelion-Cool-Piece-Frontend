@@ -1,9 +1,9 @@
 import {
-	LOCAL_CATEGORY,
-	LOCAL_CATEGORY_LAST_UPDATE,
-	LOCAL_CATEGORY_MAX_MS,
-	LOCAL_CATEGORY_RECRUITED,
-	LOCAL_CATEGORY_RECRUITING
+	CATEGORY,
+	CATEGORY_LAST_UPDATE,
+	MAX_TIME,
+	CATEGORY_RECRUITED,
+	CATEGORY_RECRUITING
 } from "./constant.js";
 import CategoryData from "./categoryData.js";
 
@@ -35,6 +35,17 @@ export default class Category {
 		this.#selectedItems = this.#selectedItems.filter(item => item !== categoryElement.textContent);
 	}
 
+	initialize() {
+		this.#selectedItems = [];
+		this.#recruited = false;
+		this.#recruiting = false;
+		localStorage.setItem(CATEGORY, JSON.stringify(this.#selectedItems));
+		localStorage.setItem(CATEGORY_LAST_UPDATE, new Date());
+		localStorage.setItem(CATEGORY_RECRUITING, false);
+		localStorage.setItem(CATEGORY_RECRUITED, false);
+		this.#render(this.#categoryData.getData());
+	}
+
 	#initAddEvents() {
 		this.$target.addEventListener("click", e => {
 			const categoryItem = e.target.closest(".categoryItem");
@@ -45,8 +56,8 @@ export default class Category {
 				} else {
 					this.#addSelected(categoryItem);
 				}
-				localStorage.setItem(LOCAL_CATEGORY_LAST_UPDATE, new Date());
-				localStorage.setItem(LOCAL_CATEGORY, JSON.stringify(this.#selectedItems));
+				localStorage.setItem(CATEGORY_LAST_UPDATE, new Date());
+				localStorage.setItem(CATEGORY, JSON.stringify(this.#selectedItems));
 				this.#onFilter(this.getSelectedCategory());
 			}
 		})
@@ -58,24 +69,24 @@ export default class Category {
 		
 		const updateRecruit = (recruitType, recruit) => {
 			localStorage.setItem(recruitType, recruit);
-			localStorage.setItem(LOCAL_CATEGORY_LAST_UPDATE, new Date());
+			localStorage.setItem(CATEGORY_LAST_UPDATE, new Date());
 			this.#onFilter(this.getSelectedCategory());
 		}
 
 		recruitingLabel.addEventListener("click", () => {
 			if (recruitingBox.checked) this.#recruiting = false;
 			else this.#recruiting = true;
-			updateRecruit(LOCAL_CATEGORY_RECRUITING, this.#recruiting);
+			updateRecruit(CATEGORY_RECRUITING, this.#recruiting);
 		})
 		recruitedLabel.addEventListener("click", () => {
 			if (recruitedBox.checked) this.#recruited = false;
 			else this.#recruited = true;
-			updateRecruit(LOCAL_CATEGORY_RECRUITED, this.#recruited);
+			updateRecruit(CATEGORY_RECRUITED, this.#recruited);
 		})
 	}
 
 	#initPrevSelectedItems() {
-		const lastUpdated = localStorage.getItem(LOCAL_CATEGORY_LAST_UPDATE);
+		const lastUpdated = localStorage.getItem(CATEGORY_LAST_UPDATE);
 		let prevData, currentData;
 
 		if (lastUpdated) {
@@ -83,15 +94,15 @@ export default class Category {
 			currentData = new Date();
 		}
 
-		if (!lastUpdated || (currentData - prevData) >= LOCAL_CATEGORY_MAX_MS) {
-			localStorage.setItem(LOCAL_CATEGORY_LAST_UPDATE, new Date());
-			localStorage.setItem(LOCAL_CATEGORY, JSON.stringify([]));
-			localStorage.setItem(LOCAL_CATEGORY_RECRUITED, false);
-			localStorage.setItem(LOCAL_CATEGORY_RECRUITING, false);
+		if (!lastUpdated || (currentData - prevData) >= MAX_TIME) {
+			localStorage.setItem(CATEGORY_LAST_UPDATE, new Date());
+			localStorage.setItem(CATEGORY, JSON.stringify([]));
+			localStorage.setItem(CATEGORY_RECRUITED, false);
+			localStorage.setItem(CATEGORY_RECRUITING, false);
 		} else {
-			this.#selectedItems = JSON.parse(localStorage.getItem(LOCAL_CATEGORY));
-			this.#recruited = localStorage.getItem(LOCAL_CATEGORY_RECRUITED) === "true" ? true : false;
-			this.#recruiting = localStorage.getItem(LOCAL_CATEGORY_RECRUITING) === "true" ? true : false;
+			this.#selectedItems = JSON.parse(localStorage.getItem(CATEGORY));
+			this.#recruited = localStorage.getItem(CATEGORY_RECRUITED) === "true" ? true : false;
+			this.#recruiting = localStorage.getItem(CATEGORY_RECRUITING) === "true" ? true : false;
 		}
 	}
 

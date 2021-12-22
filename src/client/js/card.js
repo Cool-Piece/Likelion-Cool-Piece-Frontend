@@ -1,16 +1,35 @@
 import CardModel from './cardData';
+import { 
+  CARD_VIEW_TYPE_SEARCH,
+  CARD_VIEW_TYPE_DEFAULT,
+  CARD_VIEW_TYPE,
+  SEARCH_KEYWORD,
+  CARD_VIEW_LAST_UPDATE,
+  MAX_TIME
+} from './constant';
+import { useFilterData, useSearchData } from './utils';
 
 export default class Card {
-  #data = [];
-  #viewData = [];
-  #cardModel = null;
+  #data;
+  #viewData;
+  #cardModel;
+  #viewType;
+  #searchData;
+  #filterData;
 
-  constructor({$target, initRenderData}) {
+  constructor({$target, initFilterData}) {
     this.$target = $target;
     this.#cardModel = new CardModel();
     this.#data = this.#cardModel.getCardData();    
+    this.#filterData = initFilterData;
     this.#initAddEvents();
-    this.onFilter(initRenderData);
+    this.#initState();
+  }
+
+  initialize() {
+    this.#viewType = CARD_VIEW_TYPE_DEFAULT;
+    localStorage.setItem(CARD_VIEW_TYPE, CARD_VIEW_TYPE_DEFAULT);
+    this.#setState(this.#data);
   }
 
   #initAddEvents() {
@@ -22,31 +41,59 @@ export default class Card {
     })
   }
 
+  #initState() {
+    let prevDate, currentDate, basedStateType;
+    
+    basedStateType = localStorage.getItem(CARD_VIEW_TYPE);
+    if (!basedStateType) {
+      basedStateType = CARD_VIEW_TYPE_DEFAULT;
+      localStorage.setItem(CARD_VIEW_TYPE, CARD_VIEW_TYPE_DEFAULT);
+    }
+
+    prevDate = localStorage.getItem(CARD_VIEW_LAST_UPDATE);
+    if (!prevDate) {
+      prevDate = new Date();
+    }
+    currentDate = new Date();
+
+    if (currentDate - prevDate >= MAX_TIME) {
+      basedStateType = CARD_VIEW_TYPE_DEFAULT;
+      localStorage.setItem(CARD_VIEW_TYPE, CARD_VIEW_TYPE_DEFAULT);
+    }
+
+    this.#viewType = basedStateType;
+    if (this.#viewType === CARD_VIEW_TYPE_SEARCH) {
+      const prevSearchKeyword = localStorage.getItem(SEARCH_KEYWORD);
+      this.onSearch(prevSearchKeyword);
+    } else {
+      this.onFilter();
+    }
+  }
+
   #routeToPath(path) {
     // TODO: route 처리하기
   }
 
-  onFilter(filterData) {
-    if (filterData.selectedItems.length == 0) {
-      this.#setState(this.#data);
-    } else {
-      let result = [];
+  onSearch(keyword) {
+    this.#viewType = CARD_VIEW_TYPE_SEARCH;
+    localStorage.setItem(SEARCH_KEYWORD, keyword);
+    localStorage.setItem(CARD_VIEW_TYPE, CARD_VIEW_TYPE_SEARCH);
+    
+    this.#searchData = useSearchData(keyword, this.#data);
+    this.onFilter();
+  }
 
-      this.#data.forEach(cardData => {
-        let include = false;
-        for(let cardSkill of cardData.skills) {
-          if (filterData.selectedItems.includes(cardSkill)) {
-            include = true;
-            break;
-          }
-        }
-        if (include) {
-          result.push(cardData);
-        }
-      })
-      
-      this.#setState(result);
+  onFilter(filterData = null) {
+    if (filterData) {
+      this.#filterData = filterData;
     }
+
+    if (this.#viewType === CARD_VIEW_TYPE_DEFAULT) {
+      this.#setState(useFilterData(this.#filterData, this.#data));
+    } else {
+      this.#setState(useFilterData(this.#filterData, this.#searchData));
+    }
+    localStorage.setItem(CARD_VIEW_LAST_UPDATE, new Date());
   }
 
   #setState(nextState) {

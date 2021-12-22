@@ -3,7 +3,20 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const htmlPageNames = ["login"];
-const jsFileNames = ["main", "login", "category", "categoryData", "constant", "api", "floatingButton", "card", "cardData"];
+const jsFileNames = [
+  "main",
+  "login",
+  "category",
+  "categoryData",
+  "constant",
+  "api",
+  "floatingButton",
+  "card",
+  "cardData",
+  "search",
+  "utils",
+  "initButton"
+];
 
 const multipleHtmlPlugins = htmlPageNames.map((name) => {
   return new HtmlWebpackPlugin({
