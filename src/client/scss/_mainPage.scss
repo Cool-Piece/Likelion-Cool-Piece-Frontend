@@ -1,3 +1,28 @@
+body {
+	overflow-x: hidden;
+	font-family: $font_family;
+}
+
+.main_floatingButton {
+	visibility: hidden;
+	position: fixed;
+	width: 39px;
+	height: 39px;
+	cursor: pointer;
+	bottom: calc(60px + #{$footer_height});
+	right: calc(20vw);
+
+	img {
+		position: absolute;
+
+		&.floatingArrow {
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+	}
+}
+
 .main-wrap{
 	width: 100vw;
 	margin-top: $header_search_On;

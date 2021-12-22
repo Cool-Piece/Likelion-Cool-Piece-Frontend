@@ -1,0 +1,73 @@
+.study-detail-ir {
+  display: block;
+  overflow: hidden;
+  font-size: 1px;
+  line-height: 0;
+  text-indent: -9999px;
+}
+
+.study-detail-container {
+  margin-top: 250px; //nav bar height
+  margin-left: 200px;
+  width: 70%;
+
+  header {
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px 0 10px;
+
+    h2 {
+      font-size: 1.7rem;
+      font-weight: 700;
+    }
+
+    .icon-box {
+      margin-right: 30px;
+
+      .heart-icon {
+        margin-right: 10px;
+        width: 32px;
+        height: 32px;
+      }
+
+      .bookmark-icon {
+        height: 32px;
+      }
+    }
+  }
+
+  .stack-container {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .stack-boxs {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      li {
+        width: 75px;
+        height: 25px;
+        margin-right: 10px;
+        text-align: center;
+        background-color: #ffc971;
+        border-radius: 5px;
+        line-height: 25px;
+      }
+    }
+
+    .join-study {
+      width: 85px;
+      height: 35px;
+      background-color: #01b774;
+      border-radius: 7px;
+      border: none;
+      color: #ffffff;
+      margin-right: 42px;
+    }
+  }
+}
