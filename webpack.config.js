@@ -2,8 +2,9 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const htmlPageNames = ["login"];
-const jsFileNames = ["main", "login"];
+
+const htmlPageNames = ["login", "create"];
+const jsFileNames = ["main", "login", "create"];   
 
 const multipleHtmlPlugins = htmlPageNames.map((name) => {
   return new HtmlWebpackPlugin({
@@ -17,7 +18,8 @@ const getEntry = () => {
   const entry = {};
   jsFileNames.forEach((name) => {
     const src = `./src/client/js/${name}.js`;
-    entry[name] = src;
+
+    entry[name] =src;
   });
   return entry;
 };
