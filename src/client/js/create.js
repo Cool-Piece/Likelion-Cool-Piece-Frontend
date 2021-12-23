@@ -1,3 +1,4 @@
+import "../scss/styles.scss";
 // 셀렉트박스 요소
 const createForm = document.querySelector(".create-form");
 const selectBoxType = document.querySelector(".select-box.type");
