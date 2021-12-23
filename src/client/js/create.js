@@ -24,6 +24,15 @@ const nextMonthElementEnd = document.querySelector(".date.end .date-picker .date
 const prevMonthElementEnd = document.querySelector(".date.end .date-picker .dates .month .prev-month");
 const daysElementEnd = document.querySelector(".date.end .date-picker .dates .days");
 
+// 제목
+const studyTitle = document.querySelector(".input-title");
+
+// 모집인원
+const participants = document.querySelector(".select-box.number");
+
+// 상세내용
+const textDetails = document.querySelector(".input-text");
+
 // 모달창
 const modalCreatePage = document.querySelector(".modal");
 
@@ -100,7 +109,7 @@ selectionsLanguage.addEventListener("click", (event) => {
       const li = document.createElement("li");
       stackTags.appendChild(li);
       li.textContent = `${event.target.textContent}`;
-      tagList.push(event.target.textContent); 
+      tagList.push(event.target.textContent);
     }
   }
   event.preventDefault();
@@ -347,7 +356,6 @@ selectionsLocation.addEventListener("click", (event) => {
   selectionsLocation.classList.remove("active");
 });
 
-
 // 작성 클릭 시 모달창 오픈
 submitButton.addEventListener("click", function(event) {
   modalCreatePage.classList.add("on");
@@ -358,3 +366,55 @@ modalCreatePage.addEventListener("click", function(event) {
     modalCreatePage.classList.remove("on");
   }
 });
+
+// 데이터 전송
+function sendStudyData() {
+  createButton.addEventListener("click", function(event){
+    // validation
+    if(studyTitle.value == false && "제목을 입력해주세요") {
+      alert("제목을 입력해주세요");
+    } else if(selectBoxType.textContent == "모집 유형을 선택해주세요"){
+      alert("모집 유형을 선택해주세요");
+    } else if(tagList.length == 0) {
+      alert("기술을 선택해주세요");
+    } else if(selectBoxLocation.textContent == "지역 선택") {
+      alert("지역을 선택해주세요");
+    } else if(participants.value == false) {
+      alert("모집 인원을 선택해주세요");
+    } else if(textDetails.value == false) {
+      alert("상세 내용을 입력해주세요");
+    } else {
+      console.log("완성");
+    }
+
+    const createStudyDatas = {
+      title: studyTitle.value,
+      study_type: selectBoxType.textContent,
+      skills: tagList,
+      start_date: datesElement.textContent,
+      end_date: datesElementEnd.textContent,
+      participants: participants.value,
+      details: textDetails.value
+    };
+
+    console.log(createStudyDatas);
+
+    const baseURL = "https://coolpiece-git.herokuapp.com/create";
+
+    fetch(baseURL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(createStudyDatas),
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(res))
+      .catch(error => {
+        console.log(error, "에러");
+      });
+
+  });
+};
+
+sendStudyData();

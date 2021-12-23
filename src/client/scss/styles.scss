@@ -41,6 +41,10 @@
     background-color: #D0DFF2; 
     color: #465E8C;
   }
+  .select-box.type.notSelected{
+    border: 1px solid #E7485C; 
+    color: #E7485C;
+  }
 
   // 셀렉트박스 하단 요소
   .selection-container.language { 

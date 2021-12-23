@@ -88,6 +88,11 @@ table {
   color: #465E8C;
 }
 
+.create-form .select-box.type.notSelected {
+  border: 1px solid #E7485C;
+  color: #E7485C;
+}
+
 .create-form .selection-container.language {
   display: none;
   position: absolute;
