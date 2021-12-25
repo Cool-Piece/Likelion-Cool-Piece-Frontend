@@ -1,7 +1,7 @@
 // colors
 $red: red;
 $yellow: #ffc971;
-$mainColor: #FFC971;
+$mainColor: #ffc971;
 $defaultColor: #ebebeb;
 
 // font-colors
@@ -15,9 +15,13 @@ $font-12: 12px;
 $font-10: 10px;
 
 // font
-$font_family: 'Noto Sans KR', sans-serif;
+$font-family: "Noto Sans KR", sans-serif;
 
 // calc variable
-$header_search_On: 209px;
-$header_search_Off: 120px; 
-$footer_height: 150px;
+$header-search-on: 209px;
+$header-search-off: 120px;
+$footer-height-desktop: 150px;
+
+// mobile calc variable
+$header-height-mobile: 130px;
+$footer-height-mobile: 100px;

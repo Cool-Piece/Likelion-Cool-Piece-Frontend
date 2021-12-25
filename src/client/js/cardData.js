@@ -16,7 +16,7 @@ export default class CardModel {
 
 const dummyData = [
   {
-    title: "빡고수 한별님의 스터디",
+    title: "백엔드마스터 한별님, 프론트마스터 지윤님에게 버스받으실 2명 구합니다.",
     creator: "멋피스",
     createdAt: "2021-12-18",
     total: 6,

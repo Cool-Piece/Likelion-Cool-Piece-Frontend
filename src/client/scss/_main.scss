@@ -1,67 +1,34 @@
-body {
-  overflow-x: hidden;
-  font-family: $font_family;
-}
-
-.main_floatingButton {
-  visibility: hidden;
-  position: fixed;
-  width: 39px;
-  height: 39px;
-  cursor: pointer;
-  bottom: calc(60px + #{$footer_height});
-  right: calc(20vw);
-
-	img {
-		position: absolute;
-
-		&.floatingArrow {
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-		}
-	}
-}
-
-.main-wrap{
-	width: 100vw;
-	margin-top: $header_search_On;
-
-	section {
-		width: 50vw;
-		min-height: calc(100vh - #{$header_search_On} - #{$footer_height});
-		margin:0 auto;
-		padding: 40px 0;
-		box-sizing: border-box;
-
-		.category-wrap {
-			position: fixed;
-			display: flex;
-			flex-direction: column;
-
-			.categoryRecruit {
-				display: flex;
-				margin-bottom: 20px;
-
-				input {
-					display: none;
-
-					&:checked + label {
-						background: $mainColor;
-					}
-				}
-
-				label {
-					position: relative;
-					width: 18px;
-					height: 18px;
-					border-radius: 5px;
-					background: #c4c4c4;
-					cursor: pointer;
-
-					&[for="recruiting"] {
+.main-wrap {
+  margin-top: $header-search-on;
+  .main-section {
+    min-height: calc(100vh - #{$header-search-on} - #{$footer-height-desktop});
+    margin: 0 auto;
+    padding: 40px 0;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 250px calc(100% - 250px);
+    .category-wrap {
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      .categoryRecruit {
+        display: flex;
+        margin-bottom: 20px;
+        input {
+          display: none;
+          &:checked + label {
+            background: $mainColor;
+          }
+        }
+        label {
+          position: relative;
+          width: 18px;
+          height: 18px;
+          border-radius: 5px;
+          background: #c4c4c4;
+          cursor: pointer;
+          &[for="recruiting"] {
             margin-right: 74px;
-
             &::after {
               content: "모집 중";
               font-size: 1rem;
@@ -70,10 +37,8 @@ body {
               display: block;
               width: 55px;
             }
-					}
-
-					&[for="recruited"] {
-
+          }
+          &[for="recruited"] {
             &::after {
               content: "모집 완료";
               font-size: 1rem;
@@ -82,150 +47,140 @@ body {
               display: block;
               width: 80px;
             }
-					}
-				}
-			}
-
-			.categoryList {
-				width: 250px;
-				display: grid;
-				grid-template-columns: repeat(2, 1fr);
-				justify-items: center;
-				align-items: center;
-				padding: 10px 0;
-				row-gap: 10px;
-				border: 1px solid #EBEBEB;
-				box-sizing: border-box;
-				border-radius: 10px;
-
-				.categoryItem {
-					width: 100px;
-					height: 35px;
-					background: $defaultColor;
-					border-radius: 5px;
-					box-sizing: border-box;
-					padding: 0 5px;
-					font-size: 14px;
-					line-height: 35px;
-					text-align: center;
-					cursor: pointer;
-					@include sellipsis;
-
-					&.select {
-						background: $mainColor;
-					}
-
-					&:hover {
-						transform: scale(1.03);
-					}
-				}
-			}
-		}
-	}
-
-	.study-wrap {
-		display: flex;
-		justify-content: flex-end;
-	}
-}
-
-.study-wrap {
-
-	.studyList {
-    display: flex;
-    flex-direction: column;
-
-    .studyItem {
-      position: relative;
-      width: 654px;
-      height: 110px;
-      margin-bottom: 20px;
-      background: #FFFFFF;
-      border: 1px solid #EBEBEB;
-      box-sizing: border-box;
-      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.20);
-      border-radius: 10px;
-      cursor: pointer;
-
-      .studyItem-title {
-        position: absolute;
-        width: 452px;
-        left: 24px;
-        top: 10px;
-        font-weight: bold;
-        font-size: 18px;
-        line-height: 27px;
-        @include sellipsis;
-      }
-
-      .studyItem-creator {
-        position: absolute;
-        top: 14px;
-        right: 19px;
-        &>*{
-          font-size: 12px;
-          line-height: 18px;
-        }
-        dt {
-          float: left;
-        }
-        dd {
-          float: right;
-          margin-left: 17px;
+          }
         }
       }
-
-      .studyItem-participants {
-        position: absolute;
-        right: 19px;
-        top: 39px;
-        font-weight: bold;
-        font-size: 14px;
-        line-height: 21px;
-      }
-
-      .studyItem-stacks {
-        position: absolute;
-        bottom: 17px;
-        left: 24px;
-        display: flex;
-
-        li {
-          box-sizing: border-box;
-          width: 75px;
-          height: 25px;
-          margin-right: 9px;
-          padding: 0 5px;
-          text-align: center;
-          background: $mainColor;
+      .categoryList {
+        width: 250px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+        align-items: center;
+        padding: 10px 0;
+        row-gap: 10px;
+        border: 1px solid #ebebeb;
+        box-sizing: border-box;
+        border-radius: 10px;
+        .categoryItem {
+          width: 100px;
+          height: 35px;
+          background: $defaultColor;
           border-radius: 5px;
-          font-size: 10px;
-          line-height: 25px;
+          box-sizing: border-box;
+          padding: 0 5px;
+          font-size: 14px;
+          line-height: 35px;
+          text-align: center;
+          cursor: pointer;
           @include sellipsis;
+          &.select {
+            background: $mainColor;
+          }
+          &:hover {
+            transform: scale(1.03);
+          }
         }
       }
-
-      .studyItem-term {
-        position: absolute;
-        bottom: 17px;
-        right: 56px;
-        font-size: 14px;
-        line-height: 21px;
-      }
-
-      .studyItem-like {
-        position: absolute;
-        bottom: 17px;
-        right: 19px;
-        width: 24px;
-        height: 24px;
-        background-color: $red;
-        border-radius: 50%;
-      }
-
-      &:hover {
-        transform: scale(1.005);
+      .initButton {
+        border: none;
+        border-radius: 10px;
+        margin-top: 10px;
+        width: 50%;
+        float: right;
+        height: 35px;
+        background-color: $defaultColor;
+        cursor: pointer;
+        &:hover {
+          transform: scale(1.03);
+        }
       }
     }
-	}
+  }
+}
+
+@media (max-width: 1024px) {
+  .main-wrap {
+    .main-section {
+      width: 95%;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .main-wrap {
+    .main-section {
+      width: 90%;
+    }
+  }
+}
+
+@media (min-width: 1256px) {
+  .main-wrap {
+    .main-section {
+      width: 80%;
+    }
+  }
+}
+
+@media (min-width: 1536px) {
+  .main-wrap {
+    .main-section {
+      width: 70%;
+    }
+  }
+}
+
+@media (min-width: 1920px) {
+  .main-wrap {
+    .main-section {
+      width: 60%;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .main-wrap {
+    margin-top: $header-height-mobile;
+    .main-section {
+      width: 90%;
+      min-height: calc(100vh - #{$header-height-mobile} - #{$footer-height-mobile});
+      margin: 0 auto;
+      padding: 20px 0;
+      display: flex;
+      flex-direction: column;
+      .category-wrap {
+        position: static;
+        margin-bottom: 20px;
+        .categoryRecruit {
+          margin: 0 0 10px 5px;
+        }
+        .categoryList {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          border: none;
+          padding: 0;
+          .categoryItem {
+            width: 80px;
+            font-size: 12px;
+            height: 30px;
+            line-height: 30px;
+            margin: 0 5px;
+          }
+        }
+        .initButton {
+          width: 30%;
+          font-family: $font-family;
+        }
+      }
+      .study-wrap {
+        .studyList {
+          width: 100%;
+          .studyItem {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
 }

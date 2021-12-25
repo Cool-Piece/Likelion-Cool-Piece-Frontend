@@ -4,6 +4,7 @@ import FloatingButton from "./floatingButton.js";
 import InitButton from "./initButton.js";
 import Card from "./card.js";
 import Search from './search.js';
+import {BASE_URL} from './api.js'
 
 class Main {
   $floatingButton = null;
@@ -11,10 +12,10 @@ class Main {
     this.$target = $target;
 
     this.$initButton = new InitButton({
-      $target: this.$target.querySelector(".category-wrap"),
+      $target: this.$target.querySelector(".initButton"),
       initFilter: () => this.$category.initialize(),
-      initCard: () => this.$card.initialize()
-    })
+      initCard: () => this.$card.initialize(),
+    });
 
     this.$category = new Category({
       $target: this.$target.querySelector(".categoryList"),
@@ -32,8 +33,8 @@ class Main {
     })
 
     const floatingButton = new FloatingButton().getButton();
-    floatingButton.className = "main_floatingButton";
+    floatingButton.className = "floatingButton";
   }
 }
 
-new Main(document.querySelector('.main-wrap'))
+new Main(document.querySelector('.main-wrap'));

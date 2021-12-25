@@ -102,6 +102,8 @@ export default class Card {
   }
 
   #render() {
+    const viewSkillCnt = window.innerWidth <= 414 ? 3 : 4;
+
     this.$target.innerHTML = this.#viewData.map(card => {
       return `
         <li class="studyItem" title="클릭시 해당 스터디의 상세페이지로 이동합니다." id=${card.id}>
@@ -110,12 +112,15 @@ export default class Card {
             <!-- <img src="" alt="클릭시 해당 스터디를 관심목록에 추가합니다.">
             <img src="" alt="클릭시 해당 스터디를 관심목록에서 제거합니다."> -->
           </div>
-          <div class="studyItem-term">${card.start_date} ~ ${card.due_date}(진행 기간)</div>
-          <div class="studyItem-participants">${card.participant.length} / ${card.total}</div>
+          <div class="studyItem-term">${card.start_date} ~ ${card.due_date}</div>
+          <div class="studyItem-participants">${card.participant.length}명 / ${card.total}명</div>
           <ul class="studyItem-stacks">
-            ${card.skills.map(skill => {
+            ${card.skills.slice(0, viewSkillCnt).map(skill => {
               return `<li>${skill}</li>`
             }).join("")}
+            ${viewSkillCnt < card.skills.length 
+              ? (`<span class="studyItem-stacks-hidden">+${card.skills.length - viewSkillCnt}</span>`)
+              : ""}
           </ul>
           <dl class="studyItem-creator">
             <dt>${card.creator}</dt>
