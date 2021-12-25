@@ -1,4 +1,4 @@
-@mixin sellipsis { // single
+@mixin sellipsis {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -8,4 +8,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@mixin position-center() {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
 }
