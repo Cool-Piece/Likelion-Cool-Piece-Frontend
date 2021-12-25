@@ -1,7 +1,14 @@
-footer {
-    width: 100vw;
-    height: $footer_height;
-    background: #888;
-    text-align: center;
-    line-height: 150px;
+.main-footer {
+  width: 100%;
+  height: $footer-height-desktop;
+  background: #888;
+  text-align: center;
+  @include flex-center;
+}
+
+@media (max-width: 480px) {
+  .main-footer {
+    height: $footer-height-mobile;
+    font-size: 0.8rem;
+  }
 }
