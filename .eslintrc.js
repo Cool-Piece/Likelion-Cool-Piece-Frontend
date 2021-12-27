@@ -4,6 +4,7 @@ module.exports = {
     es6: true,
     node: true,
   },
+  parser: "babel-parser",
   parserOptions: {
     ecmaVersion: 12,
     sourceType: "module",

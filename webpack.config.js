@@ -2,8 +2,23 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const htmlPageNames = ["login", "create","detail"];
-const jsFileNames = ["main", "login", "create","detail"];
+const htmlPageNames = ["login", "create", "detail"];
+const jsFileNames = [
+  "main",
+  "login",
+  "create",
+  "detail",
+  "category",
+  "categoryData",
+  "constant",
+  "api",
+  "floatingButton",
+  "card",
+  "cardData",
+  "search",
+  "utils",
+  "initButton",
+];
 
 const multipleHtmlPlugins = htmlPageNames.map((name) => {
   return new HtmlWebpackPlugin({
@@ -31,6 +46,7 @@ module.exports = {
     path: path.resolve(__dirname, "assets"),
     filename: "js/[name].js",
     clean: true,
+    assetModuleFilename: "image/[name][ext]"
   },
 
   plugins: [

@@ -8,13 +8,62 @@
   <meta name="viewport"
     content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 
 <body>
-
-  <div id="root"></div>
+  <header class="main-header">
+    <nav class="navbar">
+      <div id="logo">
+        <img src="../assets/image/coolpiece_logo.png" alt="로고">
+      </div>
+      <div class="navbar-list-wrap">
+        <button class="navbar-list-btn">
+          <img src="../assets/image/icon-post-list-on.png" alt="네비게이션 버튼">
+        </button>
+        <ul class="navbar-list">
+          <li><a href="/#">면접</a></li>
+          <li><a href="/#">스터디</a></li>
+          <li><a href="/#">프로젝트</a></li>
+          <li><a href="/#">채팅</a></li>
+          <li class="sign login"><a href="/#">로그인</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="searchBar-wrap">
+      <div class="searchBar-input-wrap">
+        <img src="../assets/image/icon_search.png" alt="">
+        <input type="text" placeholder="어떤 스터디를 찾으시나요?" class="searchBar-input">
+      </div>
+    </div>
+  </header>
   
+  <main class="main-wrap">
+    <section class="main-section">
+      <h1 class="blind">메인 페이지</h1>
+      <div class="category-grid-wrap">
+        <article class="category-wrap">
+          <h2 class="blind">스터디 카테고리 필터</h2>
+          <div class="categoryRecruit">
+            <input type="checkbox" id="recruiting" name="recruiting">
+            <label for="recruiting"></label>
+            <input type="checkbox" id="recruited" name="recruited">
+            <label for="recruited"></label>
+          </div>
+          <ul class="categoryList"></ul>
+          <div>
+            <button class="initButton" type="button">초기화</button>
+          </div>
+        </article>
+      </div>
+        <article class="study-wrap">
+          <h2 class="blind">스터디 모집 공고란</h2>
+          <ul class="studyList"></ul>
+        </article>
+      </section>
+    </main>
+  <footer class="main-footer">Copyright 2021. Likelion-CoolPiece all rights reserved.</footer>  
 </body>
-
 </html>

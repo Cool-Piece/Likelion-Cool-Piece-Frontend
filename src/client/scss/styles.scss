@@ -1,9 +1,12 @@
+@charset "utf-8";
+@import "../scss/__variable";
 @import "../scss/_reset";
 @import "../scss/_mixin";
-@import "../scss/_mixin"; 
-@import "../scss/_variable";
-@import "../scss/_create";
-@import "../scss/_detail";
-@import "../scss/_login";
 @import "../scss/_header";
+@import "../scss/_footer";
+@import "../scss/_floatingButton.scss";
+@import "../scss/_card";
+@import "../scss/_main";
+@import "../scss/_login";
 @import "../scss/_detail";
+@import "../scss/_create";
