@@ -1,10 +1,9 @@
-const dotenv = require("dotenv-webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const htmlPageNames = ["login", "index", "detail"];
-const jsFileNames = ["login", "index", "detail"];
+const htmlPageNames = ["login", "index", "detail", "create"];
+const jsFileNames = ["login", "index", "detail", "create"];
 
 const multipleHtmlPlugins = htmlPageNames.map((name) => {
   return new HtmlWebpackPlugin({
@@ -24,8 +23,6 @@ const getEntry = () => {
   return entry;
 };
 
-console.log(getEntry());
-
 module.exports = (env) => ({
   mode: "development",
   entry: getEntry(),
@@ -39,10 +36,6 @@ module.exports = (env) => ({
   plugins: [
     new MiniCssExtractPlugin({
       filename: "css/styles.css",
-    }),
-
-    new dotenv({
-      path: ".env",
     }),
 
     new HtmlWebpackPlugin({
