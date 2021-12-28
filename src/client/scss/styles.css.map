@@ -8,7 +8,8 @@
         "__mixin.scss",
         "_create.scss",
         "_create_media.scss",
-        "_login.scss"
+        "_login.scss",
+        "_edit.scss"
     ],
     "names": [],
     "file": "styles.css"
