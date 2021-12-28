@@ -5,8 +5,9 @@ import FloatingButton from "./floatingButton.js";
 import InitButton from "./initButton.js";
 import Card from "./card.js";
 import Search from './search.js';
-import NavMenu from './nav.js';
-import {BASE_URL} from './api.js'
+import NavBar from './navbar.js';
+import Auth from './auth.js';
+import { JWT_KEY } from './constant';
 
 class Main {
   $floatingButton = null;
@@ -39,4 +40,13 @@ class Main {
   }
 }
 
-new Main(document.querySelector(".main-wrap"));
+
+(async() => {
+  const isLoggedIn = await Auth.isLoggedIn();
+
+  new NavBar({
+    $target: document.querySelector(".navbar-list"),
+    isLoggedIn
+  });
+  new Main(document.querySelector(".main-wrap"));
+})()

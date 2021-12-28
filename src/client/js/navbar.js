@@ -1,11 +1,7 @@
-export default class NavMenu {
-  constructor($target) {
+export default class NavBar {
+  constructor({$target, isLoggedIn}) {
     this.$target = $target;
-    
-    // TODO: 로그인 여부 체크
-    // isLogin: 로그인 여부 결과값
-    this.isLogin = true;
-
+    this.isLogin = isLoggedIn;
     this.render();
   }
 
@@ -30,5 +26,3 @@ export default class NavMenu {
     `
   }
 }
-
-new NavMenu(document.querySelector(".navbar-list"));
