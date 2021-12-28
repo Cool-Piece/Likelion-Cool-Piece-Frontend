@@ -1,4 +1,6 @@
 import "../scss/styles.scss";
+import {studyType, stackType, months, locations} from "../js/studyDatas";
+import { addStudyType, addStackType, toggleSelectBox, handleSelectType, handleTypeTag } from "./selectbox";
 
 // 셀렉트박스 요소
 const selectBoxType = document.querySelector(".select-box.type");
@@ -41,91 +43,24 @@ const modalCreatePage = document.querySelector(".modal");
 const createButton = document.querySelector(".modal-button.yes");
 const submitButton = document.querySelector(".buttons.submit");
 
-// 배열들
-const studyType = ["면접", "프로젝트", "스터디"];
-const stackType = ["HTML", "CSS", "JavaScript", "Node.JS", "React", "Python"];
-const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-const locations = ["서울", "경기", "인천", "강원", "충북", "세종", "충남", "대전", "경북", "대구", "전남", "전북", "광주", "경남", "울산", "부산", "제주", "온라인"];
-
 // 셀렉트 박스 클릭 시 토글
-function toggleSelectBoxType(event) {
-  event.preventDefault();
-  selectionsType.classList.toggle("active");
-}
-function toggleSelectBoxStack(event) {
-  event.preventDefault();
-  selectionsLanguage.classList.toggle("active");
-}
-selectBoxType.addEventListener("click", toggleSelectBoxType);
-selectBoxStacks.addEventListener("click", toggleSelectBoxStack);
+toggleSelectBox(event, selectionsType);
+toggleSelectBox(event, selectionsLanguage);
+selectBoxType.addEventListener("click", toggleSelectBox);
+selectBoxStacks.addEventListener("click", toggleSelectBox);
 
 // 스터디 유형 셀렉트 박스에 추가
-function addStudyType() {
-  studyType.forEach((item) => {
-    const li = document.createElement("li");
-    const button = document.createElement("button");
-    li.classList.add("stacks");
-    button.textContent = item;
-    button.classList.add("selections");
-    selectionsType.appendChild(li).appendChild(button);
-  });
-}
-addStudyType();
+addStudyType(studyType, selectionsType);
 
 // 스택, 기술 이름 셀렉트 박스에 추가
-function addStackType() {
-  stackType.forEach((item) => {
-    const li = document.createElement("li");
-    const button = document.createElement("button");
-    li.classList.add("languages");
-    button.textContent = item;
-    button.classList.add("selections");
-    selectionsLanguage.appendChild(li).appendChild(button);
-  });
-}
-addStackType();
+addStackType(stackType, selectionsLanguage);
 
 // 스터디 유형 셀렉트 박스 선택 시 텍스트 변경
-selectionsType.addEventListener("click", (event) => {
-  if (event.target.nodeName === "BUTTON") {
-    selectBoxType.textContent = `${event.target.textContent}`;
-    event.preventDefault();
-  }
-  selectionsType.classList.remove("active");
-});
+handleSelectType(selectionsType, selectBoxType);
 
+// 스택 유형 셀렉트 박스 선택 시 태그 추가, 스택 유형 태그 제거
 let tagList = [];
-// 스택 유형 셀렉트 박스 선택 시 태그 추가
-selectionsLanguage.addEventListener("click", (event) => {
-// 중복확인
-  let flag = true;
-  tagList.forEach((tag) => {
-    if(event.target.textContent === tag) {
-      flag = false;
-    }
-  });
-
-  if (flag) {
-    if (event.target.nodeName === "BUTTON") {
-      const li = document.createElement("li");
-      stackTags.appendChild(li);
-      li.textContent = `${event.target.textContent}`;
-      tagList.push(event.target.textContent);
-    }
-  }
-  event.preventDefault();
-  selectionsLanguage.classList.remove("active");
-});
-
-// 스택 유형 태그 제거
-stackTags.addEventListener("click", (event) => {
-  let removeTag;
-  if (event.target.nodeName === "LI") {
-    event.target.remove();
-    removeTag = tagList.indexOf(event.target.textContent);
-    tagList.splice(removeTag, 1);
-  }
-});
+handleTypeTag(selectionsLanguage, tagList, stackTags);
 
 // 데이트 피커 (변수들)
 let date = new Date();

@@ -2,7 +2,6 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-
 const htmlPageNames = ["login", "create", "edit"];
 const jsFileNames = ["main", "login", "create", "edit"];
 
