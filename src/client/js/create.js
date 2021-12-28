@@ -1,29 +1,50 @@
 import "../scss/styles.scss";
 // 셀렉트박스 요소
-const createForm = document.querySelector(".create-form");
 const selectBoxType = document.querySelector(".select-box.type");
 const selectBoxStacks = document.querySelector(".select-box.stacks");
 const selectionsType = document.querySelector(".selection-container.type");
-const selectionsLanguage = document.querySelector(".selection-container.language");
+const selectionsLanguage = document.querySelector(
+  ".selection-container.language"
+);
 const stackTags = document.querySelector(".tags.stack-type");
 const selectBoxLocation = document.querySelector(".select-box.location");
 const selectionsLocation = document.querySelector(".selection-location");
 // 캘린더 시작일 요소
 const datePickerElement = document.querySelector(".date.start .date-picker");
-const selectedDateElement = document.querySelector(".date.start .date-picker .selected-date");
+const selectedDateElement = document.querySelector(
+  ".date.start .date-picker .selected-date"
+);
 const datesElement = document.querySelector(".date.start .date-picker .dates");
-const monthElement = document.querySelector(".date.start .date-picker .dates .month .mth");
-const nextMonthElement = document.querySelector(".date.start .date-picker .dates .month .next-month");
-const prevMonthElement = document.querySelector(".date.start .date-picker .dates .month .prev-month");
-const daysElement = document.querySelector(".date.start .date-picker .dates .days");
+const monthElement = document.querySelector(
+  ".date.start .date-picker .dates .month .mth"
+);
+const nextMonthElement = document.querySelector(
+  ".date.start .date-picker .dates .month .next-month"
+);
+const prevMonthElement = document.querySelector(
+  ".date.start .date-picker .dates .month .prev-month"
+);
+const daysElement = document.querySelector(
+  ".date.start .date-picker .dates .days"
+);
 // 캘린더 종료일 요소
 const datePickerElementEnd = document.querySelector(".date.end .date-picker");
-const selectedDateElementEnd = document.querySelector(".date.end .date-picker .selected-date");
+const selectedDateElementEnd = document.querySelector(
+  ".date.end .date-picker .selected-date"
+);
 const datesElementEnd = document.querySelector(".date.end .date-picker .dates");
-const monthElementEnd = document.querySelector(".date.end .date-picker .dates .month .mth");
-const nextMonthElementEnd = document.querySelector(".date.end .date-picker .dates .month .next-month");
-const prevMonthElementEnd = document.querySelector(".date.end .date-picker .dates .month .prev-month");
-const daysElementEnd = document.querySelector(".date.end .date-picker .dates .days");
+const monthElementEnd = document.querySelector(
+  ".date.end .date-picker .dates .month .mth"
+);
+const nextMonthElementEnd = document.querySelector(
+  ".date.end .date-picker .dates .month .next-month"
+);
+const prevMonthElementEnd = document.querySelector(
+  ".date.end .date-picker .dates .month .prev-month"
+);
+const daysElementEnd = document.querySelector(
+  ".date.end .date-picker .dates .days"
+);
 
 // 제목
 const studyTitle = document.querySelector(".input-title");
@@ -44,8 +65,40 @@ const submitButton = document.querySelector(".buttons.submit");
 // 배열들
 const studyType = ["면접", "프로젝트", "스터디"];
 const stackType = ["HTML", "CSS", "JavaScript", "Node.JS", "React", "Python"];
-const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-const locations = ["서울", "경기", "인천", "강원", "충북", "세종", "충남", "대전", "경북", "대구", "전남", "전북", "광주", "경남", "울산", "부산", "제주", "온라인"];
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+const locations = [
+  "서울",
+  "경기",
+  "인천",
+  "강원",
+  "충북",
+  "세종",
+  "충남",
+  "대전",
+  "경북",
+  "대구",
+  "전남",
+  "전북",
+  "광주",
+  "경남",
+  "울산",
+  "부산",
+  "제주",
+  "온라인",
+];
 
 // 셀렉트 박스 클릭 시 토글
 function toggleSelectBoxType(event) {
@@ -97,10 +150,10 @@ selectionsType.addEventListener("click", (event) => {
 let tagList = [];
 // 스택 유형 셀렉트 박스 선택 시 태그 추가
 selectionsLanguage.addEventListener("click", (event) => {
-// 중복확인
+  // 중복확인
   let flag = true;
   tagList.forEach((tag) => {
-    if(event.target.textContent === tag) {
+    if (event.target.textContent === tag) {
       flag = false;
     }
   });
@@ -150,14 +203,14 @@ populateDatesEnd();
 
 // 시작일 - 데이트 피커 버튼 클릭 시 토글
 function toggleStartDate(event) {
-  if (!checkEventPathForClass(event.path, "dates" )) {
+  if (!checkEventPathForClass(event.path, "dates")) {
     datesElement.classList.toggle("active");
   }
 }
 
 // 종료일 - 데이트 피커 버튼 클릭 시 토글
 function toggleEndDate(event) {
-  if (!checkEventPathForClass(event.path, "dates" )) {
+  if (!checkEventPathForClass(event.path, "dates")) {
     datesElementEnd.classList.toggle("active");
   }
 }
@@ -219,7 +272,7 @@ function populateDates(event) {
   let amountDays = 31;
 
   if (month == 1) {
-  	amountDays = 28;
+    amountDays = 28;
   }
   if (month == 3) {
     amountDays = 30;
@@ -234,25 +287,29 @@ function populateDates(event) {
     amountDays = 30;
   }
 
-  for(let i = 0; i < amountDays; i++) {
+  for (let i = 0; i < amountDays; i++) {
     const dayElement = document.createElement("div");
     dayElement.classList.add("day");
     dayElement.textContent = i + 1;
 
-    if (selectedDay == (i + 1) && selectedYear == year && selectedMonth == month) {
+    if (
+      selectedDay == i + 1 &&
+      selectedYear == year &&
+      selectedMonth == month
+    ) {
       dayElement.classList.add("selected");
     }
 
-    dayElement.addEventListener("click", function() {
-  	  selectedDate = new Date(year + "-" + (month + 1) + "-" + (i + 1));
-      selectedDay = (i + 1);
+    dayElement.addEventListener("click", function () {
+      selectedDate = new Date(year + "-" + (month + 1) + "-" + (i + 1));
+      selectedDay = i + 1;
       selectedMonth = month;
       selectedYear = year;
       selectedDateElement.textContent = formatDate(selectedDate);
       selectedDateElement.dataset.value = selectedDate;
 
       populateDates();
-	  });
+    });
 
     daysElement.appendChild(dayElement);
   }
@@ -264,7 +321,7 @@ function populateDatesEnd(event) {
   let amountDays = 31;
 
   if (month == 1) {
-    	amountDays = 28;
+    amountDays = 28;
   }
   if (month == 3) {
     amountDays = 30;
@@ -284,13 +341,17 @@ function populateDatesEnd(event) {
     endElement.classList.add("day");
     endElement.textContent = i + 1;
 
-    if (selectedDay == (i + 1) && selectedYear == year && selectedMonth == month){
+    if (
+      selectedDay == i + 1 &&
+      selectedYear == year &&
+      selectedMonth == month
+    ) {
       endElement.classList.add("selected");
     }
 
-    endElement.addEventListener("click", function() {
+    endElement.addEventListener("click", function () {
       selectedDate = new Date(year + "-" + (month + 1) + "-" + (i + 1));
-      selectedDay = (i + 1);
+      selectedDay = i + 1;
       selectedMonth = month;
       selectedYear = year;
       selectedDateElementEnd.textContent = formatDate(selectedDate);
@@ -304,10 +365,10 @@ function populateDatesEnd(event) {
 
 // 데이트 피커 선택 시 창 사라지는거 방지
 function checkEventPathForClass(path, selector) {
-  for (i=0; i < path.length; i++){
+  for (let i = 0; i < path.length; i++) {
     if (path[i].classList && path[i].classList.contains(selector)) {
       return true;
- 		}
+    }
   }
   return false;
 }
@@ -315,12 +376,12 @@ function checkEventPathForClass(path, selector) {
 // 셀렉트 박스에 일월년도 표시
 function formatDate(d) {
   let day = d.getDate();
-  if (day < 10){
+  if (day < 10) {
     day = "0" + day;
   }
 
   let month = d.getMonth() + 1;
-  if (month < 10){
+  if (month < 10) {
     month = "0" + month;
   }
 
@@ -358,11 +419,11 @@ selectionsLocation.addEventListener("click", (event) => {
 });
 
 // 작성 클릭 시 모달창 오픈
-submitButton.addEventListener("click", function(event) {
+submitButton.addEventListener("click", function (event) {
   modalCreatePage.classList.add("on");
 });
 
-modalCreatePage.addEventListener("click", function(event) {
+modalCreatePage.addEventListener("click", function (event) {
   if (event.target.className === "modal-button no") {
     modalCreatePage.classList.remove("on");
   }
