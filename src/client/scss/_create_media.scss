@@ -1,0 +1,27 @@
+@media (max-width: 1024px) {
+    .create-form {
+      width: 50%; 
+    }
+  }
+
+  @media (min-width: 1256px) {
+    .create-form {
+        width: 40%; 
+      }
+  }
+
+  @media (min-width: 1536px) {
+    .create-form {
+        width: 40%; 
+      }
+  }
+  @media (min-width: 1920px) {
+    .create-form {
+        width: 30%; 
+      }
+  }
+  @media (max-width: 480px) {
+    .create-form {
+        width: 90%; 
+      }
+  }

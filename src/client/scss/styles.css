@@ -1,0 +1,690 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after {
+  content: '';
+  content: none;
+}
+
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.create-form {
+  position: relative;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.create-form .input-title {
+  display: inline-block;
+  border: none;
+  width: 100%;
+  height: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.create-form .select-box {
+  width: 220px;
+  height: 35px;
+  background-color: #EBEBEB;
+  color: #888888;
+  font-size: 14px;
+  border-radius: 10px;
+  border: none;
+  text-align: center;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.create-form .select-box i {
+  float: right;
+  margin-right: 5px;
+}
+
+.create-form .select-box.type.active {
+  background-color: #D0DFF2;
+  color: #465E8C;
+}
+
+.create-form .select-box.type.notSelected {
+  border: 1px solid #E7485C;
+  color: #E7485C;
+}
+
+.create-form .selection-container.language {
+  display: none;
+  position: absolute;
+  left: 0;
+  margin-top: 0;
+  width: 220px;
+  background-color: #fff;
+  border: 1px solid #ebebeb;
+  border-radius: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 5px;
+}
+
+.create-form .selection-container.language .languages {
+  width: 100%;
+  height: 30px;
+  margin: 0;
+  background-color: transparent;
+}
+
+.create-form .selection-container.language .languages .selections {
+  width: 100%;
+  height: 30px;
+  background-color: transparent;
+  border-style: none;
+  cursor: pointer;
+}
+
+.create-form .selection-container.language .languages:hover {
+  background-color: #ebebeb;
+}
+
+.create-form .selection-container.type {
+  display: none;
+  position: absolute;
+  left: 0;
+  margin-top: 0;
+  width: 220px;
+  background-color: #fff;
+  border: 1px solid #ebebeb;
+  border-radius: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 5px;
+}
+
+.create-form .selection-container.type .stacks {
+  width: 100%;
+  height: 30px;
+  margin: 0;
+  background-color: transparent;
+}
+
+.create-form .selection-container.type .stacks .selections {
+  width: 100%;
+  height: 30px;
+  background-color: transparent;
+  border-style: none;
+  cursor: pointer;
+}
+
+.create-form .selection-container.type .stacks:hover {
+  background-color: #ebebeb;
+}
+
+.create-form .selection-container.type.active {
+  display: block;
+  z-index: 30;
+}
+
+.create-form .selection-container.language.active {
+  display: block;
+  z-index: 30;
+}
+
+.create-form .tags {
+  width: 500px;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.create-form .tags li {
+  position: relative;
+  margin: 15px 0;
+  display: inline-block;
+  font-size: 10px;
+  width: 75px;
+  height: 25px;
+  background-color: #FFC971;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 2.7;
+  margin-right: 5px;
+}
+
+.create-form .tags li:hover {
+  background-color: #ebebeb;
+}
+
+.create-form .info-wrap {
+  font-size: 12px;
+  color: #888888;
+  line-height: 2;
+}
+
+.create-form .info-wrap li {
+  margin: 5px 0;
+}
+
+.create-form .info-wrap .date {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 10px;
+}
+
+.create-form .info-wrap .date .start-date {
+  margin-right: 10px;
+}
+
+.create-form .info-wrap .date .date-picker {
+  position: relative;
+  width: 150px;
+  height: 25px;
+  background-color: #fff;
+  border: 1px solid #ebebeb;
+  border-radius: 5px;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  text-align: center;
+}
+
+.create-form .info-wrap .date .date-picker .selected-date {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #000;
+}
+
+.create-form .info-wrap .date .date-picker .dates {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  z-index: 10;
+}
+
+.create-form .info-wrap .date .date-picker .dates.active {
+  display: block;
+}
+
+.create-form .info-wrap .date .date-picker .dates .month {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 2px solid #eee;
+}
+
+.create-form .info-wrap .date .date-picker .dates .month .arrows {
+  width: 15px;
+  height: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #313131;
+  font-size: 10px;
+}
+
+.create-form .info-wrap .date .date-picker .dates .month .arrows:hover {
+  background-color: #f3f3f3;
+}
+
+.create-form .info-wrap .date .date-picker .dates .month .arrows:active {
+  background-color: #FFC971;
+}
+
+.create-form .info-wrap .date .date-picker .dates .days {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[7];
+      grid-template-columns: repeat(7, 1fr);
+  height: 130px;
+  border: 1px solid #f3f3f3;
+}
+
+.create-form .info-wrap .date .date-picker .dates .days .day {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #313131;
+}
+
+.create-form .info-wrap .date .date-picker .dates .days .day.selected {
+  background-color: #FFC971;
+}
+
+.create-form .info-wrap .date .date-picker:hover {
+  background-color: #f3f3f3;
+}
+
+.create-form .info-wrap .date.end {
+  margin: 0 10px;
+}
+
+.create-form .info-wrap .end-date {
+  margin-right: 14px;
+}
+
+.create-form .info-wrap.one {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.create-form .info-wrap.two .location, .create-form .info-wrap.two .recruit {
+  display: inline-block;
+}
+
+.create-form .info-wrap.two .date, .create-form .info-wrap.two .location-content {
+  display: inline-block;
+  margin: 0;
+}
+
+.create-form .info-wrap.two .location-content {
+  position: relative;
+}
+
+.create-form .info-wrap.two .location-content .selection-location {
+  display: none;
+  position: absolute;
+  left: 18px;
+  width: 152px;
+  height: 150px;
+  background-color: #fff;
+  border: 1px solid #ebebeb;
+  border-radius: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 5px;
+  overflow-y: scroll;
+}
+
+.create-form .info-wrap.two .location-content .selection-location .locations {
+  width: 100%;
+  margin: 0;
+  background-color: transparent;
+  text-align: center;
+}
+
+.create-form .info-wrap.two .location-content .selection-location .locations .location {
+  width: 100%;
+  height: 20px;
+  margin: 0;
+  background-color: transparent;
+  border-style: none;
+  height: 30px;
+}
+
+.create-form .info-wrap.two .location-content .selection-location .locations:hover {
+  background-color: #ebebeb;
+}
+
+.create-form .info-wrap.two .location-content .selection-location.active {
+  display: block;
+}
+
+.create-form .info-wrap.two .recruit {
+  display: inline-block;
+  margin-left: 17px;
+}
+
+.create-form .info-wrap.two .recruit div {
+  display: inline-block;
+}
+
+.create-form .info-wrap.two .input-recruit {
+  display: inline-block;
+}
+
+.create-form .info-wrap.two .select-box.location {
+  width: 152px;
+  height: 25px;
+  font-size: 12px;
+  border: 1px solid #ebebeb;
+  background-color: #FFF;
+  border-radius: 3px;
+  padding: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-left: 18px;
+  color: #313131;
+}
+
+.create-form .info-wrap.two .select-box.number {
+  width: 50px;
+  height: 25px;
+  font-size: 12px;
+  border: 1px solid #ebebeb;
+  background-color: #FFF;
+  color: #313131;
+  border-radius: 3px;
+  padding: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.input-text {
+  width: 100%;
+  height: 300px;
+  border: 1px solid #ebebeb;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-align: left;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.input-text.noresize {
+  resize: none;
+}
+
+.buttons {
+  float: right;
+  border: none;
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+  margin-top: 10px;
+  line-height: 2.3;
+  cursor: pointer;
+}
+
+.buttons.submit {
+  background-color: #FFC971;
+}
+
+.buttons.cancel {
+  background-color: #ebebeb;
+  margin-right: 10px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 40;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  border: 1px solid #ebebeb;
+  border-radius: 10px;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 490px;
+  height: 300px;
+  text-align: center;
+}
+
+.modal-content p {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 5;
+}
+
+.modal-content .modal-button {
+  display: block;
+  margin: 0 auto;
+  width: 250px;
+  height: 40px;
+  border-radius: 35px;
+  border-style: none;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal-content .modal-button.yes {
+  background-color: #F25C05;
+  color: white;
+  margin-top: 60px;
+}
+
+.modal-content .modal-button.no {
+  background-color: #ebebeb;
+  color: #888888;
+  margin-top: 15px;
+}
+
+.modal.on {
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  .create-form {
+    width: 50%;
+  }
+}
+
+@media (min-width: 1256px) {
+  .create-form {
+    width: 40%;
+  }
+}
+
+@media (min-width: 1536px) {
+  .create-form {
+    width: 40%;
+  }
+}
+
+@media (min-width: 1920px) {
+  .create-form {
+    width: 30%;
+  }
+}
+
+@media (max-width: 480px) {
+  .create-form {
+    width: 90%;
+  }
+}
+
+.login-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 450px;
+  height: 500px;
+  background-color: white;
+  border: lightgray 1px solid;
+  -webkit-box-shadow: 10px 0px 10px rgba(0, 0, 0, 0.1);
+          box-shadow: 10px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.login-container .text-hide {
+  overflow: hidden;
+  position: absolute;
+  width: 0;
+  height: 0;
+  line-height: 0;
+  text-indent: -9999px;
+}
+
+.login-container .title {
+  display: block;
+  margin: 40px auto 0;
+  width: 11rem;
+}
+
+.login-container h4 {
+  font-size: 1.6rem;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.login-container .sns-loginBox {
+  width: 100%;
+  padding: 30px 24px 25px;
+  margin-top: 30px;
+}
+
+.login-container .sns-loginBox .login-google {
+  display: block;
+  width: 100%;
+  padding: 15px 0;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  color: #767676;
+  text-align: center;
+  text-indent: -37px;
+  border: 1px solid #767676;
+  border-radius: 7px;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  margin-bottom: 40px;
+}
+
+.login-container .sns-loginBox .login-google::before {
+  display: block;
+  content: "";
+  float: left;
+  width: 22px;
+  height: 22px;
+  margin-left: 16px;
+  background-image: url("../assets/image/icon_google.png");
+}
+
+.login-container .sns-loginBox .login-github {
+  display: block;
+  width: 100%;
+  padding: 15px 0;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  color: #767676;
+  text-align: center;
+  text-indent: -37px;
+  border: 1px solid #767676;
+  border-radius: 7px;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  margin-bottom: 50px;
+  transition: all 0.2s ease-in;
+}
+
+.login-container .sns-loginBox .login-github::before {
+  display: block;
+  content: "";
+  float: left;
+  width: 22px;
+  height: 22px;
+  margin-left: 16px;
+  background-image: url("../assets/image/github_logo_icon.png");
+  background-size: 25px;
+}
+/*# sourceMappingURL=styles.css.map */

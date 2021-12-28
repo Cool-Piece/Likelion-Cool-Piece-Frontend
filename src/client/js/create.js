@@ -1,5 +1,6 @@
+import "../scss/styles.scss";
+
 // 셀렉트박스 요소
-const createForm = document.querySelector(".create-form");
 const selectBoxType = document.querySelector(".select-box.type");
 const selectBoxStacks = document.querySelector(".select-box.stacks");
 const selectionsType = document.querySelector(".selection-container.type");
@@ -303,7 +304,7 @@ function populateDatesEnd(event) {
 
 // 데이트 피커 선택 시 창 사라지는거 방지
 function checkEventPathForClass(path, selector) {
-  for (i=0; i < path.length; i++){
+  for (let i=0; i < path.length; i++){
     if (path[i].classList && path[i].classList.contains(selector)) {
       return true;
  		}
@@ -391,13 +392,12 @@ function sendStudyData() {
       title: studyTitle.value,
       study_type: selectBoxType.textContent,
       skills: tagList,
-      start_date: datesElement.textContent,
-      end_date: datesElementEnd.textContent,
-      participants: participants.value,
+      start_date: selectedDateElement.dataset.value,
+      end_date: selectedDateElementEnd.dataset.value,
+      location: selectBoxLocation.textContent,
+      participants: Number(participants.value),
       details: textDetails.value
     };
-
-    console.log(createStudyDatas);
 
     const baseURL = "https://coolpiece-git.herokuapp.com/create";
 
