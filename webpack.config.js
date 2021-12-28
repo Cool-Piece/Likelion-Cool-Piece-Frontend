@@ -1,25 +1,10 @@
-const dotenv = require('dotenv-webpack');
+const dotenv = require("dotenv-webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const htmlPageNames = ["login", "create", "detail","index"];
-const jsFileNames = [
-  "main",
-  "login",
-  "create",
-  "detail",
-  "category",
-  "categoryData",
-  "constant",
-  "api",
-  "floatingButton",
-  "card",
-  "cardData",
-  "search",
-  "utils",
-  "initButton",
-];
+const htmlPageNames = ["login", "index", "detail"];
+const jsFileNames = ["login", "index", "detail"];
 
 const multipleHtmlPlugins = htmlPageNames.map((name) => {
   return new HtmlWebpackPlugin({
@@ -39,10 +24,9 @@ const getEntry = () => {
   return entry;
 };
 
+console.log(getEntry());
 
-module.exports =  (env)=> ({
-
-
+module.exports = (env) => ({
   mode: "development",
   entry: getEntry(),
   watch: true,
@@ -50,7 +34,6 @@ module.exports =  (env)=> ({
     path: path.resolve(__dirname, "assets"),
     filename: "js/[name].js",
     clean: true,
-    assetModuleFilename: "image/[name][ext]"
   },
 
   plugins: [
@@ -65,7 +48,7 @@ module.exports =  (env)=> ({
     new HtmlWebpackPlugin({
       template: "./src/client/html/index.html",
       filename: "html/index.html",
-      chunks: ["main"],
+      chunks: ["index"],
     }),
   ].concat(multipleHtmlPlugins),
 
