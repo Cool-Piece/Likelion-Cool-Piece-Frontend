@@ -1,6 +1,7 @@
 import WrapImg from "../assets/image/floatingWrap.png"
 import ArrowImg from "../assets/image/floatingArrow.png"
 
+
 export default class FloatingButton {
   #floatingButton = null;
 
