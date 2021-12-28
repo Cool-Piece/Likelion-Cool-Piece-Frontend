@@ -1,11 +1,11 @@
-const dotenv = require('dotenv-webpack');
+const dotenv = require("dotenv-webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const htmlPageNames = ["login", "create", "detail","index"];
+const htmlPageNames = ["login", "index", "detail"];
 const jsFileNames = [
-  "main",
+  "index",
   "login",
   "create",
   "detail",
@@ -40,10 +40,9 @@ const getEntry = () => {
   return entry;
 };
 
+console.log(getEntry());
 
-module.exports =  (env)=> ({
-
-
+module.exports = (env) => ({
   mode: "development",
   entry: getEntry(),
   watch: true,
@@ -65,7 +64,7 @@ module.exports =  (env)=> ({
     new HtmlWebpackPlugin({
       template: "./src/client/html/index.html",
       filename: "html/index.html",
-      chunks: ["main"],
+      chunks: ["index"],
     }),
   ].concat(multipleHtmlPlugins),
 
