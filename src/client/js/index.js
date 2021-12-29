@@ -40,7 +40,6 @@ class Main {
   }
 }
 
-
 (async() => {
   const isLoggedIn = await Auth.isLoggedIn();
 
