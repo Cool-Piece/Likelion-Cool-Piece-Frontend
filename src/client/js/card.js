@@ -107,7 +107,13 @@ export default class Card {
 
   render() {
     const viewSkillCnt = window.innerWidth <= 414 ? 3 : 4;
+    const emptyElement = document.querySelector('.no_result');
 
+    if (this.viewData.length) {
+      emptyElement.style.display = 'none';
+    } else {
+      emptyElement.style.display = 'block';
+    }
     this.$target.innerHTML = this.viewData.map(card => {
       return `
         <li class="studyItem" title="클릭시 해당 스터디의 상세페이지로 이동합니다." id=${card.id}>

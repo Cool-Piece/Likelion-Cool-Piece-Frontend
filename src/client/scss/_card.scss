@@ -1,4 +1,5 @@
 .study-wrap {
+  position: relative;
   .studyList {
     display: flex;
     flex-direction: column;
@@ -95,11 +96,16 @@
       }
     }
   }
+  & > .no_result {
+    display: none;
+    @include position-center;
+  }
 }
 
 @media (max-width: 480px) {
   
   .study-wrap {
+    position: static;
     .studyList {
       .studyItem {
         .studyItem-title {
