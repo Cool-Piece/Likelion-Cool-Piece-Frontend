@@ -1,10 +1,9 @@
-
 import {
-	CATEGORY,
-	CATEGORY_LAST_UPDATE,
-	MAX_TIME,
-	CATEGORY_RECRUITED,
-	CATEGORY_RECRUITING
+  CATEGORY,
+  CATEGORY_LAST_UPDATE,
+  MAX_TIME,
+  CATEGORY_RECRUITED,
+  CATEGORY_RECRUITING,
 } from "./constant.js";
 import CategoryData from "./categoryData.js";
 
@@ -15,7 +14,7 @@ export default class Category {
 	recruited = false;
 	onFilter = null;
 
-  constructor({$target, onFilter}) {
+  constructor({ $target, onFilter }) {
     this.$target = $target;
 		this.onFilter = onFilter;
 		this.categoryData = new CategoryData();

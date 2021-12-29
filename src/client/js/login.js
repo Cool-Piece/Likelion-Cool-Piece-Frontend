@@ -9,6 +9,7 @@ const githubLogin = document.querySelector(".login-github");
 
 const handleGithub = () => {
   const baseUrl = "https://github.com/login/oauth/authorize";
+  console.log(process.env.GITHUB_KEY, "check");
   const config = {
     client_id: process.env.GITHUB_KEY,
     allow_signup: false,
@@ -20,15 +21,5 @@ const handleGithub = () => {
 
   githubLogin.href = finalUrl;
 };
-
-//1.github.href =finalUrl // 이것은 유저 정보를 갑자기 화면에 난대 없이 뿌려줌
-
-//2 const response = await fetch("https"2342324 heroku/users/github/start");
-//console.log(response," response test: cors")
-
-//githubLogin.href = "../html/index.html";
-//return res.redirect(finalUrl);
-
-//// 2.페이지 이동
 
 githubLogin.addEventListener("click", handleGithub);
