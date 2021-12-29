@@ -1,6 +1,4 @@
 import "../scss/styles.scss";
-import {studyType, stackType, months, locations} from "../js/studyDatas";
-
 // 셀렉트박스 요소
 const selectBoxType = document.querySelector(".select-box.type");
 const selectBoxStacks = document.querySelector(".select-box.stacks");
@@ -11,20 +9,40 @@ const selectBoxLocation = document.querySelector(".select-box.location");
 const selectionsLocation = document.querySelector(".selection-location");
 // 캘린더 시작일 요소
 const datePickerElement = document.querySelector(".date.start .date-picker");
-const selectedDateElement = document.querySelector(".date.start .date-picker .selected-date");
+const selectedDateElement = document.querySelector(
+  ".date.start .date-picker .selected-date"
+);
 const datesElement = document.querySelector(".date.start .date-picker .dates");
-const monthElement = document.querySelector(".date.start .date-picker .dates .month .mth");
-const nextMonthElement = document.querySelector(".date.start .date-picker .dates .month .next-month");
-const prevMonthElement = document.querySelector(".date.start .date-picker .dates .month .prev-month");
-const daysElement = document.querySelector(".date.start .date-picker .dates .days");
+const monthElement = document.querySelector(
+  ".date.start .date-picker .dates .month .mth"
+);
+const nextMonthElement = document.querySelector(
+  ".date.start .date-picker .dates .month .next-month"
+);
+const prevMonthElement = document.querySelector(
+  ".date.start .date-picker .dates .month .prev-month"
+);
+const daysElement = document.querySelector(
+  ".date.start .date-picker .dates .days"
+);
 // 캘린더 종료일 요소
 const datePickerElementEnd = document.querySelector(".date.end .date-picker");
-const selectedDateElementEnd = document.querySelector(".date.end .date-picker .selected-date");
+const selectedDateElementEnd = document.querySelector(
+  ".date.end .date-picker .selected-date"
+);
 const datesElementEnd = document.querySelector(".date.end .date-picker .dates");
-const monthElementEnd = document.querySelector(".date.end .date-picker .dates .month .mth");
-const nextMonthElementEnd = document.querySelector(".date.end .date-picker .dates .month .next-month");
-const prevMonthElementEnd = document.querySelector(".date.end .date-picker .dates .month .prev-month");
-const daysElementEnd = document.querySelector(".date.end .date-picker .dates .days");
+const monthElementEnd = document.querySelector(
+  ".date.end .date-picker .dates .month .mth"
+);
+const nextMonthElementEnd = document.querySelector(
+  ".date.end .date-picker .dates .month .next-month"
+);
+const prevMonthElementEnd = document.querySelector(
+  ".date.end .date-picker .dates .month .prev-month"
+);
+const daysElementEnd = document.querySelector(
+  ".date.end .date-picker .dates .days"
+);
 
 // 제목
 const studyTitle = document.querySelector(".input-title");
@@ -41,6 +59,44 @@ const modalCreatePage = document.querySelector(".modal");
 // 페이지 생성 버튼
 const createButton = document.querySelector(".modal-button.yes");
 const submitButton = document.querySelector(".buttons.submit");
+
+// 배열들
+const studyType = ["면접", "프로젝트", "스터디"];
+const stackType = ["HTML", "CSS", "JavaScript", "Node.JS", "React", "Python"];
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+const locations = [
+  "서울",
+  "경기",
+  "인천",
+  "강원",
+  "충북",
+  "세종",
+  "충남",
+  "대전",
+  "경북",
+  "대구",
+  "전남",
+  "전북",
+  "광주",
+  "경남",
+  "울산",
+  "부산",
+  "제주",
+  "온라인",
+];
 
 // 셀렉트 박스 클릭 시 토글
 function toggleSelectType(event) {
@@ -98,21 +154,13 @@ handleSelectType();
 
 // 스택 유형 셀렉트 박스 선택 시 태그 추가, 스택 유형 태그 제거
 let tagList = [];
-function handleTypeTag() {
-  selectionsLanguage.addEventListener("click", (event) => {
-    let flag = true;
-    tagList.forEach((stackTags) => {
-      if(event.target.textContent === stackTags) {
-        flag = false;
-      }
-    });
-    if (flag) {
-      if (event.target.nodeName === "BUTTON") {
-        const li = document.createElement("li");
-        stackTags.appendChild(li);
-        li.textContent = `${event.target.textContent}`;
-        tagList.push(event.target.textContent);
-      }
+// 스택 유형 셀렉트 박스 선택 시 태그 추가
+selectionsLanguage.addEventListener("click", (event) => {
+  // 중복확인
+  let flag = true;
+  tagList.forEach((tag) => {
+    if (event.target.textContent === tag) {
+      flag = false;
     }
     event.preventDefault();
     selectionsLanguage.classList.remove("active");
@@ -125,8 +173,7 @@ function handleTypeTag() {
       tagList.splice(removeTag, 1);
     }
   });
-}
-handleTypeTag();
+});
 
 // 데이트 피커 (변수들)
 let date = new Date();
@@ -151,14 +198,14 @@ populateDatesEnd();
 
 // 시작일 - 데이트 피커 버튼 클릭 시 토글
 function toggleStartDate(event) {
-  if (!checkEventPathForClass(event.path, "dates" )) {
+  if (!checkEventPathForClass(event.path, "dates")) {
     datesElement.classList.toggle("active");
   }
 }
 
 // 종료일 - 데이트 피커 버튼 클릭 시 토글
 function toggleEndDate(event) {
-  if (!checkEventPathForClass(event.path, "dates" )) {
+  if (!checkEventPathForClass(event.path, "dates")) {
     datesElementEnd.classList.toggle("active");
   }
 }
@@ -220,7 +267,7 @@ function populateDates(event) {
   let amountDays = 31;
 
   if (month == 1) {
-  	amountDays = 28;
+    amountDays = 28;
   }
   if (month == 3) {
     amountDays = 30;
@@ -235,25 +282,29 @@ function populateDates(event) {
     amountDays = 30;
   }
 
-  for(let i = 0; i < amountDays; i++) {
+  for (let i = 0; i < amountDays; i++) {
     const dayElement = document.createElement("div");
     dayElement.classList.add("day");
     dayElement.textContent = i + 1;
 
-    if (selectedDay == (i + 1) && selectedYear == year && selectedMonth == month) {
+    if (
+      selectedDay == i + 1 &&
+      selectedYear == year &&
+      selectedMonth == month
+    ) {
       dayElement.classList.add("selected");
     }
 
-    dayElement.addEventListener("click", function() {
-  	  selectedDate = new Date(year + "-" + (month + 1) + "-" + (i + 1));
-      selectedDay = (i + 1);
+    dayElement.addEventListener("click", function () {
+      selectedDate = new Date(year + "-" + (month + 1) + "-" + (i + 1));
+      selectedDay = i + 1;
       selectedMonth = month;
       selectedYear = year;
       selectedDateElement.textContent = formatDate(selectedDate);
       selectedDateElement.dataset.value = selectedDate;
 
       populateDates();
-	  });
+    });
 
     daysElement.appendChild(dayElement);
   }
@@ -265,7 +316,7 @@ function populateDatesEnd(event) {
   let amountDays = 31;
 
   if (month == 1) {
-    	amountDays = 28;
+    amountDays = 28;
   }
   if (month == 3) {
     amountDays = 30;
@@ -285,13 +336,17 @@ function populateDatesEnd(event) {
     endElement.classList.add("day");
     endElement.textContent = i + 1;
 
-    if (selectedDay == (i + 1) && selectedYear == year && selectedMonth == month){
+    if (
+      selectedDay == i + 1 &&
+      selectedYear == year &&
+      selectedMonth == month
+    ) {
       endElement.classList.add("selected");
     }
 
-    endElement.addEventListener("click", function() {
+    endElement.addEventListener("click", function () {
       selectedDate = new Date(year + "-" + (month + 1) + "-" + (i + 1));
-      selectedDay = (i + 1);
+      selectedDay = i + 1;
       selectedMonth = month;
       selectedYear = year;
       selectedDateElementEnd.textContent = formatDate(selectedDate);
@@ -305,10 +360,10 @@ function populateDatesEnd(event) {
 
 // 데이트 피커 선택 시 창 사라지는거 방지
 function checkEventPathForClass(path, selector) {
-  for (let i=0; i < path.length; i++){
+  for (let i = 0; i < path.length; i++) {
     if (path[i].classList && path[i].classList.contains(selector)) {
       return true;
- 		}
+    }
   }
   return false;
 }
@@ -316,12 +371,12 @@ function checkEventPathForClass(path, selector) {
 // 셀렉트 박스에 일월년도 표시
 function formatDate(d) {
   let day = d.getDate();
-  if (day < 10){
+  if (day < 10) {
     day = "0" + day;
   }
 
   let month = d.getMonth() + 1;
-  if (month < 10){
+  if (month < 10) {
     month = "0" + month;
   }
 
@@ -359,11 +414,11 @@ selectionsLocation.addEventListener("click", (event) => {
 });
 
 // 작성 클릭 시 모달창 오픈
-submitButton.addEventListener("click", function(event) {
+submitButton.addEventListener("click", function (event) {
   modalCreatePage.classList.add("on");
 });
 
-modalCreatePage.addEventListener("click", function(event) {
+modalCreatePage.addEventListener("click", function (event) {
   if (event.target.className === "modal-button no") {
     modalCreatePage.classList.remove("on");
   }
@@ -371,19 +426,19 @@ modalCreatePage.addEventListener("click", function(event) {
 
 // 데이터 전송
 function sendStudyData() {
-  createButton.addEventListener("click", function(event){
+  createButton.addEventListener("click", function (event) {
     // validation
-    if(studyTitle.value == false && "제목을 입력해주세요") {
+    if (studyTitle.value == false && "제목을 입력해주세요") {
       alert("제목을 입력해주세요");
-    } else if(selectBoxType.textContent == "모집 유형을 선택해주세요"){
+    } else if (selectBoxType.textContent == "모집 유형을 선택해주세요") {
       alert("모집 유형을 선택해주세요");
-    } else if(tagList.length == 0) {
+    } else if (tagList.length == 0) {
       alert("기술을 선택해주세요");
-    } else if(selectBoxLocation.textContent == "지역 선택") {
+    } else if (selectBoxLocation.textContent == "지역 선택") {
       alert("지역을 선택해주세요");
-    } else if(participants.value == false) {
+    } else if (participants.value == false) {
       alert("모집 인원을 선택해주세요");
-    } else if(textDetails.value == false) {
+    } else if (textDetails.value == false) {
       alert("상세 내용을 입력해주세요");
     } else {
       console.log("완성");
@@ -411,11 +466,10 @@ function sendStudyData() {
     })
       .then((res) => res.json())
       .then((res) => console.log(res))
-      .catch(error => {
+      .catch((error) => {
         console.log(error, "에러");
       });
-
   });
-};
+}
 
 sendStudyData();

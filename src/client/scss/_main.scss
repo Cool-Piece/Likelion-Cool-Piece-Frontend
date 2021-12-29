@@ -1,0 +1,195 @@
+.main-wrap {
+  margin-top: $header-search-on;
+  .main-section {
+    min-height: calc(100vh - #{$header-search-on} - #{$footer-height-desktop});
+    margin: 0 auto;
+    padding: 40px 0;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 250px calc(100% - 250px);
+    .category-wrap {
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      .categoryRecruit {
+        display: flex;
+        margin-bottom: 20px;
+        input {
+          display: none;
+          &:checked + label {
+            background: $mainColor;
+          }
+        }
+        label {
+          position: relative;
+          width: 18px;
+          height: 18px;
+          border-radius: 5px;
+          background: #c4c4c4;
+          cursor: pointer;
+          &[for="recruiting"] {
+            margin-right: 74px;
+            &::after {
+              content: "모집 중";
+              font-size: 1rem;
+              position: absolute;
+              left: 24px;
+              display: block;
+              width: 55px;
+            }
+          }
+          &[for="recruited"] {
+            &::after {
+              content: "모집 완료";
+              font-size: 1rem;
+              position: relative;
+              left: 24px;
+              display: block;
+              width: 80px;
+            }
+          }
+        }
+      }
+      .categoryList {
+        width: 250px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+        align-items: center;
+        padding: 10px 0;
+        row-gap: 10px;
+        border: 1px solid #ebebeb;
+        box-sizing: border-box;
+        border-radius: 10px;
+        .categoryItem {
+          width: 100px;
+          height: 35px;
+          background: $defaultColor;
+          border-radius: 5px;
+          box-sizing: border-box;
+          padding: 0 5px;
+          font-size: 14px;
+          line-height: 35px;
+          text-align: center;
+          cursor: pointer;
+          @include sellipsis;
+          &.select {
+            background: $mainColor;
+          }
+          &:hover {
+            transform: scale(1.03);
+          }
+        }
+      }
+      .initButton {
+        border: none;
+        border-radius: 10px;
+        margin-top: 10px;
+        width: 50%;
+        float: right;
+        height: 35px;
+        background-color: $defaultColor;
+        cursor: pointer;
+        &:hover {
+          transform: scale(1.03);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .main-wrap {
+    .main-section {
+      width: 95%;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .main-wrap {
+    .main-section {
+      width: 90%;
+    }
+  }
+}
+
+@media (min-width: 1256px) {
+  .main-wrap {
+    .main-section {
+      width: 80%;
+    }
+  }
+}
+
+@media (min-width: 1536px) {
+  .main-wrap {
+    .main-section {
+      width: 70%;
+    }
+  }
+}
+
+@media (min-width: 1920px) {
+  .main-wrap {
+    .main-section {
+      width: 60%;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .main-wrap {
+    margin-top: $header-height-mobile;
+    .main-section {
+      width: 90%;
+      min-height: calc(100vh - #{$header-height-mobile} - #{$footer-height-mobile});
+      margin: 0 auto;
+      padding: 20px 0;
+      display: flex;
+      flex-direction: column;
+      .category-wrap {
+        position: static;
+        margin-bottom: 20px;
+        .categoryRecruit {
+          margin: 0 0 10px 5px;
+        }
+        .categoryList {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          border: none;
+          padding: 0;
+          .categoryItem {
+            width: 80px;
+            font-size: 12px;
+            height: 30px;
+            line-height: 30px;
+            margin: 0 5px;
+          }
+        }
+        .initButton {
+          width: 30%;
+          font-family: $font-family;
+        }
+      }
+      .study-wrap {
+        .studyList {
+          width: 100%;
+          .studyItem {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+.blind {
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  position: absolute;
+  clip: rect(0 0 0 0);
+}

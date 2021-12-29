@@ -1,9 +1,10 @@
+const dotenv = require("dotenv-webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const htmlPageNames = ["login", "create", "edit"];
-const jsFileNames = ["main", "login", "create", "edit"];
+const htmlPageNames = ["login", "index", "detail", "create", "edit", "githubCallback"];
+const jsFileNames = ["login", "index", "detail", "create", "edit", "githubCallback"];
 
 const multipleHtmlPlugins = htmlPageNames.map((name) => {
   return new HtmlWebpackPlugin({
@@ -18,12 +19,12 @@ const getEntry = () => {
   jsFileNames.forEach((name) => {
     const src = `./src/client/js/${name}.js`;
 
-    entry[name] =src;
+    entry[name] = src;
   });
   return entry;
 };
 
-module.exports = {
+module.exports = (env) => ({
   mode: "development",
   entry: getEntry(),
   watch: true,
@@ -38,10 +39,14 @@ module.exports = {
       filename: "css/styles.css",
     }),
 
+    new dotenv({
+      path: ".env",
+    }),
+
     new HtmlWebpackPlugin({
       template: "./src/client/html/index.html",
       filename: "html/index.html",
-      chunks: ["main"],
+      chunks: ["index"],
     }),
   ].concat(multipleHtmlPlugins),
 
@@ -75,4 +80,4 @@ module.exports = {
       },
     ],
   },
-};
+});
