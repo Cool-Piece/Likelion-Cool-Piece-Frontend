@@ -3,7 +3,9 @@ import "../scss/styles.scss";
 const selectBoxType = document.querySelector(".select-box.type");
 const selectBoxStacks = document.querySelector(".select-box.stacks");
 const selectionsType = document.querySelector(".selection-container.type");
-const selectionsLanguage = document.querySelector(".selection-container.language");
+const selectionsLanguage = document.querySelector(
+  ".selection-container.language"
+);
 const stackTags = document.querySelector(".tags.stack-type");
 const selectBoxLocation = document.querySelector(".select-box.location");
 const selectionsLocation = document.querySelector(".selection-location");
@@ -99,20 +101,16 @@ const locations = [
 ];
 
 // 셀렉트 박스 클릭 시 토글
-function toggleSelectType(event) {
+function toggleSelectBoxType(event) {
   event.preventDefault();
   selectionsType.classList.toggle("active");
 }
-toggleSelectBox();
-
-function toggleSelectStack(event) {
+function toggleSelectBoxStack(event) {
   event.preventDefault();
-  selectBoxStacks.classList.toggle("active");
+  selectionsLanguage.classList.toggle("active");
 }
-toggleSelectStack();
-
-selectBoxType.addEventListener("click", toggleSelectType);
-selectBoxStacks.addEventListener("click", toggleSelectStack);
+selectBoxType.addEventListener("click", toggleSelectBoxType);
+selectBoxStacks.addEventListener("click", toggleSelectBoxStack);
 
 // 스터디 유형 셀렉트 박스에 추가
 function addStudyType() {
@@ -141,18 +139,14 @@ function addStackType() {
 addStackType();
 
 // 스터디 유형 셀렉트 박스 선택 시 텍스트 변경
-function handleSelectType() {
-  selectionsType.addEventListener("click", (event) => {
-    if (event.target.nodeName === "BUTTON") {
-      selectBoxType.textContent = `${event.target.textContent}`;
-      event.preventDefault();
-    }
-    selectionsType.classList.remove("active");
-  });
-}
-handleSelectType();
+selectionsType.addEventListener("click", (event) => {
+  if (event.target.nodeName === "BUTTON") {
+    selectBoxType.textContent = `${event.target.textContent}`;
+    event.preventDefault();
+  }
+  selectionsType.classList.remove("active");
+});
 
-// 스택 유형 셀렉트 박스 선택 시 태그 추가, 스택 유형 태그 제거
 let tagList = [];
 // 스택 유형 셀렉트 박스 선택 시 태그 추가
 selectionsLanguage.addEventListener("click", (event) => {
@@ -162,17 +156,28 @@ selectionsLanguage.addEventListener("click", (event) => {
     if (event.target.textContent === tag) {
       flag = false;
     }
-    event.preventDefault();
-    selectionsLanguage.classList.remove("active");
   });
-  stackTags.addEventListener("click", (event) => {
-    let removeTag;
-    if (event.target.nodeName === "LI") {
-      event.target.remove();
-      removeTag = tagList.indexOf(event.target.textContent);
-      tagList.splice(removeTag, 1);
+
+  if (flag) {
+    if (event.target.nodeName === "BUTTON") {
+      const li = document.createElement("li");
+      stackTags.appendChild(li);
+      li.textContent = `${event.target.textContent}`;
+      tagList.push(event.target.textContent);
     }
-  });
+  }
+  event.preventDefault();
+  selectionsLanguage.classList.remove("active");
+});
+
+// 스택 유형 태그 제거
+stackTags.addEventListener("click", (event) => {
+  let removeTag;
+  if (event.target.nodeName === "LI") {
+    event.target.remove();
+    removeTag = tagList.indexOf(event.target.textContent);
+    tagList.splice(removeTag, 1);
+  }
 });
 
 // 데이트 피커 (변수들)
@@ -362,10 +367,9 @@ function populateDatesEnd(event) {
 function checkEventPathForClass(path, selector) {
   for (let i = 0; i < path.length; i++) {
     if (path[i].classList && path[i].classList.contains(selector)) {
-      return true;
+      return false;
     }
-  }
-  return false;
+  } 
 }
 
 // 셀렉트 박스에 일월년도 표시
@@ -448,12 +452,14 @@ function sendStudyData() {
       title: studyTitle.value,
       study_type: selectBoxType.textContent,
       skills: tagList,
-      start_date: selectedDateElement.dataset.value,
-      end_date: selectedDateElementEnd.dataset.value,
+      start_date: selectedDateElement.textContent,
+      end_date: selectedDateElementEnd.textContent,
       location: selectBoxLocation.textContent,
-      participants: Number(participants.value),
-      details: textDetails.value
+      participants: participants.value,
+      details: textDetails.value,
     };
+
+    console.log(createStudyDatas);
 
     const baseURL = "https://coolpiece-git.herokuapp.com/create";
 
