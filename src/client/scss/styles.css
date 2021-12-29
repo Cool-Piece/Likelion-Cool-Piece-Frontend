@@ -669,7 +669,7 @@ body {
   position: relative;
   width: 50%;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 10%;
 }
 
 .create-form .input-title {
@@ -1207,6 +1207,36 @@ body {
   }
 }
 
+@media (max-width: 1024px) {
+  .edit-form {
+    width: 50%;
+  }
+}
+
+@media (min-width: 1256px) {
+  .edit-form {
+    width: 40%;
+  }
+}
+
+@media (min-width: 1536px) {
+  .edit-form {
+    width: 40%;
+  }
+}
+
+@media (min-width: 1920px) {
+  .edit-form {
+    width: 30%;
+  }
+}
+
+@media (max-width: 480px) {
+  .edit-form {
+    width: 90%;
+  }
+}
+
 .login-container {
   position: absolute;
   top: 50%;
@@ -1309,7 +1339,7 @@ body {
   position: relative;
   width: 50%;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 10%;
 }
 
 .edit-form .input-title {
