@@ -1,6 +1,5 @@
 import "../scss/styles.scss";
 import {studyType, stackType, months, locations} from "../js/studyDatas";
-import { addStudyType, addStackType, toggleSelectBox, handleSelectType, handleTypeTag } from "./selectbox";
 
 // 셀렉트박스 요소
 const selectBoxType = document.querySelector(".select-box.type");
@@ -44,23 +43,90 @@ const createButton = document.querySelector(".modal-button.yes");
 const submitButton = document.querySelector(".buttons.submit");
 
 // 셀렉트 박스 클릭 시 토글
-toggleSelectBox(event, selectionsType);
-toggleSelectBox(event, selectionsLanguage);
-selectBoxType.addEventListener("click", toggleSelectBox);
-selectBoxStacks.addEventListener("click", toggleSelectBox);
+function toggleSelectType(event) {
+  event.preventDefault();
+  selectionsType.classList.toggle("active");
+}
+toggleSelectBox();
+
+function toggleSelectStack(event) {
+  event.preventDefault();
+  selectBoxStacks.classList.toggle("active");
+}
+toggleSelectStack();
+
+selectBoxType.addEventListener("click", toggleSelectType);
+selectBoxStacks.addEventListener("click", toggleSelectStack);
 
 // 스터디 유형 셀렉트 박스에 추가
-addStudyType(studyType, selectionsType);
+function addStudyType() {
+  studyType.forEach((item) => {
+    const li = document.createElement("li");
+    const button = document.createElement("button");
+    li.classList.add("stacks");
+    button.textContent = item;
+    button.classList.add("selections");
+    selectionsType.appendChild(li).appendChild(button);
+  });
+}
+addStudyType();
 
 // 스택, 기술 이름 셀렉트 박스에 추가
-addStackType(stackType, selectionsLanguage);
+function addStackType() {
+  stackType.forEach((item) => {
+    const li = document.createElement("li");
+    const button = document.createElement("button");
+    li.classList.add("languages");
+    button.textContent = item;
+    button.classList.add("selections");
+    selectionsLanguage.appendChild(li).appendChild(button);
+  });
+}
+addStackType();
 
 // 스터디 유형 셀렉트 박스 선택 시 텍스트 변경
-handleSelectType(selectionsType, selectBoxType);
+function handleSelectType() {
+  selectionsType.addEventListener("click", (event) => {
+    if (event.target.nodeName === "BUTTON") {
+      selectBoxType.textContent = `${event.target.textContent}`;
+      event.preventDefault();
+    }
+    selectionsType.classList.remove("active");
+  });
+}
+handleSelectType();
 
 // 스택 유형 셀렉트 박스 선택 시 태그 추가, 스택 유형 태그 제거
 let tagList = [];
-handleTypeTag(selectionsLanguage, tagList, stackTags);
+function handleTypeTag() {
+  selectionsLanguage.addEventListener("click", (event) => {
+    let flag = true;
+    tagList.forEach((stackTags) => {
+      if(event.target.textContent === stackTags) {
+        flag = false;
+      }
+    });
+    if (flag) {
+      if (event.target.nodeName === "BUTTON") {
+        const li = document.createElement("li");
+        stackTags.appendChild(li);
+        li.textContent = `${event.target.textContent}`;
+        tagList.push(event.target.textContent);
+      }
+    }
+    event.preventDefault();
+    selectionsLanguage.classList.remove("active");
+  });
+  stackTags.addEventListener("click", (event) => {
+    let removeTag;
+    if (event.target.nodeName === "LI") {
+      event.target.remove();
+      removeTag = tagList.indexOf(event.target.textContent);
+      tagList.splice(removeTag, 1);
+    }
+  });
+}
+handleTypeTag();
 
 // 데이트 피커 (변수들)
 let date = new Date();
