@@ -23,8 +23,6 @@ const getEntry = () => {
   return entry;
 };
 
-console.log(getEntry());
-
 module.exports = (env) => ({
   mode: "development",
   entry: getEntry(),

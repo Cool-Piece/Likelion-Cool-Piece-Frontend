@@ -1,17 +1,17 @@
 
 export default class CardModel {
-  #data = [];
+  data = [];
 
   constructor() {
-    this.#setState(dummyData);
+    this.setState(dummyData);
   }
 
-  #setState(nextState) {
-    this.#data = nextState;
+  setState(nextState) {
+    this.data = nextState;
   }
 
   getCardData() {
-    return this.#data;
+    return this.data;
   }
 }
 

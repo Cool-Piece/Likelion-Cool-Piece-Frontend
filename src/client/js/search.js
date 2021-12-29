@@ -1,9 +1,9 @@
 export default class Search {
-  #onSearch = null;
+  onSearch = null;
 
   constructor({$target, onSearch}) {
     this.$target = $target;
-    this.#onSearch = onSearch;
+    this.onSearch = onSearch;
     this.initEvent();
   }
 
@@ -11,15 +11,15 @@ export default class Search {
     this.$target.addEventListener("keydown", event => {
       if(event.key === "Enter") {
         const searchData = this.$target.value;
-        if(this.#validateSearch(searchData)) {
-          this.#onSearch(searchData);
+        if(this.validateSearch(searchData)) {
+          this.onSearch(searchData);
           this.$target.value = "";
         }
       }
     })
   }
 
-  #validateSearch(value) {
+  validateSearch(value) {
     if (value.length < 2) {
       alert("최소 2글자 이상의 키워드를 입력해주세요.");
       return false;

@@ -10,38 +10,38 @@ import {
 import { useFilterData, useSearchData } from './utils';
 
 export default class Card {
-  #data;
-  #viewData;
-  #cardModel;
-  #viewType;
-  #searchData;
-  #filterData;
+  data;
+  viewData;
+  cardModel;
+  viewType;
+  searchData;
+  filterData;
 
   constructor({$target, initFilterData}) {
     this.$target = $target;
-    this.#cardModel = new CardModel();
-    this.#data = this.#cardModel.getCardData();    
-    this.#filterData = initFilterData;
-    this.#initAddEvents();
-    this.#initState();
+    this.cardModel = new CardModel();
+    this.data = this.cardModel.getCardData();    
+    this.filterData = initFilterData;
+    this.initAddEvents();
+    this.initState();
   }
 
   initialize() {
-    this.#viewType = CARD_VIEW_TYPE_DEFAULT;
+    this.viewType = CARD_VIEW_TYPE_DEFAULT;
     localStorage.setItem(CARD_VIEW_TYPE, CARD_VIEW_TYPE_DEFAULT);
-    this.#setState(this.#data);
+    this.setState(this.data);
   }
 
-  #initAddEvents() {
+  initAddEvents() {
     this.$target.addEventListener("click", event => {
       const studyItem = event.target.closest(".studyItem");
       if (studyItem?.contains(event.target)) {
-        this.#routeToPath(studyItem.id);
+        this.routeToPath(studyItem.id);
       }
     })
   }
 
-  #initState() {
+  initState() {
     let prevDate, currentDate, basedStateType;
     
     basedStateType = localStorage.getItem(CARD_VIEW_TYPE);
@@ -61,8 +61,8 @@ export default class Card {
       localStorage.setItem(CARD_VIEW_TYPE, CARD_VIEW_TYPE_DEFAULT);
     }
 
-    this.#viewType = basedStateType;
-    if (this.#viewType === CARD_VIEW_TYPE_SEARCH) {
+    this.viewType = basedStateType;
+    if (this.viewType === CARD_VIEW_TYPE_SEARCH) {
       const prevSearchKeyword = localStorage.getItem(SEARCH_KEYWORD);
       this.onSearch(prevSearchKeyword);
     } else {
@@ -70,41 +70,41 @@ export default class Card {
     }
   }
 
-  #routeToPath(path) {
+  routeToPath(path) {
     // TODO: route 처리하기
   }
 
   onSearch(keyword) {
-    this.#viewType = CARD_VIEW_TYPE_SEARCH;
+    this.viewType = CARD_VIEW_TYPE_SEARCH;
     localStorage.setItem(SEARCH_KEYWORD, keyword);
     localStorage.setItem(CARD_VIEW_TYPE, CARD_VIEW_TYPE_SEARCH);
     
-    this.#searchData = useSearchData(keyword, this.#data);
+    this.searchData = useSearchData(keyword, this.data);
     this.onFilter();
   }
 
   onFilter(filterData = null) {
     if (filterData) {
-      this.#filterData = filterData;
+      this.filterData = filterData;
     }
 
-    if (this.#viewType === CARD_VIEW_TYPE_DEFAULT) {
-      this.#setState(useFilterData(this.#filterData, this.#data));
+    if (this.viewType === CARD_VIEW_TYPE_DEFAULT) {
+      this.setState(useFilterData(this.filterData, this.data));
     } else {
-      this.#setState(useFilterData(this.#filterData, this.#searchData));
+      this.setState(useFilterData(this.filterData, this.searchData));
     }
     localStorage.setItem(CARD_VIEW_LAST_UPDATE, new Date());
   }
 
-  #setState(nextState) {
-    this.#viewData = nextState;
-    this.#render();
+  setState(nextState) {
+    this.viewData = nextState;
+    this.render();
   }
 
-  #render() {
+  render() {
     const viewSkillCnt = window.innerWidth <= 414 ? 3 : 4;
 
-    this.$target.innerHTML = this.#viewData.map(card => {
+    this.$target.innerHTML = this.viewData.map(card => {
       return `
         <li class="studyItem" title="클릭시 해당 스터디의 상세페이지로 이동합니다." id=${card.id}>
           <h3 class="studyItem-title">${card.title}</h3>

@@ -1,8 +1,8 @@
 export default class CategoryData {
-  #data = [];
+  data = [];
 
   constructor(){
-    this.#setState([
+    this.setState([
       "JavaScript",
       "NodeJS",
       "NextJS",
@@ -16,14 +16,14 @@ export default class CategoryData {
     ]);
 
     // TODO: 서버로 데이터 초기화
-    // this.#setState(this.#fetchData());
+    // this.setState(this.fetchData());
   }
 
-  #setState(nextData) {
-    this.#data = nextData;
+  setState(nextData) {
+    this.data = nextData;
   }
 
   getData(){
-    return this.#data;
+    return this.data;
   }
 }
