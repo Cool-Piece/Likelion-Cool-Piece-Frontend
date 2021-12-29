@@ -3,8 +3,8 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const htmlPageNames = ["login", "index", "detail", "create", "edit", "githubCallback"];
-const jsFileNames = ["login", "index", "detail", "create", "edit", "githubCallback"];
+const htmlPageNames = ["login", "index", "detail", "create", "edit", "mypage", "githubCallback"];
+const jsFileNames = ["login", "index", "detail", "create", "edit", "mypage", "githubCallback"];
 
 const multipleHtmlPlugins = htmlPageNames.map((name) => {
   return new HtmlWebpackPlugin({
