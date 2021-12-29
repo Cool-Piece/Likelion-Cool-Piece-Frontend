@@ -1846,4 +1846,196 @@ body {
 .modal.on {
   display: block;
 }
+
+.mypage-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 auto;
+  margin-top: 200px;
+  width: 50%;
+  height: 300px;
+  position: relative;
+  border: 1px solid #ebebeb;
+  border-radius: 30px;
+}
+
+.mypage-form .profile-image-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 200px;
+  width: 10%;
+}
+
+.mypage-form .profile-image-container .image-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 130px;
+  height: 130px;
+  border-radius: 130px;
+  overflow: hidden;
+}
+
+.mypage-form .profile-image-container .image-wrapper .user-image {
+  width: 300px;
+}
+
+.mypage-form .profile-image-container .button-change {
+  width: 90px;
+  height: 25px;
+  border-radius: 5px;
+  background-color: #ebebeb;
+  border-style: none;
+  cursor: pointer;
+}
+
+.mypage-form .profile-data-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  height: 180px;
+  width: 50%;
+}
+
+.mypage-form .profile-data-container .user-name {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.mypage-form .profile-data-container .user-location dt, .mypage-form .profile-data-container .user-location dd {
+  display: inline-block;
+}
+
+.mypage-form .profile-data-container .user-location dt {
+  font-size: 12px;
+  margin-right: 10px;
+  color: #999;
+}
+
+.mypage-form .profile-data-container .fav-stack {
+  font-size: 12px;
+  margin-right: 10px;
+  color: #999;
+}
+
+.mypage-form .profile-data-container .tags.stack-type {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.mypage-form .profile-data-container .tags.stack-type li {
+  font-size: 10px;
+  width: 75px;
+  height: 25px;
+  background-color: #ffc971;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 2.7;
+  margin-right: 5px;
+}
+
+.mypage-form .profile-data-container .fav-select-box {
+  position: relative;
+}
+
+.mypage-form .profile-data-container .fav-select-box .select-box.stacks {
+  width: 220px;
+  height: 35px;
+  background-color: #EBEBEB;
+  color: #888888;
+  font-size: 14px;
+  border-radius: 10px;
+  border: none;
+  text-align: center;
+  margin-bottom: 5px 0;
+  cursor: pointer;
+}
+
+.mypage-form .profile-data-container .fav-select-box .select-box.stacks i {
+  float: right;
+  margin-right: 5px;
+}
+
+.mypage-form .profile-data-container .fav-select-box .selection-container.language {
+  position: absolute;
+  left: 0;
+  margin-top: 5px;
+  width: 220px;
+  background-color: #fff;
+  border: 1px solid #ebebeb;
+  border-radius: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 5px;
+}
+
+.mypage-form .profile-data-container .fav-select-box .selection-container.language .languages {
+  width: 100%;
+  height: 30px;
+  margin: 0;
+  background-color: transparent;
+}
+
+.mypage-form .profile-data-container .fav-select-box .selection-container.language .languages .selections {
+  width: 100%;
+  height: 30px;
+  background-color: transparent;
+  border-style: none;
+  cursor: pointer;
+}
+
+.mypage-form .profile-data-container .fav-select-box .selection-container.language .languages:hover {
+  background-color: #ebebeb;
+}
+
+.mypage-form .button-edit {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  font-size: 14px;
+  width: 75px;
+  height: 30px;
+  background-color: #01B774;
+  border-style: none;
+  margin-right: 5px;
+  color: #FFF;
+  border-radius: 5px;
+  cursor: pointer;
+}
 /*# sourceMappingURL=styles.css.map */
