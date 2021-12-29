@@ -36,7 +36,7 @@ export default class Card {
     this.$target.addEventListener("click", event => {
       const studyItem = event.target.closest(".studyItem");
       if (studyItem?.contains(event.target)) {
-        this.routeToPath(studyItem.id);
+        this.routeDetailPage(studyItem.id);
       }
     })
   }
@@ -70,8 +70,12 @@ export default class Card {
     }
   }
 
-  routeToPath(path) {
-    // TODO: route 처리하기
+  routeDetailPage(id) {
+    localStorage.setItem('detailPageId', id);
+    let url = window.location.href.split('/');
+    url[url.length-1] = 'detail.html';
+    url = url.join('/');
+    window.location.href = url;
   }
 
   onSearch(keyword) {

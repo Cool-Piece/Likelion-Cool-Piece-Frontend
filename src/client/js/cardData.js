@@ -26,7 +26,8 @@ const dummyData = [
     participant: ["리액션 짱 박지윤", "면접선배 임관식 쩔어", "집중쩔어 김준호", "빡고수 별님"],
     skills: ["JavaScript"],
     study_status: true,
-    study_type: 'study'
+    study_type: 'study',
+    id: 1
   },
   {
     title: "빡고수 지윤님의 스터디",
@@ -38,7 +39,8 @@ const dummyData = [
     participant: ["리액션 짱 박지윤", "면접선배 임관식 쩔어", "집중쩔어 김준호", "빡고수 별님"],
     skills: ["JavaScript", "CSS"],
     study_status: false,
-    study_type: 'study'
+    study_type: 'study',
+    id: 2
   },
   {
     title: "무뇌 김준호의 프로젝트",
@@ -50,7 +52,8 @@ const dummyData = [
     participant: ["리액션 짱 박지윤", "면접선배 임관식 쩔어", "집중쩔어 김준호", "빡고수 별님"],
     skills: ["ReactJS", "NodeJS"],
     study_status: true,
-    study_type: 'project'
+    study_type: 'project',
+    id: 3
   },
   {
     title: "빡고수 한별님의 스터디2",
@@ -62,7 +65,8 @@ const dummyData = [
     participant: ["리액션 짱 박지윤", "면접선배 임관식 쩔어", "집중쩔어 김준호", "빡고수 별님"],
     skills: ["ReactJS", "NextJS"],
     study_status: true,
-    study_type: 'study'
+    study_type: 'study',
+    id: 4
   },
   {
     title: "빡고수 한별님의 프로젝트3",
@@ -74,7 +78,8 @@ const dummyData = [
     participant: ["리액션 짱 박지윤", "면접선배 임관식 쩔어", "집중쩔어 김준호", "빡고수 별님"],
     skills: ["VueJS", "CSS", "HTML"],
     study_status: true,
-    study_type: 'project'
+    study_type: 'project',
+    id: 5
   },
   {
     title: "빡고수 지윤님의 스터디2",
@@ -86,7 +91,8 @@ const dummyData = [
     participant: ["리액션 짱 박지윤", "면접선배 임관식 쩔어", "집중쩔어 김준호", "빡고수 별님"],
     skills: ["CSS", "JavaScript", "Vuex"],
     study_status: false,
-    study_type: 'study'
+    study_type: 'study',
+    id: 6
   },
   {
     title: "빡고수 지윤님의 프로젝트3",
@@ -98,7 +104,8 @@ const dummyData = [
     participant: ["리액션 짱 박지윤", "면접선배 임관식 쩔어", "집중쩔어 김준호", "빡고수 별님"],
     skills: ["JavaScript", "ReactJS", "Redux", "Redux-saga"],
     study_status: false,
-    study_type: 'project'
+    study_type: 'project',
+    id: 7
   },
   {
     title: "청강 달인 김준호의 프로젝트",
@@ -110,6 +117,7 @@ const dummyData = [
     participant: ["리액션 짱 박지윤", "면접선배 임관식 쩔어", "집중쩔어 김준호", "빡고수 별님"],
     skills: ["NextJS"],
     study_status: true,
-    study_type: 'project'
+    study_type: 'project',
+    id: 8
   }
 ]

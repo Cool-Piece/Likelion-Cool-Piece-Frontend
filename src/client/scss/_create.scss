@@ -1,271 +1,46 @@
-// // 전체 폼 스타일링 
-// .create-form {
-//   position: relative;
-//   width: 600px;
-//   margin: 0 auto;
-//   margin-top: 50px;
-
-//   .input-title {
-//     display: inline-block;
-//     border: none;
-//     width: 600px;
-//     height: 30px; 
-//     font-size: $font-20;
-//     font-weight: bold;
-//     margin-bottom: 20px;
-//   }
-
-//   // 셀렉트박스 버튼
-//   .select-box { 
-//     width: 220px;
-//     height: 35px;
-//     background-color: #EBEBEB;
-//     color: $dark-gray;
-//     font-size: $font-14;
-//     border-radius: 10px;
-//     border: none;
-//     text-align: center; 
-//     margin-bottom: 5px;
-//     cursor: pointer;
-//     i{
-//       float: right;
-//       margin-right: 5px;
-//     }
-//   }
-//   .select-box.type.active{
-//     background-color: #D0DFF2; 
-//     color: #465E8C;
-//   }
-//   .select-box.type.notSelected{
-//     border: 1px solid #E7485C; 
-//     color: #E7485C;
-//   }
+// 전체 폼 스타일링 
+.create-form {
+    position: relative;
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 50px;
   
-<<<<<<< HEAD
-//     // 셀렉트박스 하단 요소
-//   .selection-container.language { 
-//     display: none;
-//     position: absolute;
-//     left:0; 
-//     margin-top: 0;
-//     width: 220px;
-//     background-color: #fff;
-//     border: 1px solid #ebebeb;
-//     border-radius: 5px;
-//     box-sizing: border-box;
-//     padding: 5px;
-//     .languages {
-//       height: 30px;
-//       font-size: $font-20;
-//       font-weight: bold;
-//       margin-bottom: 20px;
-//     }
-
-//   // 셀렉트박스 버튼
-//   .select-box {
-//     width: 220px;
-//     height: 35px;
-//     background-color: #ebebeb;
-//     color: $dark-gray;
-//     font-size: $font-14;
-//     border-radius: 10px;
-//     border: none;
-//     text-align: center;
-//     margin-bottom: 5px;
-//     cursor: pointer;
-//     i {
-//       float: right;
-//       margin-right: 5px;
-//     }
-//   }
-//   .select-box.type.active {
-//     background-color: #d0dff2;
-//     color: #465e8c;
-//   }
-
-//   // 셀렉트박스 하단 요소
-//   .selection-container.language {
-//     display: none;
-//     position: absolute;
-//     left: 0;
-//     margin-top: 0;
-//     width: 220px;
-//     background-color: #fff;
-//     border: 1px solid #ebebeb;
-//     border-radius: 5px;
-//     box-sizing: border-box;
-//     padding: 5px;
-//     .languages {
-//       width: 100%;
-//       height: 30px;
-//       margin: 0;
-//       background-color: transparent;
-//       .selections {
-//         width: 100%;
-//         height: 30px;
-//         background-color: transparent;
-//         border-style: none;
-//         cursor: pointer;
-//       }
-//     }
-//     .languages:hover {
-//       background-color: #ebebeb;
-//     }
-//   }
-
-//   .selection-container.type {
-//     display: none;
-//     position: absolute;
-//     left: 0;
-//     margin-top: 0;
-//     width: 220px;
-//     background-color: #fff;
-//     border: 1px solid #ebebeb;
-//     border-radius: 5px;
-//     box-sizing: border-box;
-//     padding: 5px;
-//     .stacks {
-//       width: 100%;
-//       height: 30px;
-//       margin: 0;
-//       background-color: transparent;
-//       .selections {
-//         width: 100%;
-//         height: 30px;
-//         margin: 0;
-//         background-color: transparent;
-//         .selections {
-//           width: 100%;
-//           height: 30px;
-//           background-color: transparent;
-//           border-style: none;
-//           cursor:pointer;
-//         }
-//       }
-//       .languages:hover {
-//         background-color:#ebebeb;
-//       }
-//     }
+    .input-title {
+      display: inline-block;
+      border: none;
+      width: 600px;
+      height: 30px; 
+      font-size: $font-20;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
   
-//     .selection-container.type { 
-//       display: none;
-//       position: absolute;
-//       left:0; 
-//       margin-top:0;
-//       width: 220px;
-//       background-color: #fff;
-//       border: 1px solid #ebebeb;
-//         border-style: none;
-//         cursor: pointer;
-//       }
-//     }
-//     .stacks:hover {
-//       background-color: #ebebeb;
-//     }
-//   }
-
-//   // 셀렉트박스 요소 누르면 생성
-//   .selection-container.type.active {
-//     display: block;
-//     z-index: 30;
-//   }
-//   .selection-container.language.active {
-//     display: block;
-//     z-index: 30;
-//   }
-
-//   // 스터디유형, 태그 스타일링
-//   .tags {
-//     width: 500px;
-//     height: 50px;
-//     display: flex;
-//     flex-direction: row;
-//     align-items: center;
-//     justify-content: flex-start;
-//     li {
-//       position: relative;
-//       margin: 15px 0;
-//       display: inline-block;
-//       font-size: $font-10;
-//       width: 75px;
-//       height: 25px;
-//       background-color: $yellow;
-//       border-radius: 5px;
-//       box-sizing: border-box;
-//       padding: 5px;
-//       .stacks {
-//         width: 100%;
-//         height: 30px;
-//         margin: 0;
-//         background-color: transparent;
-//         .selections {
-//           width: 100%;
-//           height: 30px;
-//           background-color: transparent;
-//           border-style: none;
-//           cursor:pointer;
-//         }
-//       }
-//       .stacks:hover {
-//         background-color:#ebebeb;
-//       }
-//     }
+    // 셀렉트박스 버튼
+    .select-box { 
+      width: 220px;
+      height: 35px;
+      background-color: #EBEBEB;
+      color: $dark-gray;
+      font-size: $font-14;
+      border-radius: 10px;
+      border: none;
+      text-align: center; 
+      margin-bottom: 5px;
+      cursor: pointer;
+      i{
+        float: right;
+        margin-right: 5px;
+      }
+    }
+    .select-box.type.active{
+      background-color: #D0DFF2; 
+      color: #465E8C;
+    }
+    .select-box.type.notSelected{
+      border: 1px solid #E7485C; 
+      color: #E7485C;
+    }
   
-//     // 셀렉트박스 요소 누르면 생성 
-//     .selection-container.type.active {
-//       display: block;
-//       z-index: 30; 
-//     }
-
-//     .selection-container.language.active {
-//       display: block;
-//       z-index: 30; 
-//   }
-
-//   .info-wrap {
-//     font-size: $font-12;
-//     color: $dark-gray;
-//     line-height: 2;
-
-//     li {
-//       margin: 5px 0;
-//     }
-  
-//     // 스터디유형, 태그 스타일링 
-//     .tags { 
-//       width: 500px; 
-//       height: 50px;
-//       display: flex;
-//       flex-direction: row;
-//       align-items: center;
-//       justify-content: flex-start;
-//       li{
-//       margin-right: 10px;
-
-//       .start-date {
-//         margin-right: 10px;
-//       }
-
-//       .date-picker {
-//         position: relative;
-//         margin: 15px 0;
-//         display: inline-block;
-//         font-size: $font-10;
-//         width: 75px;
-//         height: 25px;
-//         background-color: $yellow;
-//         background-color: #fff;
-//         border: 1px solid #ebebeb;
-//         border-radius: 5px;
-//         text-align: center;
-//         line-height: 2.7;
-//         margin-right: 5px;
-//       }
-//       li:hover {
-//         background-color: #ebebeb;
-//       }
-//     }
-=======
     // 셀렉트박스 하단 요소
     .selection-container.language { 
       display: none;
@@ -360,168 +135,37 @@
         background-color: #ebebeb;
       }
     }
->>>>>>> b3490e73df51b95439cafa4127fe48550032671c
   
-//     .info-wrap {
-//       font-size: $font-12;
-//       color: $dark-gray;
-//       line-height: 2;
+    .info-wrap {
+      font-size: $font-12;
+      color: $dark-gray;
+      line-height: 2;
       
-//       li {
-//         margin: 5px 0;
-//       }
-//       .date {
-//         display: flex;
-//         flex-direction: row;
-//         justify-content: center;
-//         align-items: center;
-//         margin-right: 10px;
+      li {
+        margin: 5px 0;
+      }
+      .date {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
         
-//         .start-date {
-//           margin-right: 10px;
-//         } 
+        .start-date {
+          margin-right: 10px;
+        } 
   
-//         .date-picker { 
-//           position: relative;
-//           width: 150px;
-//           height: 25px;
-//           background-color: #fff; 
-//           border: 1px solid #ebebeb;
-//           border-radius: 5px;
-//           cursor: pointer;
-//           user-select: none;
-//           text-align: center;
+        .date-picker { 
+          position: relative;
+          width: 150px;
+          height: 25px;
+          background-color: #fff; 
+          border: 1px solid #ebebeb;
+          border-radius: 5px;
+          cursor: pointer;
+          user-select: none;
+          text-align: center;
   
-<<<<<<< HEAD
-//           .selected-date {
-//             width: 100%;
-//             height: 100%;
-
-//         .selected-date {
-//           width: 100%;
-//           height: 100%;
-//           display: flex;
-//           justify-content: center;
-//           align-items: center;
-//           color: #000;
-//         }
-//         .dates {
-//           display: none;
-//           position: absolute;
-//           top: 100%;
-//           left: 0;
-//           right: 0;
-//           background: #fff;
-//           z-index: 10;
-//         }
-//         .dates.active {
-//           display: block;
-//         }
-//         .dates {
-//           .month {
-//             display: flex;
-//             justify-content: center;
-//             align-items: center;
-//             color: #000;
-//           }  
-//           .dates{ 
-//             display: none;
-//             position: absolute;
-//             top: 100%;
-//             left: 0; 
-//             right: 0;
-//             background: #fff;
-//             z-index: 10;
-//           }
-//           .dates.active{  
-//             display: block;
-//           }
-//           .dates {
-//             .month {
-//             border-bottom: 2px solid #eee;
-//             .arrows {
-//               width: 15px;
-//               height: 15px;
-//               display: flex;
-//               justify-content: center;
-//               align-items: center;
-//               color: #313131;
-//               font-size: $font-10;
-//             }
-//             .arrows:hover {
-//               background-color: #f3f3f3;
-//             }
-//             .arrows:active {
-//               background-color: $yellow;
-//             }
-//           }
-//           .days {
-//             display: grid;
-//             grid-template-columns: repeat(7, 1fr);
-//             height: 130px;
-//             border: 1px solid #f3f3f3;
-
-//             .day {
-//               display: flex;
-//               justify-content: space-between;
-//               align-items: center;
-//               border-bottom: 2px solid #eee;
-//               .arrows {
-//                 width: 15px;
-//                 height: 15px;
-//                 display: flex;
-//                 justify-content: center;
-//                 align-items: center;
-//                 color: #313131;
-//                 font-size: $font-10;
-//               }
-//               .arrows:hover {
-//                 background-color: #f3f3f3;
-//               }
-//               .arrows:active {
-//                 background-color: $yellow;
-//               } 
-//             }
-
-//             .days {
-//               display: grid;
-//               grid-template-columns: repeat(7, 1fr);
-//               height: 130px;
-//               border: 1px solid #f3f3f3;
-              
-//               .day {
-//                 display: flex;
-//                 justify-content: center;
-//                 align-items: center;
-//                 color: #313131;
-//               }
-//               .day.selected {
-//                 background-color: $yellow; 
-//               }
-//             .day.selected {
-//               background-color: $yellow;
-//             }
-//           }
-//         }
-//         .date-picker:hover {
-//           background-color: #f3f3f3;
-//         }
-//       }
-//       .date.end {
-//         margin: 0 10px;
-//       }
-//       .end-date {
-//         margin-right: 14px;
-//       }
-//     }
-
-//     .info-wrap.one {
-//       display: flex;
-//       flex-direction: row;
-//       justify-content: start;
-//       align-items: center;
-//     }
-=======
           .selected-date {
             width: 100%;
             height: 100%;
@@ -599,109 +243,43 @@
       justify-content: start;
       align-items: center;
     }
->>>>>>> b3490e73df51b95439cafa4127fe48550032671c
   
-//     .info-wrap.two{ 
+    .info-wrap.two{ 
   
-//       .location, .recruit{
-//         display: inline-block;  
-//       } 
-//       .date, .location-content {
-//         display: inline-block;
-//         margin: 0;
-//       }
-//       .location-content {
-//         position: relative;
-//         .selection-location { 
-//           display: none; 
-//           position: absolute;
-//           left:18px;  
-//           width:152px;
-//           height:150px;
-//           background-color: #fff;
-//           border: 1px solid #ebebeb;
-//           border-radius: 5px;
-//           box-sizing: border-box;
-//           padding: 5px;  
-//           overflow-y: scroll;
-//           .locations {
-//             width: 100%;
-//             margin: 0; 
-//             background-color: transparent;
-//             text-align: center;
-//             .location { 
-//               width: 100%;
-//               height: 20px;
-//               margin:0;
-//               background-color: transparent;
-//               border-style: none;
-//               height: 30px;
+      .location, .recruit{
+        display: inline-block;  
+      } 
+      .date, .location-content {
+        display: inline-block;
+        margin: 0;
+      }
+      .location-content {
+        position: relative;
+        .selection-location { 
+          display: none; 
+          position: absolute;
+          left:18px;  
+          width:152px;
+          height:150px;
+          background-color: #fff;
+          border: 1px solid #ebebeb;
+          border-radius: 5px;
+          box-sizing: border-box;
+          padding: 5px;  
+          overflow-y: scroll;
+          .locations {
+            width: 100%;
+            margin: 0; 
+            background-color: transparent;
+            text-align: center;
+            .location { 
+              width: 100%;
+              height: 20px;
+              margin:0;
+              background-color: transparent;
+              border-style: none;
+              height: 30px;
               
-<<<<<<< HEAD
-//             }
-//           }
-//           .locations:hover {
-//             background-color: #ebebeb;
-
-//     .date.end {
-//       margin: 0 10px;
-//     }
-//     .end-date {
-//       margin-right: 14px;
-//     }
-//   }
-//   .info-wrap.one {
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: start;
-//     align-items: center;
-//   }
-
-//   .info-wrap.two {
-//     .location,
-//     .recruit {
-//       display: inline-block;
-//     }
-//     .date,
-//     .location-content {
-//       display: inline-block;
-//       margin: 0;
-//     }
-//     .location-content {
-//       position: relative;
-//       .selection-location {
-//         display: none;
-//         position: absolute;
-//         left: 18px;
-//         width: 152px;
-//         height: 150px;
-//         background-color: #fff;
-//         border: 1px solid #ebebeb;
-//         border-radius: 5px;
-//         box-sizing: border-box;
-//         padding: 5px;
-//         overflow-y: scroll;
-//         .locations {
-//           width: 100%;
-//           margin: 0;
-//           background-color: transparent;
-//           text-align: center;
-//           .location {
-//             width: 100%;
-//             height: 20px;
-//             margin: 0;
-//             background-color: transparent;
-//             border-style: none;
-//             height: 30px;
-
-//           }
-//         }
-//         .selection-location.active {
-//           display: block;
-//         }
-//       }
-
-=======
             }
           }
           .locations:hover {
@@ -712,82 +290,44 @@
           display: block;
         }
       }
->>>>>>> b3490e73df51b95439cafa4127fe48550032671c
       
   
-//       .recruit {  
-//         display: inline-block;
-//         margin-left: 17px;
-//         div {
-//           display: inline-block;
-//         }
-//       } 
-//       .input-recruit {
-//         display: inline-block;
-//       }
-//       .select-box.location {
-//         width: 152px;
-//         height: 25px;
-//         font-size: $font-12;
-//         border: 1px solid #ebebeb;
-//         background-color: #FFF;
-//         border-radius: 3px;
-//         padding: 5px;
-//         box-sizing: border-box;
-//         margin-left: 18px;
-//         color: #313131;
-//       }
-//       .select-box.number{
-//         width: 50px;
-//         height: 25px;
-//         font-size: $font-12;
-//         border: 1px solid #ebebeb;
-//         background-color: #FFF;
-//         color: #313131;
-//         border-radius: 3px;
-//         padding: 5px;
-//         box-sizing: border-box;
-//       }
-//         }
-//       }
+      .recruit {  
+        display: inline-block;
+        margin-left: 17px;
+        div {
+          display: inline-block;
+        }
+      } 
+      .input-recruit {
+        display: inline-block;
+      }
+      .select-box.location {
+        width: 152px;
+        height: 25px;
+        font-size: $font-12;
+        border: 1px solid #ebebeb;
+        background-color: #FFF;
+        border-radius: 3px;
+        padding: 5px;
+        box-sizing: border-box;
+        margin-left: 18px;
+        color: #313131;
+      }
+      .select-box.number{
+        width: 50px;
+        height: 25px;
+        font-size: $font-12;
+        border: 1px solid #ebebeb;
+        background-color: #FFF;
+        color: #313131;
+        border-radius: 3px;
+        padding: 5px;
+        box-sizing: border-box;
+      }
+        }
+      }
     
-<<<<<<< HEAD
-//     .input-text {
-//       width: 600px;
-//       height: 300px;
-//       border: 1px solid #ebebeb;
-//       border-radius: 10px;
-//       padding: 10px;
-//       margin-top: 10px;
-
-//       .selection-location.active {
-//         display: block;
-//       }
-//     }
-
-//     .recruit {
-//       display: inline-block;
-//       margin-left: 17px;
-//       div {
-//         display: inline-block;
-//       }
-//     }
-//     .input-recruit {
-//       display: inline-block;
-//     }
-//     .select-box.location {
-//       width: 152px;
-//       height: 25px;
-//       font-size: $font-12;
-//       border: 1px solid #ebebeb;
-//       background-color: #fff;
-//       border-radius: 3px;
-//       padding: 5px;
-//       text-align: left; 
-//       white-space: pre-wrap;
-//       word-wrap: break-word;
-//     }
-=======
     .input-text {
       width: 600px;
       height: 300px;
@@ -800,185 +340,11 @@
       white-space: pre-wrap;
       word-wrap: break-word;
     }
->>>>>>> b3490e73df51b95439cafa4127fe48550032671c
   
-//     .input-text.noresize {
-//       resize: none;
-//     }
+    .input-text.noresize {
+      resize: none;
+    }
   
-<<<<<<< HEAD
-//     .buttons {
-//       float: right;
-//       border: none;
-//       width: 100px;
-//       height: 30px;
-//       border-radius: 5px;
-//       margin-top: 10px;
-//       line-height: 2.3;
-//       cursor: pointer;
-//     }
-//     .buttons.submit {
-//       background-color: $yellow;
-//     }
-//     .buttons.cancel {
-//       background-color: #ebebeb;
-//       margin-right: 10px;
-//     }
-
-//   // modal
-//   // modal background 
-//   .modal {   
-//     display: none;
-//     position: fixed;  
-//     z-index: 40;  
-//     left: 0;
-//     top: 0;
-//     width: 100%;  
-//     height: 100%;  
-//     overflow: auto;  
-//     background-color: rgb(0,0,0);  
-//     background-color: rgba(0,0,0,0.4);  
-//   }
-//   .modal-content {
-//     background-color: #fefefe;
-//     border: 1px solid #ebebeb; 
-//     border-radius: 10px;
-//     margin: 15% auto;  
-//     padding: 20px;
-//     border: 1px solid #888;
-//     width: 490px;
-//     height:300px; 
-//     text-align: center; 
-    
-//     p {
-//       font-size: $font-20;
-//       font-weight: bold;
-//       line-height: 5;
-//     }
-//     .modal-button {
-//       display: block;
-//       margin: 0 auto;
-//       width: 250px;
-//       height: 40px;
-//       border-radius: 35px;
-//       border-style: none;
-//       font-size: $font-14;
-//       font-weight: bold;
-//       cursor: pointer;
-//     }
-//     .modal-button.yes{
-//       background-color: #F25C05;
-//       color: white;
-//       margin-top: 60px;
-//     }
-//     .modal-button.no{
-//       background-color: #ebebeb;
-//       color: $dark-gray; 
-//       margin-top: 15px;
-//     }
-
-//     .select-box.number {
-//       width: 50px;
-//       height: 25px;
-//       font-size: $font-12;
-//       border: 1px solid #ebebeb;
-//       background-color: #fff;
-//       color: #313131;
-//       border-radius: 3px;
-//       padding: 5px;
-//       box-sizing: border-box;
-//     }
-//   }
-// }
-
-// .input-text {
-//   width: 600px;
-//   height: 300px;
-//   border: 1px solid #ebebeb;
-//   border-radius: 10px;
-//   padding: 10px;
-//   margin-top: 10px;
-//   box-sizing: border-box;
-//   text-align: left;
-//   white-space: pre-wrap;
-//   word-wrap: break-word;
-// }
-
-// .input-text.noresize {
-//   resize: none;
-// }
-
-// .buttons {
-//   float: right;
-//   border: none;
-//   width: 100px;
-//   height: 30px;
-//   border-radius: 5px;
-//   margin-top: 10px;
-//   line-height: 2.3;
-//   cursor: pointer;
-// }
-// .buttons.submit {
-//   background-color: $yellow;
-// }
-// .buttons.cancel {
-//   background-color: #ebebeb;
-//   margin-right: 10px;
-// }
-
-// // modal
-// // modal background
-// .modal {
-//   display: none;
-//   position: fixed;
-//   z-index: 40;
-//   left: 0;
-//   top: 0;
-//   width: 100%;
-//   height: 100%;
-//   overflow: auto;
-//   background-color: rgb(0, 0, 0);
-//   background-color: rgba(0, 0, 0, 0.4);
-// }
-
-// .modal-content {
-//   background-color: #fefefe;
-//   border: 1px solid #ebebeb;
-//   border-radius: 10px;
-//   margin: 15% auto;
-//   padding: 20px;
-//   border: 1px solid #888;
-//   width: 490px;
-//   height: 300px;
-//   text-align: center;
-
-//   p {
-//     font-size: $font-20;
-//     font-weight: bold;
-//     line-height: 5;
-//   }
-//   .modal.on {
-//     display: block;
-//     margin: 0 auto;
-//     width: 250px;
-//     height: 40px;
-//     border-radius: 35px;
-//     border-style: none;
-//     font-size: $font-14;
-//     font-weight: bold;
-//     cursor: pointer;
-//   }
-//   .modal-button.yes {
-//     background-color: #f25c05;
-//     color: white;
-//     margin-top: 60px;
-//   }
-//   .modal-button.no {
-//     background-color: #ebebeb;
-//     color: $dark-gray;
-//     margin-top: 15px;
-//   }
-=======
     .buttons {
       float: right;
       border: none;
@@ -1052,4 +418,3 @@
   .modal.on {
     display: block;
   }
->>>>>>> b3490e73df51b95439cafa4127fe48550032671c
