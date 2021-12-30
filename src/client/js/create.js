@@ -1,4 +1,6 @@
+import "regenerator-runtime";
 import "../scss/styles.scss";
+import Auth from "../js/auth"; 
 import { studyType, stackType, months, locations} from "../js/studyDatas";
 
 // 셀렉트박스 요소
@@ -444,6 +446,15 @@ function sendStudyData() {
     }
   });
 }
-
 sendStudyData();
 
+// 유저 데이터 불러오기 
+const token = Auth.getToken(); 
+fetch ('http://localhost:5000/users', {
+  method: "GET", 
+  headers: {
+    "Authorization": `Bearer ${token}`, 
+  }
+}) 
+.then(res => res.json())
+.then(res => console.log(res)) 

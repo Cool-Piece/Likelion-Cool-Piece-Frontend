@@ -21,8 +21,8 @@ const sendToken = async () => {
   );
 
   const result = await tokenRequest.json();
-
-  if (result.message === "ok") {
+    console.log(result); 
+  if (result.access_token) {
     window.location.href =
       "http://127.0.0.1:5500/Likelion-Cool-Piece-Frontend/assets/html/index.html";
     document.cookie = `access_token=${result.access_token}; max-age=246060;`;
