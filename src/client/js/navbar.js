@@ -2,6 +2,15 @@ export default class NavBar {
   constructor({$target, isLoggedIn}) {
     this.$target = $target;
     this.isLogin = isLoggedIn;
+
+    document.querySelector('#logo').addEventListener('click', () => {
+      let url = window.location.href.split("/");
+      url = url.slice(0, url.length-1);
+      url.push('index.html');
+      url = url.join("/");
+      window.location.href = url;
+    })
+
     this.render();
   }
 
