@@ -1,4 +1,4 @@
-import "../scss/styles.scss";
+// import "../scss/styles.scss";
 // 셀렉트박스 요소
 const selectBoxType = document.querySelector(".select-box.type");
 const selectBoxStacks = document.querySelector(".select-box.stacks");
