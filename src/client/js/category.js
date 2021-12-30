@@ -21,7 +21,6 @@ export default class Category {
 
 		this.initAddEvents();
 		this.initPrevSelectedItems();
-		// TODO: 데이터 비동기 처리가 끝나면 render를 실행할 수 있도록 수정
 		this.render(this.categoryData.getData());
   }
 

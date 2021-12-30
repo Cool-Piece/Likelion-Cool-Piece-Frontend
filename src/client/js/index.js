@@ -7,7 +7,6 @@ import Card from "./card.js";
 import Search from './search.js';
 import NavBar from './navbar.js';
 import Auth from './auth.js';
-import { JWT_KEY } from './constant';
 
 class Main {
   $floatingButton = null;

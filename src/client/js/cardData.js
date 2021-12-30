@@ -1,3 +1,5 @@
+import { getFetcher } from './api';
+import { CARD_VIEW_TYPES } from './constant';
 
 export default class CardModel {
   data = [];
@@ -8,6 +10,14 @@ export default class CardModel {
 
   setState(nextState) {
     this.data = nextState;
+  }
+
+  getNavData(path = '') {
+    return getFetcher(path).then(res => {
+      if(path === CARD_VIEW_TYPES.STUDY) return res.studies;
+      if(path === CARD_VIEW_TYPES.INTERVIEW) return res.interviews;
+      if(path === CARD_VIEW_TYPES.PROJECT) return res.projects;
+    });
   }
 
   getCardData() {

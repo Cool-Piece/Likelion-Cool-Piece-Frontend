@@ -27,7 +27,7 @@ const sendToken = async () => {
   if (result.message === "ok") {
     window.location.href =
       "http://127.0.0.1:5500/Likelion-Cool-Piece-Frontend/assets/html/index.html";
-    document.cookie = `access_token=${result.access_token}; max-age=246060;`;
+    document.cookie = `access_token=${result.access_token}; max-age=${COOKIE_EXPIRES_TIME};`;
   }
 };
 
