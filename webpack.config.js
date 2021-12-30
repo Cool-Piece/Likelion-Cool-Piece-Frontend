@@ -1,9 +1,10 @@
+const dotenv = require("dotenv-webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const htmlPageNames = ["login", "index", "detail", "create"];
-const jsFileNames = ["login", "index", "detail", "create"];
+const htmlPageNames = ["login", "index", "detail", "create", "githubCallback"];
+const jsFileNames = ["login", "index", "detail", "create", "githubCallback"];
 
 const multipleHtmlPlugins = htmlPageNames.map((name) => {
   return new HtmlWebpackPlugin({
@@ -36,6 +37,10 @@ module.exports = (env) => ({
   plugins: [
     new MiniCssExtractPlugin({
       filename: "css/styles.css",
+    }),
+
+    new dotenv({
+      path: ".env",
     }),
 
     new HtmlWebpackPlugin({

@@ -431,19 +431,19 @@ modalCreatePage.addEventListener("click", function (event) {
 
 // 데이터 전송
 function sendStudyData() {
-  createButton.addEventListener("click", function(event){
+  createButton.addEventListener("click", function (event) {
     // validation
-    if(studyTitle.value == false && "제목을 입력해주세요") {
+    if (studyTitle.value == false && "제목을 입력해주세요") {
       alert("제목을 입력해주세요");
-    } else if(selectBoxType.textContent == "모집 유형을 선택해주세요"){
+    } else if (selectBoxType.textContent == "모집 유형을 선택해주세요") {
       alert("모집 유형을 선택해주세요");
-    } else if(tagList.length == 0) {
+    } else if (tagList.length == 0) {
       alert("기술을 선택해주세요");
-    } else if(selectBoxLocation.textContent == "지역 선택") {
+    } else if (selectBoxLocation.textContent == "지역 선택") {
       alert("지역을 선택해주세요");
-    } else if(participants.value == false) {
+    } else if (participants.value == false) {
       alert("모집 인원을 선택해주세요");
-    } else if(textDetails.value == false) {
+    } else if (textDetails.value == false) {
       alert("상세 내용을 입력해주세요");
     } else {
       console.log("완성");
@@ -456,7 +456,7 @@ function sendStudyData() {
       start_date: datesElement.textContent,
       end_date: datesElementEnd.textContent,
       participants: participants.value,
-      details: textDetails.value
+      details: textDetails.value,
     };
 
     console.log(createStudyDatas);
@@ -472,11 +472,10 @@ function sendStudyData() {
     })
       .then((res) => res.json())
       .then((res) => console.log(res))
-      .catch(error => {
+      .catch((error) => {
         console.log(error, "에러");
       });
-
   });
-};
+}
 
 sendStudyData();
