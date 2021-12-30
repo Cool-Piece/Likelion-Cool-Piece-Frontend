@@ -40,7 +40,7 @@ class Main {
   }
 }
 
-(async() => {
+const main = async() => {
   const isLoggedIn = await Auth.isLoggedIn();
 
   new NavBar({
@@ -48,4 +48,6 @@ class Main {
     isLoggedIn
   });
   new Main(document.querySelector(".main-wrap"));
-})()
+}
+
+main();
