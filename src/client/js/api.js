@@ -1,1 +1,1 @@
-const BASE_URL = "https://coolpiece-git.herokuapp.com/";
+export const BASE_URL = "https://coolpiece-git.herokuapp.com/";
