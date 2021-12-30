@@ -27,8 +27,8 @@ export default class NavBar {
         ${this.isLogin ? '로그아웃' : '<a href="./#">로그인</a>'}
         ${this.isLogin ? `
           <ul class="navBar-userRoutes">
-            <li><a href="./#">프로필</a></li>
-            <li><a href="./#">스터디 생성</a></li>
+            <li><a href="./mypage.html">프로필</a></li>
+            <li><a href="./create.html">스터디 생성</a></li>
             <li><a href="./#">스터디 현황</a></li>
             <li><a href="./#">내 작성 글</a></li>
             <li class="logoutBtn"><a>로그아웃</a></li>
