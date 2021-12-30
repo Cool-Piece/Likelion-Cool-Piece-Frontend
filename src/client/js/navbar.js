@@ -1,3 +1,5 @@
+import Auth from './auth.js';
+
 export default class NavBar {
   constructor({$target, isLoggedIn}) {
     this.$target = $target;
@@ -28,10 +30,16 @@ export default class NavBar {
             <li><a href="./#">스터디 생성</a></li>
             <li><a href="./#">스터디 현황</a></li>
             <li><a href="./#">내 작성 글</a></li>
-            <li><a href="./#">로그아웃</a></li>
+            <li class="logoutBtn"><a>로그아웃</a></li>
           </ul>
         ` : ''}
       </li>
-    `
+    `;
+
+    if (this.isLogin) {
+      this.$target.querySelector('.logoutBtn').addEventListener('click', () => {
+        Auth.logout();
+      })
+    }
   }
 }
