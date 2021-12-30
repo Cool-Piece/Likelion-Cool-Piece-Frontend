@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,7 +12,25 @@
 </head>
 
 <body>
-  <!-- TODO: nav bar 합치기 (메인페이지) -->
+  <header class="main-header">
+    <nav class="navbar">
+      <div id="logo">
+        <img src="../assets/image/coolpiece_logo.png" alt="로고">
+      </div>
+      <div class="navbar-list-wrap">
+        <button class="navbar-list-btn">
+          <img src="../assets/image/icon-post-list-on.png" alt="네비게이션 버튼">
+        </button>
+        <ul class="navbar-list">
+          <li><a href="/#">면접</a></li>
+          <li><a href="/#">스터디</a></li>
+          <li><a href="/#">프로젝트</a></li>
+          <li><a href="/#">채팅</a></li>
+          <li class="sign login"><a href="/#">로그인</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
   <section>
     <form class="create-form">
       <input type="text"
