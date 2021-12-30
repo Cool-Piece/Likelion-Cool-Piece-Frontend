@@ -1,5 +1,5 @@
 import "../scss/styles.scss";
-import { studyType, stackType, months} from "../js/studyDatas";
+import { studyType, stackType, months, locations} from "../js/studyDatas";
 // 셀렉트박스 요소
 const selectBoxType = document.querySelector(".select-box.type");
 const selectBoxStacks = document.querySelector(".select-box.stacks");
