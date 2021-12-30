@@ -8,29 +8,27 @@ const logoBox = document.querySelector(".title");
 logoBox.src = logos;
 
 const sendToken = async () => {
+  // TODO: 배포용 서버로 fetch 바꿔주기!
+  const tokenRequest = await fetch(
+    "http://localhost:5000/users/github/callback",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        code: new URL(window.location.href).searchParams.get("code"),
+      }),
+    }
+  );
 
-  const getJwt = await fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      code: new URL(window.location.href).searchParams.get("code"),
-    }),
-  });
+  const result = await tokenRequest.json();
 
-  console.log("result => ", getJwt);
-
-  const test = await getJwt.json();
-  console.log(test);
-
-  // const jwt = await result.json().;
-  // console.log(jwt, "jwt");
-
-  // if (result) {
-  //   window.location.href = "http://127.0.0.1:5500/assets/html/index.html";
-  //   document.cookie = `jwt=${result.token}; max-age=${COOKIE_EXPIRES_TIME}; Path=/;`;
-  // }
+  if (result.message === "ok") {
+    window.location.href =
+      "http://127.0.0.1:5500/Likelion-Cool-Piece-Frontend/assets/html/index.html";
+    document.cookie = `access_token=${result.access_token}; max-age=246060;`;
+  }
 };
 
 sendToken();
