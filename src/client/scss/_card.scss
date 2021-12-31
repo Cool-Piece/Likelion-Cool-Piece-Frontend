@@ -98,7 +98,6 @@
 }
 
 @media (max-width: 480px) {
-  
   .study-wrap {
     .studyList {
       .studyItem {
@@ -115,7 +114,7 @@
             margin-left: 5px;
           }
           & > * {
-            font-size: 10px
+            font-size: 10px;
           }
         }
         .studyItem-stacks {
