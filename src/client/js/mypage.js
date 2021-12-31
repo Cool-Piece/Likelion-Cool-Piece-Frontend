@@ -13,13 +13,12 @@ const controlLocation = document.querySelector(".button-location");
 const selectLocation = document.querySelector(".selections-location");
 const currentLocation = document.querySelector(".user-location dd"); 
 
-
 // 유저 기술 태그
 const selectionButton = document.querySelector(".mypage-form .profile-data-container .fav-select-box .select-box");  
 const selectionStacks = document.querySelector(".mypage-form .profile-data-container .fav-select-box .selection-stack");  
 const favTag = document.querySelector(".mypage-form .profile-data-container .tags.stack-type"); 
 
-
+// 닉네임 변경 
 function handleNickname() {
   editButton.addEventListener("click", (event) => {
     inputNickname.classList.toggle("on");   
@@ -28,7 +27,6 @@ function handleNickname() {
     currentNickname.innerHTML = nickname;
   });  
 };
-handleNickname();
 
 // 지역 추가
 function addLocation() {
@@ -41,7 +39,6 @@ function addLocation() {
     selectLocation.appendChild(li).appendChild(button);
   })
 }
-addLocation(); 
 
 function handleLocation(){
   editButton.addEventListener("click", (event) => {
@@ -51,7 +48,6 @@ function handleLocation(){
     selectLocation.classList.add("on"); 
   });
 } 
-handleLocation(); 
 
 function updateLocation() {
   selectLocation.addEventListener("click", (event) => {
@@ -61,7 +57,6 @@ function updateLocation() {
     selectLocation.classList.toggle("on"); 
   })
 }
-updateLocation(); 
 
 
 // 태그 관련 
@@ -76,9 +71,9 @@ function addStackType() {
     selectionStacks.appendChild(li).appendChild(button);
   });
 }
-addStackType();
 
 
+let favStackList = []; 
 function handleTagSelect(){
   editButton.addEventListener("click", (event) => { 
     selectionButton.classList.toggle("on"); 
@@ -87,7 +82,6 @@ function handleTagSelect(){
     selectionStacks.classList.toggle("on"); 
   })
 
-let favStackList = []; 
 // 중복 확인
 selectionStacks.addEventListener("click", (event) => {
   let flag = true; 
@@ -119,5 +113,19 @@ selectionStacks.addEventListener("click", (event) => {
   }
 });
 }
+
+handleNickname(); 
+addLocation(); 
+handleLocation(); 
+updateLocation(); 
+addStackType(); 
 handleTagSelect(); 
-// 태그 관련 // 
+
+
+  //  유저 마이페이지 데이터 
+  let userMypageData = {
+    nick_name: currentNickname.innerHTML,  
+    fav_stack: favStackList, 
+    location: currentLocation.textContent, 
+  }; 
+  console.log(userMypageData); 
