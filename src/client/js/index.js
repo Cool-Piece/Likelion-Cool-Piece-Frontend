@@ -47,6 +47,8 @@ const main = async() => {
     isLoggedIn
   });
   new Main(document.querySelector(".main-wrap"));
-}
 
 main();
+
+})()
+ 
