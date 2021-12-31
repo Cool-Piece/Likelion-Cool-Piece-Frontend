@@ -13,15 +13,32 @@ export default class CardModel {
   }
 
   getNavData(path = '') {
-    return getFetcher(path).then(res => {
-      if(path === CARD_VIEW_TYPES.STUDY) return res.studies;
-      if(path === CARD_VIEW_TYPES.INTERVIEW) return res.interviews;
-      if(path === CARD_VIEW_TYPES.PROJECT) return res.projects;
-    });
+    return getFetcher(path)
+    .then(res => {
+      if (path === CARD_VIEW_TYPES.STUDY) { 
+        return res.studies;
+      }
+      if (path === CARD_VIEW_TYPES.INTERVIEW) { 
+        return res.interviews;
+      }
+      if (path === CARD_VIEW_TYPES.PROJECT) { 
+        return res.projects;
+      }
+      return new Error('지원하지 않는 타입의 데이터입니다.');
+    })
+    .catch(err => {
+      console.error(err);
+    })
   }
 
-  getCardData() {
-    return this.data;
+  getAllData() {
+    return getFetcher('')
+    .then(res => {
+      return res.studies;
+    })
+    .catch(err => {
+      console.error(err);
+    }) 
   }
 }
 

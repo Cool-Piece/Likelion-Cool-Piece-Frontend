@@ -20,10 +20,12 @@ export default class Card {
   constructor({$target, initFilterData}) {
     this.$target = $target;
     this.cardModel = new CardModel();
-    this.data = this.cardModel.getCardData();
-    this.filterData = initFilterData;
-    this.initAddEvents();
-    this.initState();
+    this.cardModel.getAllData().then(res => {
+      this.data = res;
+      this.filterData = initFilterData;
+      this.initAddEvents();
+      this.initState();
+    });
   }
 
   initialize() {
