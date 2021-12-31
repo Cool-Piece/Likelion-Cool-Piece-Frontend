@@ -1,7 +1,7 @@
 import "regenerator-runtime";
 import "../scss/styles.scss";
-import Auth from "../js/auth"; 
-import { studyType, stackType, months, locations} from "../js/studyDatas";
+import Auth from "../js/auth";
+import { studyType, stackType, months, locations } from "../js/studyDatas";
 
 // 셀렉트박스 요소
 const selectBoxType = document.querySelector(".select-box.type");
@@ -335,7 +335,7 @@ function checkEventPathForClass(path, selector) {
     if (path[i].classList && path[i].classList.contains(selector)) {
       return false;
     }
-  } 
+  }
 }
 
 // 셀렉트 박스에 일월년도 표시
@@ -394,16 +394,36 @@ modalCreatePage.addEventListener("click", function (event) {
   }
 });
 
+let userId;
+let username;
+
 // 데이터 전송
-function sendStudyData() {
-  createButton.addEventListener("click", function (event) {
+
+async function getUserData() {
+  const token = Auth.getToken();
+  const request = await fetch("http://localhost:5000/users", {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer${token}`,
+    },
+  });
+  const result = await request.json();
+  console.log(result, "api result");
+  userId = result.userId;
+  username = result.username;
+}
+
+getUserData();
+
+async function sendStudyData() {
+  createButton.addEventListener("click", async function (event) {
     // validation
     if (studyTitle.value == false && "제목을 입력해주세요") {
       alert("제목을 입력해주세요");
-      return; 
+      return;
     } else if (selectBoxType.textContent == "모집 유형을 선택해주세요") {
       alert("모집 유형을 선택해주세요");
-      return; 
+      return;
     } else if (tagList.length == 0) {
       alert("기술을 선택해주세요");
       return;
@@ -416,8 +436,7 @@ function sendStudyData() {
     } else if (textDetails.value == false) {
       alert("상세 내용을 입력해주세요");
       return;
-    } else { 
-
+    } else {
       const createStudyDatas = {
         title: studyTitle.value,
         study_type: selectBoxType.textContent,
@@ -425,37 +444,23 @@ function sendStudyData() {
         start_date: selectedDateElement.textContent,
         due_date: selectedDateElementEnd.textContent,
         location: selectBoxLocation.textContent,
-        participants: participants.value,
-        details: textDetails.value,
-        user_id: "61cd60032e0d46d6df66ec1b",
+        total: participants.value,
+        description: textDetails.value,
+        userId,
       };
       console.log(createStudyDatas);
 
-      const baseURL = `http://localhost:5000/create`;
-      fetch(baseURL, {
+      const baseURL = "http://localhost:5000/create";
+      const request = await fetch(baseURL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(createStudyDatas),
-      })
-      .then((res) => res.json())
-      .then((res) => console.log(res))
-      .catch((error) => {
-        console.log(error, "에러");
       });
+      const result = await request.json();
+      console.log(result, "request 결과");
     }
   });
 }
 sendStudyData();
-
-// 유저 데이터 불러오기 
-const token = Auth.getToken(); 
-fetch ('http://localhost:5000/users', {
-  method: "GET", 
-  headers: {
-    "Authorization": `Bearer ${token}`, 
-  }
-}) 
-.then(res => res.json())
-.then(res => console.log(res)) 

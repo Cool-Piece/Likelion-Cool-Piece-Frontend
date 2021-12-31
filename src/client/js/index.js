@@ -4,9 +4,9 @@ import Category from "./category.js";
 import FloatingButton from "./floatingButton.js";
 import InitButton from "./initButton.js";
 import Card from "./card.js";
-import Search from './search.js';
-import NavBar from './navbar.js';
-import Auth from './auth.js';
+import Search from "./search.js";
+import NavBar from "./navbar.js";
+import Auth from "./auth.js";
 
 class Main {
   $floatingButton = null;
@@ -39,16 +39,13 @@ class Main {
   }
 }
 
-const main = async() => {
+const main = async () => {
   const isLoggedIn = await Auth.isLoggedIn();
 
   new NavBar({
     $target: document.querySelector(".navbar-list"),
-    isLoggedIn
+    isLoggedIn,
   });
   new Main(document.querySelector(".main-wrap"));
-
+};
 main();
-
-})()
- 
