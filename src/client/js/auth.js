@@ -43,6 +43,12 @@ export default class Auth {
   }
 
   static logout() {
-    document.cookie = `${JWT_KEY}=${this.getToken()}; max-age=0`;
+    // TODO: 서버쪽으로부터 쿠키삭제 해결못하면 프론트에서 직접 삭제해주기
+    // document.cookie = `${JWT_KEY}=${this.getToken()}; max-age=0`;
+    fetch('http://localhost:5000/users/logout')
+    .then(res => {
+
+    })
+    .catch(error => console.error(error))
   }
 }

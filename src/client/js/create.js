@@ -427,10 +427,11 @@ function sendStudyData() {
         location: selectBoxLocation.textContent,
         participants: participants.value,
         details: textDetails.value,
+        user_id: "61cd60032e0d46d6df66ec1b",
       };
       console.log(createStudyDatas);
 
-      const baseURL = "https://coolpiece-git.herokuapp.com/create";
+      const baseURL = `http://localhost:5000/create`;
       fetch(baseURL, {
         method: "POST",
         headers: {

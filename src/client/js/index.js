@@ -7,7 +7,6 @@ import Card from "./card.js";
 import Search from './search.js';
 import NavBar from './navbar.js';
 import Auth from './auth.js';
-import { JWT_KEY } from './constant';
 
 class Main {
   $floatingButton = null;
@@ -40,7 +39,7 @@ class Main {
   }
 }
 
-(async() => {
+const main = async() => {
   const isLoggedIn = await Auth.isLoggedIn();
 
   new NavBar({
@@ -48,7 +47,8 @@ class Main {
     isLoggedIn
   });
   new Main(document.querySelector(".main-wrap"));
-  const token = Auth.getToken(); 
-  console.log(token); 
+
+main();
+
 })()
  
