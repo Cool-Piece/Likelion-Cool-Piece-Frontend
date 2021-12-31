@@ -48,4 +48,7 @@ class Main {
     isLoggedIn
   });
   new Main(document.querySelector(".main-wrap"));
+  const token = Auth.getToken(); 
+  console.log(token); 
 })()
+ 
