@@ -398,7 +398,6 @@ let userId;
 let username;
 
 // 데이터 전송
-
 async function getUserData() {
   const token = Auth.getToken();
   const request = await fetch("http://localhost:5000/users", {
