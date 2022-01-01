@@ -394,9 +394,26 @@ modalCreatePage.addEventListener("click", function (event) {
   }
 });
 
+ 
+let userId; 
+
 // 데이터 전송
-function sendStudyData() {
-  createButton.addEventListener("click", function (event) {
+async function sendStudyData() {
+    async function getUserData() {
+      const token = Auth.getToken(); 
+      const request = await fetch ('http://localhost:5000/users', {
+          method: "GET", 
+          headers: {
+            "Authorization": `Bearer${token}`, 
+          }
+        });  
+        const result = await request.json(); 
+        userId = result.userId; 
+      }
+      getUserData(); 
+      console.log(userId, "찍힘");
+
+    createButton.addEventListener("click", async function (event) {
     // validation
     if (studyTitle.value == false && "제목을 입력해주세요") {
       alert("제목을 입력해주세요");
@@ -427,34 +444,24 @@ function sendStudyData() {
         location: selectBoxLocation.textContent,
         participants: participants.value,
         details: textDetails.value,
+        userId: userId,
       };
       console.log(createStudyDatas);
 
-      const baseURL = "https://coolpiece-git.herokuapp.com/create";
-      fetch(baseURL, {
+      const baseURL = "http://localhost:5000/create";
+      const request = await fetch(baseURL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(createStudyDatas),
-      })
-      .then((res) => res.json())
-      .then((res) => console.log(res))
-      .catch((error) => {
-        console.log(error, "에러");
-      });
+      }); 
+      const result = await request.json(); 
+      console.log(result, "여기");
     }
   });
 }
-sendStudyData();
+sendStudyData(); 
+console.log(userId, "찍힘");
 
-// 유저 데이터 불러오기 
-const token = Auth.getToken(); 
-fetch ('http://localhost:5000/users', {
-  method: "GET", 
-  headers: {
-    "Authorization": `Bearer ${token}`, 
-  }
-}) 
-.then(res => res.json())
-.then(res => console.log(res)) 
+ 
