@@ -406,10 +406,9 @@ async function getUserData() {
   userId = result.userId;
   username = result.username;
 }
-
 getUserData();
 
-async function sendEditStudyData() {
+async function sendEditedData() {
   createButton.addEventListener("click", async function (event) {
     // validation
     if (studyTitle.value == false && "제목을 입력해주세요") {
@@ -431,7 +430,7 @@ async function sendEditStudyData() {
       alert("상세 내용을 입력해주세요");
       return;
     } else {
-      const editStudyDatas = {
+      const editedDatas = {
         title: studyTitle.value,
         study_type: selectBoxType.textContent,
         skills: tagList,
@@ -442,7 +441,7 @@ async function sendEditStudyData() {
         description: textDetails.value,
         userId,
       };
-      console.log(editStudyDatas);
+      console.log(editedDatas);
 
       const baseURL = "http://localhost:5000/edit";
       const request = await fetch(baseURL, {
@@ -450,11 +449,13 @@ async function sendEditStudyData() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(editStudyDatas),
+        body: JSON.stringify(editedDatas),
       });
       const result = await request.json();
       console.log(result, "request 결과");
     }
+    modalCreatePage.classList.remove("on");
+    window.location.href = "http://127.0.0.1:5500/Likelion-Cool-Piece-Frontend/assets/html/index.html";
   });
 }
-sendEditStudyData();
+sendEditedData();

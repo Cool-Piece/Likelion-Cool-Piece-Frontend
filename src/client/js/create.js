@@ -397,7 +397,7 @@ modalCreatePage.addEventListener("click", function (event) {
 let userId;
 let username;
 
-// 데이터 전송
+// 유저 데이터 요청
 async function getUserData() {
   const token = Auth.getToken();
   const request = await fetch("http://localhost:5000/users", {
@@ -409,11 +409,11 @@ async function getUserData() {
   const result = await request.json();
   console.log(result, "api result");
   userId = result.userId;
-  username = result.username;
+  username = res.username;
 }
-
 getUserData();
 
+// 데이터 전송
 async function sendStudyData() {
   createButton.addEventListener("click", async function (event) {
     // validation
@@ -436,6 +436,7 @@ async function sendStudyData() {
       alert("상세 내용을 입력해주세요");
       return;
     } else {
+
       const createStudyDatas = {
         title: studyTitle.value,
         study_type: selectBoxType.textContent,
@@ -458,8 +459,15 @@ async function sendStudyData() {
         body: JSON.stringify(createStudyDatas),
       });
       const result = await request.json();
-      console.log(result, "request 결과");
+      console.log(result.message); 
+
+      if(result.message === "Internal Server Error"){
+        alert("서버를 기다리는 중입니다. 잠시후 다시 시도해주세요!");
+      } if(result.result === "ok") {
+        window.location.href = "http://127.0.0.1:5500/Likelion-Cool-Piece-Frontend/assets/html/index.html"; 
+      }
     }
+    modalCreatePage.classList.remove("on");
   });
 }
 sendStudyData();
