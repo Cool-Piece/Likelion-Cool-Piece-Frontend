@@ -19,27 +19,20 @@ export default class Auth {
     return jwt;
   }
 
-  static async isLoggedIn() {
-    // TODO: 서버 연결하기
-    // const jwt = await getToken();
+  static async getUserData() {
+    const jwt = await this.getToken();
 
-    // const data = await fetch(`${BASE_URL}/user`, {
-    //   method: 'GET',
-    //   headers: {
-    //     "Authorization":`Bearer ${jwt}`
-    //   }
-    // }).then(res => res.json())
+    const userData = await fetch(`http://localhost:5000/users`, {
+      method: 'GET',
+      headers: {
+        "Authorization":`Bearer${jwt}`
+      }
+    }).then(res => res.json())
 
-    // return {
-    //   userData: data,
-    //   isLoggedIn: !!data
-    // }
-
-    return new Promise((resolve, _) => {
-      setTimeout(() => {
-        resolve(true);
-      }, 1000);
-    })
+    return {
+      ...userData,
+      isLoggedIn: !!userData
+    }
   }
 
   static logout() {
