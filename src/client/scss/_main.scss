@@ -140,10 +140,10 @@
 
 @media (max-width: 480px) {
   .main-wrap {
-    margin-top: $header-height-mobile;
+    margin-top: $header-mobile;
     .main-section {
       width: 90%;
-      min-height: calc(100vh - #{$header-height-mobile} - #{$footer-height-mobile});
+      min-height: calc(100vh - #{$header-mobile} - #{$footer-height-mobile});
       margin: 0 auto;
       padding: 20px 0;
       display: flex;
