@@ -98,7 +98,7 @@ export default class Card {
     if (filterData) {
       this.filterData = filterData;
     }
-
+    
     if (this.viewType === CARD_VIEW_TYPES.DEFAULT) {
       this.setState(useFilterData(this.filterData, this.data));
     } else if (this.viewType === CARD_VIEW_TYPES.SEARCH) {
@@ -132,7 +132,7 @@ export default class Card {
             <img src="" alt="클릭시 해당 스터디를 관심목록에서 제거합니다."> -->
           </div>
           <div class="studyItem-term">${card.start_date} ~ ${card.due_date}</div>
-          <div class="studyItem-participants">${card.participant.length}명 / ${card.total}명</div>
+          <div class="studyItem-participants">${card.participants.length}명 / ${card.total}명</div>
           <ul class="studyItem-stacks">
             ${card.skills.slice(0, viewSkillCnt).map(skill => {
               return `<li>${skill}</li>`
@@ -143,7 +143,7 @@ export default class Card {
           </ul>
           <dl class="studyItem-creator">
             <dt>${card.creator}</dt>
-            <dd>${card.createdAt}</dd>
+            <dd>${new Date(card.createdAt).toLocaleDateString()}</dd>
           </dl>
         </li>
       `

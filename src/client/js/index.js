@@ -40,11 +40,10 @@ class Main {
 }
 
 const main = async () => {
-  const isLoggedIn = await Auth.isLoggedIn();
-
+  const userData = await Auth.getUserData();
   new NavBar({
     $target: document.querySelector(".navbar-list"),
-    isLoggedIn,
+    userData,
   });
   new Main(document.querySelector(".main-wrap"));
 };
