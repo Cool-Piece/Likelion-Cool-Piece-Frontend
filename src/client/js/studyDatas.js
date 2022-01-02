@@ -10,7 +10,13 @@ export const stackType = [
   "JavaScript",
   "Node.JS",
   "React",
-  "Python"
+  "Python",
+  "Typecript",
+  "Java",
+  "Spring",
+  "Kotlin", 
+  "C++",
+  "Flutter"
 ];
 
 export const months = [

@@ -8,8 +8,10 @@
 
 .study-detail-container {
   //margin-top: 250px; //nav bar height
-  margin: 300px auto;
-  width: 700px;
+  margin: 0 auto;
+  width: 50%;
+  margin-top: 150px;
+  margin-bottom: 80px;
 
   header {
     height: 5rem;
@@ -26,7 +28,8 @@
       .heart-icon {
         margin-right: 10px;
         width: 22px;
-        height: 22px;
+        height: auto;
+        vertical-align: top;
       }
 
       .bookmark-icon {
@@ -66,8 +69,16 @@
       border: none;
     }
   }
-  .study-info {
-    margin: 10px 10px 30px 10px;
+  .study-info { 
+    margin: 20px 10px 30px 10px;
+    div {
+      margin: 10px 0;
+      dt {
+        width: 60px;
+        font-size: 14px;
+        line-height: 1.1;
+      }
+    }
     & div:first-child {
       display: flex;
       margin-top: 10px;
@@ -91,22 +102,15 @@
         margin: 5px 45px 0 0;
       }
     }
-    & div:last-child {
-      display: flex;
-      dt {
-        margin: 5px 20px 0 0;
-        color: #888888;
-      }
-      dd {
-        margin-top: 5px;
-      }
-    }
   }
-
+  hr {
+    border: 0.5px solid #ebebeb;
+  }
   .study-content {
     margin-top: 50px;
     p {
       margin-top: 20px;
+      line-height: 1.5;
     }
   }
 
@@ -122,6 +126,75 @@
       margin: 10px 0 10px 0;
     }
   }
+
+  // 댓글 리스트 
+  .comment-list-container {
+    margin-top: 30px;
+    width: 100%;
+    height: auto; 
+    .comments { 
+      width: 100%;
+      display: flex; 
+      justify-content: space-between;
+      align-items: center;
+    }
+    .user-info {
+      display: flex;
+      align-items: center;
+        .image-wrap {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 60px;
+          height: 60px;
+          border-radius: 50px;
+          overflow: hidden;
+          img {
+            width: 100px;
+            height: auto;
+          }     
+        }
+        & p:nth-child(2) {
+          font-size: 16px;
+          font-weight: 700;  
+          margin: 0 10px;
+        }
+        & p:last-child {
+          margin-top: 2px;
+          font-size: 14px;  
+          color: #888;  
+        }
+    }
+    .comment-control  { 
+      a { 
+        font-size: 14px;
+      }
+      & a:first-child { 
+        margin-right: 10px;
+      }
+    }
+    .user-comment {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 0 0 0 70px;
+      p {
+        font-size: 14px;
+        color: #888;
+        line-height: 1.5;
+      }
+      .edit-comment {
+        width: 100%;
+        height: 80px;
+        border-radius: 5px; 
+        margin-top: 10px;
+        padding: 5px;
+        box-sizing: border-box;
+        resize: none;
+      }
+    }
+  }
+  // 댓글 수정
+
 
   .enrollment-wrapper {
     display: flex;
