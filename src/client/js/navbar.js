@@ -2,9 +2,9 @@ import Auth from './auth.js';
 import { CARD_VIEW_TYPE, CARD_VIEW_TYPES } from './constant.js';
 
 export default class NavBar {
-  constructor({$target, isLoggedIn}) {
+  constructor({$target, userData}) {
     this.$target = $target;
-    this.isLogin = isLoggedIn;
+    this.user = userData;
 
     document.querySelector('#logo').addEventListener('click', () => {
       let url = window.location.href.split("/");
@@ -23,9 +23,13 @@ export default class NavBar {
       <li data-link="study"><a>스터디</a></li>
       <li data-link="project"><a>프로젝트</a></li>
       <li><a>채팅</a></li>
-      <li class="sign ${this.isLogin ? 'logOn' : 'logOff'}">
-        ${this.isLogin ? '로그아웃' : '<a href="./#">로그인</a>'}
-        ${this.isLogin ? `
+      <li class="sign ${this.user ? 'logOn' : 'logOff'}">
+        ${this.user ? `
+          <div class="avatar_wrap">
+            <img src=${this.user.avatar_url} alt="${this.user.username}의 프로필 사진입니다" />
+          </div>
+        ` : '<a href="./login.html">로그인</a>'}
+        ${this.user ? `
           <ul class="navBar-userRoutes">
             <li><a href="./mypage.html">프로필</a></li>
             <li><a href="./create.html">스터디 생성</a></li>
@@ -37,7 +41,7 @@ export default class NavBar {
       </li>
     `;
 
-    if (this.isLogin) {
+    if (this.user) {
       this.$target.querySelector('.logoutBtn').addEventListener('click', () => {
         Auth.logout();
       })
