@@ -7,10 +7,10 @@
 }
 
 .study-detail-container {
-  //margin-top: 250px; //nav bar height
   margin: 0 auto;
   width: 50%;
-  margin-top: 150px;
+  min-height: calc(100vh - $header-search-off - $footer-height-desktop);
+  margin-top: calc($header-search-off + 30px);
   margin-bottom: 80px;
 
   header {
@@ -108,10 +108,7 @@
   }
   .study-content {
     margin-top: 50px;
-    p {
-      margin-top: 20px;
-      line-height: 1.5;
-    }
+    line-height: 1.5;
   }
 
   .comment-container {
@@ -131,8 +128,11 @@
   .comment-list-container {
     margin-top: 30px;
     width: 100%;
-    height: auto; 
-    .comments { 
+    height: auto;
+    & > .comment-lists > .comment-item {
+      margin-bottom: 20px;
+    }
+    .comment-header { 
       width: 100%;
       display: flex; 
       justify-content: space-between;
@@ -206,6 +206,7 @@
     border-radius: 5px;
     width: 50px;
     height: 30px;
+    cursor: pointer;
   }
 }
 
@@ -261,4 +262,19 @@
 }
 .modal.on {
   display: block;
+}
+
+@media (max-width: 480px) {
+  .study-detail-container {
+    width: 90%;
+    min-height: calc(100vh - $header-mobile-search-off - $footer-height-mobile);
+    margin-top: calc($header-mobile-search-off + 30px);
+    margin-bottom: 50px;
+
+    & > header {
+      & > h2 {
+        font-size: 1.5rem;
+      }
+    }
+  }
 }

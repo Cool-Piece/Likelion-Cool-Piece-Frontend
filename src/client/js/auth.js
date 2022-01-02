@@ -1,3 +1,4 @@
+import "regenerator-runtime";
 import { BASE_URL } from './api.js';
 import {COOKIE_EXPIRES_TIME, JWT_KEY} from './constant.js';
 
@@ -20,7 +21,7 @@ export default class Auth {
   }
 
   static async getUserData() {
-    const jwt = await this.getToken();
+    const jwt = this.getToken();
 
     const userData = await fetch(`http://localhost:5000/users`, {
       method: 'GET',
