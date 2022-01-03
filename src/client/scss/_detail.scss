@@ -8,7 +8,7 @@
 
 .study-detail-container {
   margin: 0 auto;
-  width: 50%;
+  // width: 50%;
   min-height: calc(100vh - $header-search-off - $footer-height-desktop);
   margin-top: calc($header-search-off + 30px);
   margin-bottom: 80px;
@@ -69,37 +69,37 @@
       border: none;
     }
   }
+
   .study-info { 
-    margin: 20px 10px 30px 10px;
-    div {
-      margin: 10px 0;
-      dt {
-        width: 60px;
-        font-size: 14px;
-        line-height: 1.1;
-      }
-    }
-    & div:first-child {
-      display: flex;
-      margin-top: 10px;
-      dt {
-        margin-right: 10px;
-        margin: 5px 10px 0 0;
-        color: #888888;
-      }
-      dd {
-        margin-top: 5px;
-      }
-    }
-    & div:nth-child(2) {
+    
+    & > div {
       display: flex;
       align-items: center;
+      margin: 20px 0;
+    }
+
+    & > .study-info.created {
       dt {
-        margin: 5px 10px 0 0;
         color: #888888;
+        margin-right: 10px;
       }
       dd {
-        margin: 5px 45px 0 0;
+        margin: 0;
+      }
+    }
+
+    & > .study-info.infos {
+      div {
+        width: max-content;
+        margin: 0 30px 0 0;
+        dt {
+          margin-right: 10px;
+          display: inline-block;
+          color: #888888;
+        }
+        dd {
+          display: inline-block;
+        }
       }
     }
   }
@@ -271,10 +271,60 @@
     margin-top: calc($header-mobile-search-off + 30px);
     margin-bottom: 50px;
 
-    & > header {
-      & > h2 {
-        font-size: 1.5rem;
+    & > .study-detail-info {
+      
+      & > header {
+        & > h2 {
+          font-size: 1.5rem;
+        }
+      }
+
+      & > .study-info {
+        & > div {
+          margin: 15px 0;
+        }
+        & > .study-info.infos {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          & > div {
+            margin: 10px 0;
+          }
+        }
       }
     }
+
+
+
+  }
+}
+
+@media (max-width: 1024px) {
+  .study-detail-container {
+    width: 90%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .study-detail-container {
+    width: 80%;
+  }
+}
+
+@media (min-width: 1256px) {
+  .study-detail-container {
+    width: 70%;
+  }
+}
+
+@media (min-width: 1536px) {
+  .study-detail-container {
+    width: 60%;
+  }
+}
+
+@media (min-width: 1920px) {
+  .study-detail-container {
+    width: 50%;
   }
 }

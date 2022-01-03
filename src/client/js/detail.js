@@ -64,23 +64,29 @@ class Detail {
       </div>
 
       <dl class="study-info">
-        <div>
+        <div class="study-info created">
           <dt>게시일</dt>
           <dd class="study-info createdAt">${this.data.createdAt}</dd>
         </div>
 
-        <div>
-          <dt>작성자</dt>
-          <dd class="study-info creator">${this.data.creator}</dd>
-          <dt>모집 인원</dt>
-          <dd class="study-info participants">${
-            this.data.participants.length
-          } / ${this.data.total}</dd>
+        <div class="study-info infos">
+          <div>
+            <dt>작성자</dt>
+            <dd class="study-info creator">${this.data.creator}</dd>
+          </div>
+          <div>
+            <dt>모집 인원</dt>
+            <dd class="study-info participants">${
+              this.data.participants.length
+            } / ${this.data.total}</dd>
+          </div>
+          <div>
           <dt>진행기간</dt>
           <dd class="study-info term">
             <span>${this.data.start_date}</span> ~
             <span>${this.data.due_date}</span>
           </dd>
+          </div>
         </div>
       </dl>
       <hr>
