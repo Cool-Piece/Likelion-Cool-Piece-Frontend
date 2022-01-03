@@ -31,3 +31,12 @@ export function useFilterData(filterData, datas) {
     return result;
   }
 }
+
+export function formatDate(date){
+  let temp;
+  const result = date.split('/').map(d => d.trim())
+  temp = result[0];
+  result[0] = result[1];
+  result[1] = temp;
+  return result.reverse().join('.');
+}

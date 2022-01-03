@@ -1,6 +1,7 @@
-import { BASE_URL } from "./api.js";
 import "regenerator-runtime";
-import { COOKIE_EXPIRES_TIME, JWT_KEY } from "./constant.js";
+import { BASE_URL } from './api.js';
+import {COOKIE_EXPIRES_TIME, JWT_KEY} from './constant.js';
+
 
 export default class Auth {
   static setToken(jwt, maxAge = COOKIE_EXPIRES_TIME) {
@@ -21,7 +22,7 @@ export default class Auth {
   }
 
   static async getUserData() {
-    const jwt = await this.getToken();
+    const jwt = this.getToken();
 
     const userData = await fetch(`http://localhost:5000/users`, {
       method: "GET",
