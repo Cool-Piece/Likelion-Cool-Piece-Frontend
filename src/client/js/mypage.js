@@ -1,35 +1,37 @@
 import "../scss/styles.scss";
+import "regenerator-runtime";
+import Auth from "./auth";
 import { stackType, locations } from "./studyDatas";
+import { BASE_URL } from "./api";
 
-const editButton = document.querySelector(".mypage-form .button-edit");  
-
-// 유저 닉네임 
-const controlNickname = document.querySelector(".input-name");  
-const currentNickname = document.querySelector(".input-name .nickname-label"); 
-const inputNickname = document.querySelector(".profile-data-container .nickname");   
-
-// 유저 지역 
-const controlLocation = document.querySelector(".button-location"); 
+const editButton = document.querySelector(".mypage-form .button-edit");
+const currentNickname = document.querySelector(".input-name .nickname-label");
+const inputNickname = document.querySelector(
+  ".profile-data-container .nickname"
+);
+const controlLocation = document.querySelector(".button-location");
 const selectLocation = document.querySelector(".selections-location");
-const currentLocation = document.querySelector(".user-location dd"); 
+const currentLocation = document.querySelector(".user-location dd");
+const selectionButton = document.querySelector(
+  ".mypage-form .profile-data-container .fav-select-box .select-box"
+);
+const selectionStacks = document.querySelector(
+  ".mypage-form .profile-data-container .fav-select-box .selection-stack"
+);
+const favTag = document.querySelector(
+  ".mypage-form .profile-data-container .tags.stack-type"
+);
 
-// 유저 기술 태그
-const selectionButton = document.querySelector(".mypage-form .profile-data-container .fav-select-box .select-box");  
-const selectionStacks = document.querySelector(".mypage-form .profile-data-container .fav-select-box .selection-stack");  
-const favTag = document.querySelector(".mypage-form .profile-data-container .tags.stack-type"); 
-
-// 닉네임 변경 
-function handleNickname() {
+function changeEditButton() {
   editButton.addEventListener("click", (event) => {
-    inputNickname.classList.toggle("on");   
-    editButton.textContent = "변경하기"; 
-    let nickname = inputNickname.value; 
+    inputNickname.classList.toggle("on");
+    editButton.textContent = "변경하기";
+    const nickname = inputNickname.value;
     currentNickname.innerHTML = nickname;
-  });  
-};
+  });
+}
 
-// 지역 추가
-function addLocation() {
+function addLocationOptions() {
   locations.forEach((item) => {
     const li = document.createElement("li");
     const button = document.createElement("button");
@@ -37,30 +39,27 @@ function addLocation() {
     button.textContent = item;
     button.classList.add("location");
     selectLocation.appendChild(li).appendChild(button);
-  })
+  });
 }
 
-function handleLocation(){
+function showLocationOptions() {
   editButton.addEventListener("click", (event) => {
-    controlLocation.classList.toggle("on");  
+    controlLocation.classList.toggle("on");
   });
   controlLocation.addEventListener("click", (event) => {
-    selectLocation.classList.add("on"); 
+    selectLocation.classList.add("on");
   });
-} 
-
-function updateLocation() {
-  selectLocation.addEventListener("click", (event) => {
-    if (event.target.nodeName === "BUTTON") {
-      currentLocation.textContent = `${event.target.textContent}`
-    }
-    selectLocation.classList.toggle("on"); 
-  })
 }
 
+function updateLocationOptions() {
+  selectLocation.addEventListener("click", (event) => {
+    if (event.target.nodeName === "BUTTON") {
+      currentLocation.textContent = `${event.target.textContent}`;
+    }
+    selectLocation.classList.toggle("on");
+  });
+}
 
-// 태그 관련 
-//  스택 리스트 추가
 function addStackType() {
   stackType.forEach((item) => {
     const li = document.createElement("li");
@@ -72,83 +71,82 @@ function addStackType() {
   });
 }
 
-
-let favStackList = []; 
-function handleTagSelect(){
-  editButton.addEventListener("click", (event) => { 
-    selectionButton.classList.toggle("on"); 
+let favStackList = [];
+function handleTagSelect() {
+  editButton.addEventListener("click", (event) => {
+    selectionButton.classList.toggle("on");
   });
   selectionButton.addEventListener("click", (event) => {
-    selectionStacks.classList.toggle("on"); 
-  })
+    selectionStacks.classList.toggle("on");
+  });
 
-// 중복 확인
-selectionStacks.addEventListener("click", (event) => {
-  let flag = true; 
-  favStackList.forEach((tag) => {
-    if (event.target.textContent === tag){
-      flag = false; 
-    }
-  }); 
-// 태그 추가
+  selectionStacks.addEventListener("click", (event) => {
+    let flag = true;
+    favStackList.forEach((tag) => {
+      if (event.target.textContent === tag) {
+        flag = false;
+      }
+    });
+
     if (flag) {
-      if(event.target.nodeName === "BUTTON"){
-        let li = document.createElement("li");  
-        favTag.appendChild(li); 
+      if (event.target.nodeName === "BUTTON") {
+        let li = document.createElement("li");
+        favTag.appendChild(li);
         li.textContent = `${event.target.textContent}`;
-        favStackList.push(event.target.textContent); 
+        favStackList.push(event.target.textContent);
       }
     }
-        event.preventDefault();
-        selectionStacks.classList.remove("on");
-    }); 
+    event.preventDefault();
+    selectionStacks.classList.remove("on");
+  });
 
-    // 스택 유형 태그 제거
-    favTag.addEventListener("click", (event) => {
+  favTag.addEventListener("click", (event) => {
     let removeTag;
     if (event.target.nodeName === "LI") {
-    event.target.remove();
-    removeTag = favStackList.indexOf(event.target.textContent);
-    favStackList.splice(removeTag, 1);
-  }
-});
+      event.target.remove();
+      removeTag = favStackList.indexOf(event.target.textContent);
+      favStackList.splice(removeTag, 1);
+    }
+  });
 }
 
-handleNickname(); 
-addLocation(); 
-handleLocation(); 
-updateLocation(); 
-addStackType(); 
-handleTagSelect(); 
+async function displayUserInfo() {
+  const userData = await Auth.getUserData();
+  const { username, avatar_url, location, interested_skills } = userData;
+  const avatar = document.querySelector(".user-image");
+  currentNickname.textContent = username;
+  avatar.src = avatar_url;
+  currentLocation.textContent = location;
 
+  if (interested_skills) {
+    interested_skills.forEach((data) => {
+      const skill = document.createElement("li");
+      skill.textContent = data;
+    });
+  }
+}
 
-// TODO: 유저 데이터 요청 및 데이터 전달(한별님)
-// // 유저 데이터 요청 
-// // 깃헙 프로필 사진 뿌려줘야 함
-// async function getUserData() {
-//   const token = Auth.getToken();
-//   const request = await fetch("http://localhost:5000/user:id", {
-//     method: "GET",
-//     headers: {
-//       Authorization: `Bearer${token}`,
-//     },
-//   });
-//   const result = await request.json();
-//   console.log(result, "api result");
-//   userId = result.userId;
-//   username = result.username;
-// }
-// getUserData();
+function renderUpdateProfile() {
+  changeEditButton();
+  showLocationOptions();
+  handleTagSelect();
+  addLocationOptions();
+  updateLocationOptions();
+  addStackType();
+}
 
+async function requestUpdateUserInfo() {
+  const body = {};
+  const updateRequest = await fetch(`${BASE_URL}/user/edit`, {
+    method: "POST",
+    body: JSON.stringify(body),
+  });
+}
 
-// // 갱신된 마이페이지 데이터 전송
-// async function sendMypageData() {
-  
-//   //  유저 마이페이지 데이터 
-//   let userMypageData = {
-//     nick_name: currentNickname.innerHTML,  
-//     fav_stack: favStackList, 
-//     location: currentLocation.textContent, 
-//   }; 
-//   console.log(userMypageData); 
-// }
+function init() {
+  displayUserInfo();
+  renderUpdateProfile();
+  requestUpdateUserInfo();
+}
+
+init();
