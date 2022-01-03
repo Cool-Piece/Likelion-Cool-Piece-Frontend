@@ -5,6 +5,7 @@ import { stackType, locations } from "./studyDatas";
 import { BASE_URL } from "./api";
 
 const editButton = document.querySelector(".mypage-form .button-edit");
+const saveButton = document.querySelector(".mypage-form .button-save");
 const currentNickname = document.querySelector(".input-name .nickname-label");
 const inputNickname = document.querySelector(
   ".profile-data-container .nickname"
@@ -24,8 +25,7 @@ const favTag = document.querySelector(
 
 function changeEditButton() {
   editButton.addEventListener("click", (event) => {
-    inputNickname.classList.toggle("on");
-    editButton.textContent = "변경하기";
+    inputNickname.classList.toggle("on"); 
     const nickname = inputNickname.value;
     currentNickname.innerHTML = nickname;
   });
@@ -77,8 +77,9 @@ function handleTagSelect() {
     selectionButton.classList.toggle("on");
   });
   selectionButton.addEventListener("click", (event) => {
-    selectionStacks.classList.toggle("on");
-  });
+    selectionStacks.classList.toggle("on"); 
+  }); 
+
 
   selectionStacks.addEventListener("click", (event) => {
     let flag = true;
@@ -133,7 +134,7 @@ function renderUpdateProfile() {
   addLocationOptions();
   updateLocationOptions();
   addStackType();
-}
+} 
 
 async function requestUpdateUserInfo() {
   const body = {};
@@ -150,3 +151,33 @@ function init() {
 }
 
 init();
+
+// 데이터 전송
+function sendUserData() {
+  saveButton.addEventListener("click", (event) => {
+    const profileData = {
+      nickname: currentNickname.textContent, 
+      user_location: currentLocation.textContent, 
+      fav_stack: favStackList
+    } 
+
+    // const baseURL = "http://localhost:5000/mypage";
+    //   const request = await fetch(baseURL, {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(profileData),
+    //   });
+    //   const result = await request.json();
+    //   console.log(result.message); 
+
+    //   if(result.message === "Internal Server Error"){
+    //     alert("서버를 기다리는 중입니다. 잠시후 다시 시도해주세요!");
+    //   } if(result.result === "ok") {
+    //     window.location.href = "http://127.0.0.1:5500/Likelion-Cool-Piece-Frontend/assets/html/index.html"; 
+    //   }
+    
+  })
+}
+sendUserData(); 
