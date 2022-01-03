@@ -142,7 +142,7 @@ export default class Card {
               : ""}
           </ul>
           <dl class="studyItem-creator">
-            <dt>${card.creator}</dt>
+            <dt>${card.creator.username}</dt>
             <dd>${new Date(card.createdAt).toLocaleDateString()}</dd>
           </dl>
         </li>
