@@ -29,10 +29,14 @@ GITHUB_SECRET = <YOUR_GITHUB_SECRET>
 ```
 $npm install
 $npm run assets
-``` 후 Root/assets/html/index.html을 liveServer로 실행합니다.
+```
+
+Root/assets/html/index.html을 liveServer로 실행합니다.
 
 ### Backend
+
 - MongoDB 계정이 필요하며 Root 디렉토리에 .env 파일을 만들고 다음과 같이 설정합니다.
+
 ```
 GITHUB_CLIENT_ID = <YOUR_GITHUB_CLIENT_ID>
 GITHUB_KEY = <YOUR_GITHUB_KEY>
@@ -40,7 +44,9 @@ GITHUB_SECRET = <YOUR_GITHUB_SECRET>
 DB_URI = <YOUR_MONGODB_ATLAS_URL>
 SECRET_KEY = <CUSTOM_JWT_SECRET_KEY>
 ```
+
 - 설정이 끝나면 아래와 같이 실행합니다.
+
 ```
 $npm install
 $npm run dev:starts
