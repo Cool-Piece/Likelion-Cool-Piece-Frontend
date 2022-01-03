@@ -394,9 +394,28 @@ modalCreatePage.addEventListener("click", function (event) {
   }
 });
 
-// TODO: 데이터 가져오기
+// TODO: 
+// 1. 유저 데이터 가져오기 
+// 2. 데이터 뿌려주기
 
+let userId;
+let username;
 
+// 유저 데이터 요청
+async function getUserData() {
+  const token = Auth.getToken();
+  const request = await fetch("http://localhost:5000/users", {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer${token}`,
+    },
+  });
+  const result = await request.json();
+  console.log(result, "api result");
+  userId = result.userId;
+  username = result.username;
+}
+getUserData();
 
 // // 데이터 전송
 // async function getUserData() {
