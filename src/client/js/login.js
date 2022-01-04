@@ -1,6 +1,7 @@
 import logos from "../assets/image/coolpiece_logo.png";
 import "regenerator-runtime";
 import "../scss/styles.scss";
+import Auth from './auth';
 
 const logoBox = document.querySelector(".title");
 logoBox.src = logos;
@@ -23,3 +24,11 @@ const handleGithub = () => {
 };
 
 githubLogin.addEventListener("click", handleGithub);
+
+const authCheck = async () => {
+  const userData = await Auth.getUserData();
+  if (userData.isLoggedIn) {
+    window.location.href = "./index.html";
+  }
+};
+authCheck();

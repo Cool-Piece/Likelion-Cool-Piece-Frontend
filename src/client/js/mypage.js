@@ -1,4 +1,6 @@
 import "../scss/styles.scss";
+import Auth from './auth';
+import NavBar from './navbar';
 import { stackType, locations } from "./studyDatas";
 
 const editButton = document.querySelector(".mypage-form .button-edit");  
@@ -129,3 +131,15 @@ handleTagSelect();
     location: currentLocation.textContent, 
   }; 
   console.log(userMypageData); 
+
+const authCheck = async () => {
+  const userData = await Auth.getUserData();
+  if (!userData.isLoggedIn) {
+    window.location.href = "./index.html";
+  }
+  new NavBar({
+    $target: document.querySelector(".navbar-list"),
+    userData: userData.isLoggedIn ? userData : null,
+  });
+};
+authCheck();
