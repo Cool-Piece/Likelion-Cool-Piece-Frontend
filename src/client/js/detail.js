@@ -1,21 +1,26 @@
 import "../scss/styles.scss";
-import DetailModel from './detailModel';
-import Comment from './comment';
+import DetailModel from "./detailModel";
+import Comment from "./comment";
 import bookmark from "../assets/image/bookmark_icon.png";
+import Auth from "./auth";
+import NavBar from "./navbar";
+import { formatDate } from './utils';
 
 class Detail {
-  constructor($target) {
+  constructor({$target, userId = null}) {
     this.$target = $target;
-    this.$info = $target.querySelector('.study-detail-info');
+    this.userId = userId;
+    this.$info = $target.querySelector(".study-detail-info");
     this.detailModel = new DetailModel();
-    this.detailModel.getData().then(res => {
-      this.data = res;
+    this.detailModel.getData().then((res) => {
+      this.data = res.studyInfo;
       this.render();
       this.$comment = new Comment({
-        $target: this.$target.querySelector('.study-detail-comment'),
-        initData: this.data.comments
-      })
-    })
+        $target: this.$target.querySelector(".study-detail-comment"),
+        initData: this.data.comments,
+        userId: this.userId
+      });
+    });
   }
 
   initEvents() {
@@ -23,17 +28,32 @@ class Detail {
     const modal = document.querySelector(".modal");
 
     joinButton.addEventListener("click", () => {
-      modal.classList.toggle("on");
+      if (!this.userId) {
+        window.location.href = './login.html';
+      } else {
+        if (this.userId === this.data.creator._id) {
+          alert('참여 중 입니다.');
+          return;
+        }
+        modal.classList.toggle("on");
+      }
     });
 
-    modal.addEventListener("click", (event) => {
+    modal.addEventListener("click", async (event) => {
       const ok = "modal-button yes";
       const cancel = "modal-button no";
 
       if (event.target.className === ok) {
-        //TODO:
-        // 1. 페이지를 이동시켜주고
-        // 2. 백엔드 db에 참여한다고 해줌.
+        const result = await fetch(`http://localhost:5000/${localStorage.getItem('detailPageId')}`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer${Auth.getToken()}`
+          }
+        });
+
+        if (result.status === 201) {
+          window.location.reload();
+        }
       }
 
       if (event.target.className === cancel) {
@@ -43,6 +63,8 @@ class Detail {
   }
 
   render() {
+    const isJoin = this.data.participants.find(person => person === this.userId);
+
     this.$info.innerHTML = `
       <header class="detail-title">
         <h2>${this.data.title}</h2>
@@ -56,35 +78,43 @@ class Detail {
 
       <div class="stack-container">
         <ul class="stack-boxs">
-          ${this.data.skills.map((skill) => {
-            return `<li>${skill}</li>`
-          }).join('')}
+          ${this.data.skills
+            .map((skill) => {
+              return `<li>${skill}</li>`;
+            })
+            .join("")}
         </ul>
-        <button class="join-study">참여하기</button>
+        ${
+          isJoin
+          ? `<button class="join-study">참여 중</button>`
+          : `<button class="join-study">참여하기</button>`
+        }
       </div>
 
       <dl class="study-info">
         <div class="study-info created">
           <dt>게시일</dt>
-          <dd class="study-info createdAt">${this.data.createdAt}</dd>
+          <dd class="study-info createdAt">${formatDate(
+            this.data.createdAt
+          )}</dd>
         </div>
 
         <div class="study-info infos">
           <div>
             <dt>작성자</dt>
-            <dd class="study-info creator">${this.data.creator}</dd>
+            <dd class="study-info creator">${this.data.creator.username}</dd>
           </div>
           <div>
             <dt>모집 인원</dt>
-            <dd class="study-info participants">${
-              this.data.participants.length
-            } / ${this.data.total}</dd>
+            <dd class="study-info participants">
+              ${this.data.participants.length} / ${this.data.total}
+            </dd>
           </div>
           <div>
           <dt>진행기간</dt>
           <dd class="study-info term">
-            <span>${this.data.start_date}</span> ~
-            <span>${this.data.due_date}</span>
+            <span>${formatDate(this.data.start_date)}</span> ~
+            <span>${formatDate(this.data.due_date)}</span>
           </dd>
           </div>
         </div>
@@ -93,9 +123,22 @@ class Detail {
       <section class="study-content"></section>
     `;
 
-    this.$target.querySelector('.study-content').innerText = this.data.description;
+    this.$target.querySelector(".study-content").innerText =
+      this.data.description;
     this.initEvents();
   }
 }
 
-new Detail(document.querySelector('.study-detail-container'));
+async function detail() {
+  const userData = await Auth.getUserData();
+  new NavBar({
+    $target: document.querySelector(".navbar-list"),
+    userData: userData.isLoggedIn ? userData : null,
+  });
+  new Detail({
+    $target: document.querySelector(".study-detail-container"),
+    userId: userData.isLoggedIn ? userData.userId : null
+  });
+}
+
+detail();

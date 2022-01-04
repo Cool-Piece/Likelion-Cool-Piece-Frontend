@@ -1,19 +1,19 @@
 import Auth from './auth';
+import {getFetcher} from './api';
 
 export default class CommentModel {
   constructor() {
     this.detailPageID = localStorage.getItem('detailPageId');
   }
 
-  // notify: 아직 로그인 연동 안해놔서 userId 는 제 id를 임의로 사용합니다
-  async addComment(description) {
-    if (description.length < 4) {
+  async addComment(content) {
+    if (content.length < 4) {
       alert('최소 4글자 이상 입력해주세요');
       return;
     }
 
     const result = await fetch(
-      `http://localhost:5000/users/comment/${this.detailPageID}`,
+      `http://localhost:5000/users/comments/create`,
       {
         method: "POST",
         headers: {
@@ -21,23 +21,26 @@ export default class CommentModel {
           "Authorization": `Bearer${Auth.getToken()}`
         },
         body: JSON.stringify({
-          userId: "61cfd18ee412cc9d58e5c77b",
-          description
+          content,
+          studyId: this.detailPageID
         }),
       }
-    )
-    .then(res => res.json())
-    .then(res => res);
-    
-    // notify: 테스트하실때 활용해주세요
-    console.log("addComment 결과 => ", result);
+    ).then(res => {
+      if(res.status === 201) {
+        return res.json();
+      } else {
+        return new Error('댓글 추가 에러');
+      }
+    }).catch(err => console.error(err));
+
+    if (result.message === "success to add comment") {
+      return getFetcher(this.detailPageID);
+    }
   }
 
-  // TODO: 유저 로그인 정보를 통해 해당 이벤트를 걸어줘야함
-  // 아직 테스트 불가 (단, 로직은 같음)
-  async editComment(description, id) {
+  async editComment(content, id) {
     const result = await fetch(
-      `http://localhost:5000/users/comment/${this.detailPageID}`,
+      `http://localhost:5000/users/comments/${id}`,
       {
         method: "PUT",
         headers: {
@@ -45,17 +48,22 @@ export default class CommentModel {
           Authorization: `Bearer${Auth.getToken()}`,
         },
         body: JSON.stringify({
-          userId: "61cfd18ee412cc9d58e5c77b",
-          description,
-          commentId: id
+          content,
+          studyId: this.detailPageID
         }),
       }
-    );
+    )
+
+    if (result.status === 201) {
+      return true;
+    } else {
+      return new Error('댓글 수정 에러');
+    }
   }
 
   async deleteComment(id) {
     const result = await fetch(
-      `http://localhost:5000/users/comment/${this.detailPageID}`,
+      `http://localhost:5000/users/comments/${id}`,
       {
         method: "DELETE",
         headers: {
@@ -63,11 +71,16 @@ export default class CommentModel {
           Authorization: `Bearer${Auth.getToken()}`,
         },
         body: JSON.stringify({
-          userId: "61cfd18ee412cc9d58e5c77b",
-          commentId: id
+          studyId: this.detailPageID
         }),
       }
-    );
+    )
+    
+    if (result.status === 204) {
+      return true;
+    } else {
+      return new Error('댓글 삭제 에러');
+    }
   }
 
   getComment() {

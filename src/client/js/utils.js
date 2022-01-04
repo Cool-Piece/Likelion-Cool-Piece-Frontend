@@ -33,10 +33,5 @@ export function useFilterData(filterData, datas) {
 }
 
 export function formatDate(date){
-  let temp;
-  const result = date.split('/').map(d => d.trim())
-  temp = result[0];
-  result[0] = result[1];
-  result[1] = temp;
-  return result.reverse().join('.');
+  return String(new Date(date).toLocaleDateString()).slice(0, -1);
 }
