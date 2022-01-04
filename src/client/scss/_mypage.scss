@@ -4,10 +4,10 @@
     justify-content: flex-start;
     align-items: center;
     margin: 0 auto;
-    margin-top: 200px; 
+    margin-top: 150px; 
     width:400px; 
-    min-width: 400px;
-    height: 500px;
+    min-width: 400px; 
+    height: 530px;
     position: relative;
     border: 1px solid #ebebeb;
     border-radius: 30px;
@@ -202,6 +202,8 @@
       border-radius: 5px;
       box-sizing: border-box;
       padding: 5px;
+      height: 150px;
+      overflow-y: scroll;
       .stacks {
         width: 100%;
         height: 30px;
