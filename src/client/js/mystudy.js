@@ -3,6 +3,9 @@ import "../scss/styles.scss";
 import Auth from "../js/auth";
 
 const myStudyList = document.querySelector(".study-list"); 
+const studyTagList = document.querySelector(".tag-list"); 
+const studyTitle = document.querySelector(".study-title");
+const studyDate = document.querySelector(".study-date");
 
 
 
@@ -42,4 +45,5 @@ function renderStudyCard() {
   // 2. 참여중인 스터디 카드 동적 생성 
 
   // 3. 스터디 카드에 해당 정보 넣어주기
+  // 제목, 스킬 태그, 진행 기간 데이터 뿌려주기
 }
