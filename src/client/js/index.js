@@ -43,7 +43,7 @@ const main = async () => {
   const userData = await Auth.getUserData();
   new NavBar({
     $target: document.querySelector(".navbar-list"),
-    userData,
+    userData: userData.isLoggedIn ? userData : null,
   });
   new Main(document.querySelector(".main-wrap"));
 };

@@ -1,5 +1,5 @@
 import Auth from './auth.js';
-import { CARD_VIEW_TYPE, CARD_VIEW_TYPES } from './constant.js';
+import { CARD_VIEW_TYPE } from './constant.js';
 
 export default class NavBar {
   constructor({$target, userData}) {
@@ -22,7 +22,8 @@ export default class NavBar {
       <li data-link="interview"><a>면접</a></li>
       <li data-link="study"><a>스터디</a></li>
       <li data-link="project"><a>프로젝트</a></li>
-      <li><a>채팅</a></li>
+      <!-- TODO: 채팅 기능 적용되면 추가하기 -->
+      <!-- <li><a>채팅</a></li> -->
       <li class="sign ${this.user ? 'logOn' : 'logOff'}">
         ${this.user ? `
           <div class="avatar_wrap">

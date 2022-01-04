@@ -4,7 +4,7 @@ import {COOKIE_EXPIRES_TIME, JWT_KEY} from './constant.js';
 
 export default class Auth {
   static setToken(jwt, maxAge = COOKIE_EXPIRES_TIME) {
-    document.cookie = `${JWT_KEY}=${jwt}; max-age=${maxAge}`;
+    document.cookie = `${JWT_KEY}=${jwt}; max-age=${maxAge};`;
   }
 
   static getToken() {
@@ -23,12 +23,24 @@ export default class Auth {
   static async getUserData() {
     const jwt = this.getToken();
 
+    if (!jwt) {
+      return {
+        isLoggedIn: false
+      }
+    }
+
     const userData = await fetch(`http://localhost:5000/users`, {
       method: 'GET',
       headers: {
         "Authorization":`Bearer${jwt}`
       }
-    }).then(res => res.json())
+    }).then(res => {
+      if (res.status === 200) {
+        return res.json()
+      } else {
+        return new Error('로그인 실패')
+      }
+    }).catch(err => console.error(err));
 
     return {
       ...userData,
@@ -37,11 +49,14 @@ export default class Auth {
   }
 
   static logout() {
-    // TODO: 서버쪽으로부터 쿠키삭제 해결못하면 프론트에서 직접 삭제해주기
-    // document.cookie = `${JWT_KEY}=${this.getToken()}; max-age=0`;
     fetch('http://localhost:5000/users/logout')
     .then(res => {
-
+      if (res.status === 200) {
+        document.cookie = `${JWT_KEY}=${this.getToken()}; max-age=0;`;
+        window.location.reload();
+      } else {
+        return new Error('로그아웃 실패');
+      }
     })
     .catch(error => console.error(error))
   }
