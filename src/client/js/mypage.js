@@ -160,7 +160,7 @@ function sendUserData() {
       user_location: currentLocation.textContent, 
       fav_stack: favStackList
     } 
-
+    console.log(profileData);
     // const baseURL = "http://localhost:5000/mypage";
     //   const request = await fetch(baseURL, {
     //     method: "POST",
