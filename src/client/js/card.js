@@ -17,8 +17,9 @@ export default class Card {
   navData;
   filterData;
 
-  constructor({$target, initFilterData}) {
+  constructor({$target, initFilterData, userId}) {
     this.$target = $target;
+    this.userId = userId;
     this.cardModel = new CardModel();
     this.cardModel.getAllData().then(res => {
       this.data = res;
@@ -124,29 +125,46 @@ export default class Card {
       emptyElement.style.display = 'block';
     }
     this.$target.innerHTML = this.viewData.map(card => {
+      const onBookmark = !this.userIdcard ? false : card.creator.bookmark.find(id => id === this.userId);
       return `
-        <li class="studyItem" title="클릭시 해당 스터디의 상세페이지로 이동합니다." id=${card._id}>
+        <li class="studyItem" title="클릭시 해당 스터디의 상세페이지로 이동합니다." id=${
+          card._id
+        }>
           <h3 class="studyItem-title">${card.title}</h3>
           <div class="studyItem-like">
-            <!-- <img src="" alt="클릭시 해당 스터디를 관심목록에 추가합니다.">
-            <img src="" alt="클릭시 해당 스터디를 관심목록에서 제거합니다."> -->
+            ${
+              onBookmark
+                ? `<i class="fas fa-bookmark bookmark-icon"></i>`
+                : `<i class="far fa-bookmark bookmark-icon"></i>`
+            }
           </div>
-          <div class="studyItem-term">${formatDate(card.start_date)} ~ ${formatDate(card.due_date)}</div>
-          <div class="studyItem-participants">${card.participants.length}명 / ${card.total}명</div>
+          <div class="studyItem-term">${formatDate(
+            card.start_date
+          )} ~ ${formatDate(card.due_date)}</div>
+          <div class="studyItem-participants">${card.participants.length}명 / ${
+        card.total
+      }명</div>
           <ul class="studyItem-stacks">
-            ${card.skills.slice(0, viewSkillCnt).map(skill => {
-              return `<li>${skill}</li>`
-            }).join("")}
-            ${viewSkillCnt < card.skills.length 
-              ? (`<span class="studyItem-stacks-hidden">+${card.skills.length - viewSkillCnt}</span>`)
-              : ""}
+            ${card.skills
+              .slice(0, viewSkillCnt)
+              .map((skill) => {
+                return `<li>${skill}</li>`;
+              })
+              .join("")}
+            ${
+              viewSkillCnt < card.skills.length
+                ? `<span class="studyItem-stacks-hidden">+${
+                    card.skills.length - viewSkillCnt
+                  }</span>`
+                : ""
+            }
           </ul>
           <dl class="studyItem-creator">
             <dt>${card.creator.username}</dt>
             <dd>${new Date(card.createdAt).toLocaleDateString()}</dd>
           </dl>
         </li>
-      `
+      `;
     }).join("");
   }
 }

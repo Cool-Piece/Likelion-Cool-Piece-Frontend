@@ -88,8 +88,11 @@
         right: 19px;
         width: 24px;
         height: 24px;
-        background: $red;
         border-radius: 50%;
+
+        .bookmark-icon {
+          font-size: 25px;
+        }
       }
       &:hover {
         transform: scale(1.003);
