@@ -25,6 +25,7 @@ class Detail {
   initEvents() {
     const joinButton = this.$target.querySelector(".join-study");
     const modal = document.querySelector(".modal");
+    const editButton = this.$target.querySelector(".edit-study");
 
     joinButton.addEventListener("click", () => {
       if (!this.userId) {
@@ -89,11 +90,18 @@ class Detail {
             })
             .join("")}
         </ul>
-        ${
-          isJoin
-            ? `<button class="join-study">참여 중</button>`
-            : `<button class="join-study">참여하기</button>`
-        }
+        <div class="study-control">
+          ${
+            isJoin
+              ? `<button class="join-study">참여 중</button>`
+              : `<button class="join-study">참여하기</button>`
+          }
+          ${
+            this.userId && this.userId === this.data.creator._id
+            ? `<button class="edit-study"><a href="./edit.html">수정하기</a></button>`
+            : ''
+          }
+        </div>
       </div>
 
       <dl class="study-info">
