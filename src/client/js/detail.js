@@ -1,7 +1,6 @@
 import "../scss/styles.scss";
 import DetailModel from "./detailModel";
 import Comment from "./comment";
-import bookmark from "../assets/image/bookmark_icon.png";
 import Auth from "./auth";
 import NavBar from "./navbar";
 import { formatDate } from './utils';
@@ -63,7 +62,8 @@ class Detail {
   }
 
   render() {
-    const isJoin = this.data.participants.find(person => person === this.userId);
+    const isJoin = this.data.participants.find(id => id === this.userId);
+    const onBookmark = this.data.creator.bookmark.find(id => id === this.userId);
 
     this.$info.innerHTML = `
       <header class="detail-title">
@@ -72,7 +72,12 @@ class Detail {
           <!-- notify: 하트 기능은 나중에 추가하겠습니다. 북마크부터 진행하겠습니다! -->
           <!-- <img class="heart-icon" alt="heart icon"> -->
           <!-- TODO: 북마크 데이터 받아서 렌더링해주기 -->
-          <img src=${bookmark} alt="bookmark-icon">
+          <!-- <img src="" alt="bookmark-icon"> -->
+          ${
+            onBookmark
+              ? `<i class="fas fa-bookmark bookmark-icon"></i>`
+              : `<i class="far fa-bookmark bookmark-icon"></i>`
+          }
         </div>
       </header>
 
@@ -86,8 +91,8 @@ class Detail {
         </ul>
         ${
           isJoin
-          ? `<button class="join-study">참여 중</button>`
-          : `<button class="join-study">참여하기</button>`
+            ? `<button class="join-study">참여 중</button>`
+            : `<button class="join-study">참여하기</button>`
         }
       </div>
 

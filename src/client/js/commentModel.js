@@ -38,7 +38,7 @@ export default class CommentModel {
     }
   }
 
-  async editComment(content, id) {
+  async editComment(contents, id) {
     const result = await fetch(
       `http://localhost:5000/users/comments/${id}`,
       {
@@ -48,16 +48,17 @@ export default class CommentModel {
           Authorization: `Bearer${Auth.getToken()}`,
         },
         body: JSON.stringify({
-          content,
+          contents,
           studyId: this.detailPageID
         }),
       }
     )
 
-    if (result.status === 201) {
+    if (result.status === 200) {
       return true;
     } else {
-      return new Error('댓글 수정 에러');
+      console.error('댓글 수정 에러');
+      return false;
     }
   }
 
@@ -76,10 +77,11 @@ export default class CommentModel {
       }
     )
     
-    if (result.status === 204) {
+    if (result.status === 200) {
       return true;
     } else {
-      return new Error('댓글 삭제 에러');
+      console.error('댓글 삭제 에러');
+      return false;
     }
   }
 

@@ -1,4 +1,5 @@
 import CommentModel from './commentModel';
+import { formatDate } from './utils';
 
 export default class Comment {
   data;
@@ -50,7 +51,7 @@ export default class Comment {
       }
       const comments = await this.CommentModel.addComment(content);
       if (comments) {
-        this.setState(comments);
+        this.setState(comments.studyInfo.comments);
       }
     } catch (error) {
       console.error(error);
@@ -76,7 +77,7 @@ export default class Comment {
     try {
       const result = await this.CommentModel.deleteComment(id);
       if (result) {
-        this.setState(this.data.filter(comment => comment.id != id));
+        this.setState(this.data.filter(comment => comment._id != id));
       }
     } catch (error) {
       console.error(error);
@@ -92,14 +93,14 @@ export default class Comment {
     this.$comments.innerHTML = this.data
       .map((comment) => {
         return `
-        <li class="comment-item" id=${comment.id}>
+        <li class="comment-item" id=${comment._id}>
           <section class="comment-header">
             <div class="user-info">
               <div class="image-wrap">
-                <img src=${comment.creator.avatar_url} alt="${comment.creator}의 프로필 이미지입니다.">
+                <img src=${comment.creator.avatar_url} alt="${comment.creator.username}의 프로필 이미지입니다.">
               </div>
-              <p>${comment.user.creator}</p>
-              <p>${comment.createdAt}</p>
+              <p>${comment.creator.username}</p>
+              <p>${formatDate(comment.createdAt)}</p>
             </div>
             <div class="comment-control">
               ${
@@ -111,7 +112,7 @@ export default class Comment {
               }
             </div>
           </section>
-          <section class="user-comment on">${comment.description}</section>
+          <section class="user-comment on">${comment.content}</section>
           <textarea class="edit-comment" minlength="1" maxlength="500"></textarea>
         </li>
       `;
