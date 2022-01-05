@@ -1,3 +1,4 @@
+import "regenerator-runtime";
 import "../scss/styles.scss";
 import Auth from './auth';
 import NavBar from './navbar';
@@ -74,7 +75,7 @@ function toggleSelectBoxType(event) {
 function toggleSelectBoxStack(event) {
   event.preventDefault();
   selectionsLanguage.classList.toggle("active");
-}
+} 
 selectBoxType.addEventListener("click", toggleSelectBoxType);
 selectBoxStacks.addEventListener("click", toggleSelectBoxStack);
 
@@ -394,7 +395,14 @@ modalCreatePage.addEventListener("click", function (event) {
   }
 });
 
-// 데이터 전송
+// TODO: 
+// 1. 유저 데이터 가져오기 
+// 2. 데이터 뿌려주기
+
+let userId;
+let username;
+
+// 유저 데이터 요청
 async function getUserData() {
   const token = Auth.getToken();
   const request = await fetch("http://localhost:5000/users", {

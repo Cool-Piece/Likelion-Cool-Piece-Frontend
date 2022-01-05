@@ -410,7 +410,7 @@ async function getUserData() {
   const result = await request.json();
   console.log(result, "api result");
   userId = result.userId;
-  username = res.username;
+  username = result.username;
 }
 getUserData();
 
