@@ -2,7 +2,7 @@ import "../scss/styles.scss";
 import "regenerator-runtime";
 import Auth from './auth';
 import NavBar from './navbar';
-import { stackType, locations } from "./studyDatas";
+import { stackType, userLocations } from "./studyDatas";
 import { BASE_URL } from "./api";
 
 const editButton = document.querySelector(".mypage-form .button-edit");
@@ -185,7 +185,7 @@ function sendUserData() {
       if (result.message === "Internal Server Error") {
         console.log("mypage update error");
       } if (result.result === "ok") {
-        window.location.href = "http://127.0.0.1:5500/Likelion-Cool-Piece-Frontend/assets/html/index.html"; 
+        window.location.href = "./index.html"; 
       }
     
   })

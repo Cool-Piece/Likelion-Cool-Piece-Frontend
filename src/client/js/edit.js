@@ -465,7 +465,7 @@ async function sendEditedData() {
       console.log(result, "request 결과");
     }
     modalCreatePage.classList.remove("on");
-    window.location.href = "http://127.0.0.1:5500/Likelion-Cool-Piece-Frontend/assets/html/index.html";
+    window.location.href = "./index.html";
   });
 }
 sendEditedData();
