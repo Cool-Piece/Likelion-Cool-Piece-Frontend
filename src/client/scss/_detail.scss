@@ -24,15 +24,17 @@
     }
 
     .icon-box {
-      .heart-icon {
-        margin-right: 10px;
-        width: 22px;
-        height: auto;
-        vertical-align: top;
-      }
+      // TODO: 좋아요 기능시 추가하기
+      // .heart-icon {
+      //   margin-right: 10px;
+      //   width: 22px;
+      //   height: auto;
+      //   vertical-align: top;
+      // }
 
       .bookmark-icon {
         font-size: 30px;
+        cursor: pointer;
       }
     }
   }
@@ -331,8 +333,8 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      .join-study {
-        margin-bottom: 10px;
+      .edit-study {
+        margin-top: 10px;
       }
     }
   }
