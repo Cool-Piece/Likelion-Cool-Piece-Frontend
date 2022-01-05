@@ -85,10 +85,12 @@
         border: none;
         border-radius: 10px;
         margin-top: 10px;
-        width: 50%;
+        width: 100%;
         float: right;
         height: 35px;
         background-color: $defaultColor;
+        font-weight: bold;
+        font-family: $font-family;
         cursor: pointer;
         &:hover {
           transform: scale(1.03);

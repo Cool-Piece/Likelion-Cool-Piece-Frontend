@@ -127,14 +127,6 @@ async function displayUserInfo() {
   }
 }
 
-handleNickname(); 
-addLocation(); 
-handleLocation(); 
-updateLocation(); 
-addStackType(); 
-handleTagSelect(); 
-
-
   //  유저 마이페이지 데이터 
   let userMypageData = {
     nick_name: currentNickname.innerHTML,  
@@ -142,6 +134,31 @@ handleTagSelect();
     location: currentLocation.textContent, 
   }; 
   console.log(userMypageData); 
+
+function renderUpdateProfile() {
+  changeEditButton();
+  showLocationOptions();
+  handleTagSelect();
+  addLocationOptions();
+  updateLocationOptions();
+  addStackType();
+}
+
+async function requestUpdateUserInfo() {
+  const body = {};
+  const updateRequest = await fetch(`${BASE_URL}/user/edit`, {
+    method: "POST",
+    body: JSON.stringify(body),
+  });
+}
+
+function init() {
+  displayUserInfo();
+  renderUpdateProfile();
+  requestUpdateUserInfo();
+}
+
+init();
 
 const authCheck = async () => {
   const userData = await Auth.getUserData();
