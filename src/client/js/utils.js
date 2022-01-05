@@ -35,3 +35,11 @@ export function useFilterData(filterData, datas) {
 export function formatDate(date){
   return String(new Date(date).toLocaleDateString()).slice(0, -1);
 }
+
+export function debounceEvent(obj, func, time) {
+  let timer = null;
+  return (e) => {
+    clearTimeout(timer);
+    timer = setTimeout(func.bind(obj, e), time);
+  }
+}

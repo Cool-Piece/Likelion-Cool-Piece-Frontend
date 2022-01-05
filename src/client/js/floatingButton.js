@@ -1,9 +1,9 @@
 import WrapImg from "../assets/image/floatingWrap.png";
 import ArrowImg from "../assets/image/floatingArrow.png";
+import { debounceEvent } from './utils';
 
 export default class FloatingButton {
   floatingButton = null;
-
   constructor() {
     const floatingButton = document.createElement("div");
     const wrap = document.createElement("img");
@@ -23,14 +23,16 @@ export default class FloatingButton {
     });
 
     document.querySelector("body").appendChild(this.floatingButton);
-    // Refactor: 성능 개선
-    document.addEventListener("scroll", () => {
-      if (document.scrollingElement.scrollTop === 0) {
-        this.floatingButton.style.visibility = 'hidden';
-      } else {
-        this.floatingButton.style.visibility = 'visible';
-      }
-    });
+
+    document.addEventListener("scroll", debounceEvent(this, this.scroll, 200));
+  }
+
+  scroll(event) {
+    if (event.target.scrollingElement.scrollTop === 0) {
+      this.floatingButton.style.visibility = "hidden";
+    } else {
+      this.floatingButton.style.visibility = "visible";
+    }
   }
 
   getButton() {
