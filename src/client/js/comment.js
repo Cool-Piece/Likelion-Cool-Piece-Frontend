@@ -51,6 +51,7 @@ export default class Comment {
       }
       const comments = await this.CommentModel.addComment(content);
       if (comments) {
+        this.$target.querySelector('.comment-box').value = "";
         this.setState(comments.studyInfo.comments);
       }
     } catch (error) {

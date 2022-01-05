@@ -125,38 +125,37 @@ export default class Card {
       emptyElement.style.display = 'block';
     }
     this.$target.innerHTML = this.viewData.map(card => {
-      const onBookmark = !this.userIdcard ? false : card.creator.bookmark.find(id => id === this.userId);
+      const onBookmark = !this.userId ? false : (card.creator.bookmark.find(id => id == card._id) ? true : false );
       return `
-        <li class="studyItem" title="클릭시 해당 스터디의 상세페이지로 이동합니다." id=${
-          card._id
+        <li class="studyItem"
+        title="클릭시 해당 스터디의 상세페이지로 이동합니다."
+        id=${card._id
         }>
           <h3 class="studyItem-title">${card.title}</h3>
           <div class="studyItem-like">
-            ${
-              onBookmark
-                ? `<i class="fas fa-bookmark bookmark-icon"></i>`
-                : `<i class="far fa-bookmark bookmark-icon"></i>`
+            ${onBookmark
+              ? `<i class="fas fa-bookmark bookmark-icon"></i>`
+              : `<i class="far fa-bookmark bookmark-icon"></i>`
             }
           </div>
-          <div class="studyItem-term">${formatDate(
-            card.start_date
-          )} ~ ${formatDate(card.due_date)}</div>
-          <div class="studyItem-participants">${card.participants.length}명 / ${
-        card.total
-      }명</div>
+          <div class="studyItem-term">
+            ${formatDate(card.start_date)} ~ 
+            ${formatDate(card.due_date)}
+          </div>
+          <div class="studyItem-participants">
+            ${card.participants.length}명 / 
+            ${card.total}명
+          </div>
           <ul class="studyItem-stacks">
-            ${card.skills
-              .slice(0, viewSkillCnt)
-              .map((skill) => {
+            ${card.skills.slice(0, viewSkillCnt).map((skill) => {
                 return `<li>${skill}</li>`;
-              })
-              .join("")}
+              }).join("")}
             ${
               viewSkillCnt < card.skills.length
-                ? `<span class="studyItem-stacks-hidden">+${
-                    card.skills.length - viewSkillCnt
-                  }</span>`
-                : ""
+              ? `<span class="studyItem-stacks-hidden">
+                +${card.skills.length - viewSkillCnt}
+                </span>`
+              : ""
             }
           </ul>
           <dl class="studyItem-creator">

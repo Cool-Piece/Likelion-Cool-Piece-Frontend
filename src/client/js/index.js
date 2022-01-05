@@ -49,7 +49,7 @@ const main = async () => {
   });
   new Main({
     $target: document.querySelector(".main-wrap"),
-    userData: userData.isLoggedIn ? userData.userId : null,
+    userId: userData.isLoggedIn ? userData.userId : null,
   });
 };
 main();

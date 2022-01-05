@@ -25,7 +25,7 @@ class Detail {
   initEvents() {
     const joinButton = this.$target.querySelector(".join-study");
     const modal = document.querySelector(".modal");
-    const editButton = this.$target.querySelector(".edit-study");
+    const bookmark = this.$target.querySelector(".bookmark-icon");
 
     joinButton.addEventListener("click", () => {
       if (!this.userId) {
@@ -52,7 +52,10 @@ class Detail {
         });
 
         if (result.status === 201) {
-          window.location.reload();
+          this.$target.querySelector('.join-study').innerText = '참여 중';
+          alert('참여 되었습니다.');
+        } else {
+          console.error('스터디 참여 에러');
         }
       }
 
@@ -60,11 +63,39 @@ class Detail {
         modal.classList.toggle("on");
       }
     });
+
+    bookmark.addEventListener('click', async () => {
+      if (bookmark.classList.contains('far')) {
+        if (!this.userId) {
+          window.location.href = './login.html';
+        }
+
+        const result = await fetch(`http://localhost:5000/users/bookmark`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer${Auth.getToken()}`,
+          },
+          body: JSON.stringify({
+            studyId: (localStorage.getItem("detailPageId")),
+          }),
+        });
+
+        if (result.status === 201) {
+          this.$target.querySelector(
+            ".icon-box"
+          ).innerHTML = `<i class="fas fa-bookmark bookmark-icon"></i>`;
+        } else {
+          console.error('북마크 등록 에러');
+        }
+      }
+    })
   }
 
   render() {
+    const pageId = localStorage.getItem('detailPageId');
     const isJoin = this.data.participants.find(id => id === this.userId);
-    const onBookmark = this.data.creator.bookmark.find(id => id === this.userId);
+    const onBookmark = this.data.creator.bookmark.find(id => id === pageId);
 
     this.$info.innerHTML = `
       <header class="detail-title">
