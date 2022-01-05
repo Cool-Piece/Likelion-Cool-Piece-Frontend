@@ -107,8 +107,8 @@ export default class Comment {
               ${
                 this.userId && this.userId === comment.creator._id
                 ? `
-                  <div class="comment-control edit">수정</div>
-                  <div class="comment-control delete">삭제</div>
+                  <span class="comment-control edit">수정</span>
+                  <span class="comment-control delete">삭제</span>
                 ` : ""
               }
             </div>
