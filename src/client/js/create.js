@@ -465,7 +465,7 @@ async function sendStudyData() {
       if(result.message === "Internal Server Error"){
         alert("서버를 기다리는 중입니다. 잠시후 다시 시도해주세요!");
       } if(result.result === "ok") {
-        window.location.href = "http://127.0.0.1:5500/Likelion-Cool-Piece-Frontend/assets/html/index.html"; 
+        window.location.href = "./index.html"; 
       }
     }
     modalCreatePage.classList.remove("on");
