@@ -26,8 +26,7 @@ const sendToken = async () => {
   const result = await tokenRequest.json();
   if (result.access_token) {
     Auth.setToken(result.access_token);
-    window.location.href =
-      "http://127.0.0.1:5500/Likelion-Cool-Piece-Frontend/assets/html/index.html";
+    window.location.href = "./index.html";
   }
 };
 

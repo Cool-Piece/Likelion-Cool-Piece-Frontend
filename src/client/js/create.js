@@ -1,6 +1,7 @@
 import "regenerator-runtime";
 import "../scss/styles.scss";
 import Auth from "../js/auth";
+import NavBar from './navbar';
 import { studyType, stackType, months, locations } from "../js/studyDatas";
 
 // 셀렉트박스 요소
@@ -471,3 +472,15 @@ async function sendStudyData() {
   });
 }
 sendStudyData();
+
+const authCheck = async () => {
+  const userData = await Auth.getUserData();
+  if (!userData.isLoggedIn) {
+    window.location.href = "./index.html";
+  }
+  new NavBar({
+    $target: document.querySelector(".navbar-list"),
+    userData: userData.isLoggedIn ? userData : null,
+  });
+};
+authCheck();

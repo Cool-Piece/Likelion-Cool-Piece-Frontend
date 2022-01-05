@@ -1,6 +1,7 @@
 import "regenerator-runtime";
 import "../scss/styles.scss";
-import Auth from "../js/auth";
+import Auth from './auth';
+import NavBar from './navbar';
 import { studyType, stackType, months, locations} from "../js/studyDatas";
 // 셀렉트박스 요소
 const selectBoxType = document.querySelector(".select-box.type");
@@ -417,70 +418,66 @@ async function getUserData() {
 }
 getUserData();
 
-// // 데이터 전송
-// async function getUserData() {
-//   const token = Auth.getToken();
-//   const request = await fetch("http://localhost:5000/users", {
-//     method: "GET",
-//     headers: {
-//       Authorization: `Bearer${token}`,
-//     },
-//   });
-//   const result = await request.json();
-//   console.log(result, "api result");
-//   userId = result.userId;
-//   username = result.username;
-// }
-// getUserData();
+async function sendEditedData() {
+  createButton.addEventListener("click", async function (event) {
+    // validation
+    if (studyTitle.value == false && "제목을 입력해주세요") {
+      alert("제목을 입력해주세요");
+      return;
+    } else if (selectBoxType.textContent == "모집 유형을 선택해주세요") {
+      alert("모집 유형을 선택해주세요");
+      return;
+    } else if (tagList.length == 0) {
+      alert("기술을 선택해주세요");
+      return;
+    } else if (selectBoxLocation.textContent == "지역 선택") {
+      alert("지역을 선택해주세요");
+      return;
+    } else if (participants.value == false) {
+      alert("모집 인원을 선택해주세요");
+      return;
+    } else if (textDetails.value == false) {
+      alert("상세 내용을 입력해주세요");
+      return;
+    } else {
+      const editedDatas = {
+        title: studyTitle.value,
+        study_type: selectBoxType.textContent,
+        skills: tagList,
+        start_date: selectedDateElement.textContent,
+        due_date: selectedDateElementEnd.textContent,
+        location: selectBoxLocation.textContent,
+        total: participants.value,
+        description: textDetails.value,
+        userId,
+      };
+      console.log(editedDatas);
 
-// async function sendEditedData() {
-//   createButton.addEventListener("click", async function (event) {
-//     // validation
-//     if (studyTitle.value == false && "제목을 입력해주세요") {
-//       alert("제목을 입력해주세요");
-//       return;
-//     } else if (selectBoxType.textContent == "모집 유형을 선택해주세요") {
-//       alert("모집 유형을 선택해주세요");
-//       return;
-//     } else if (tagList.length == 0) {
-//       alert("기술을 선택해주세요");
-//       return;
-//     } else if (selectBoxLocation.textContent == "지역 선택") {
-//       alert("지역을 선택해주세요");
-//       return;
-//     } else if (participants.value == false) {
-//       alert("모집 인원을 선택해주세요");
-//       return;
-//     } else if (textDetails.value == false) {
-//       alert("상세 내용을 입력해주세요");
-//       return;
-//     } else {
-//       const editedDatas = {
-//         title: studyTitle.value,
-//         study_type: selectBoxType.textContent,
-//         skills: tagList,
-//         start_date: selectedDateElement.textContent,
-//         due_date: selectedDateElementEnd.textContent,
-//         location: selectBoxLocation.textContent,
-//         total: participants.value,
-//         description: textDetails.value,
-//         userId,
-//       };
-//       console.log(editedDatas);
+      const baseURL = "http://localhost:5000/edit";
+      const request = await fetch(baseURL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(editedDatas),
+      });
+      const result = await request.json();
+      console.log(result, "request 결과");
+    }
+    modalCreatePage.classList.remove("on");
+    window.location.href = "http://127.0.0.1:5500/Likelion-Cool-Piece-Frontend/assets/html/index.html";
+  });
+}
+sendEditedData();
 
-//       const baseURL = "http://localhost:5000/edit";
-//       const request = await fetch(baseURL, {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(editedDatas),
-//       });
-//       const result = await request.json();
-//       console.log(result, "request 결과");
-//     }
-//     modalCreatePage.classList.remove("on");
-//     window.location.href = "http://127.0.0.1:5500/Likelion-Cool-Piece-Frontend/assets/html/index.html";
-//   });
-// }
-// sendEditedData();
+const authCheck = async () => {
+  const userData = await Auth.getUserData();
+  if (!userData.isLoggedIn) {
+    window.location.href = "./index.html";
+  }
+  new NavBar({
+    $target: document.querySelector(".navbar-list"),
+    userData: userData.isLoggedIn ? userData : null,
+  });
+};
+authCheck();

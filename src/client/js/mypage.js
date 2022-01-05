@@ -1,7 +1,8 @@
 import "../scss/styles.scss";
 import "regenerator-runtime";
-import Auth from "./auth";
-import { stackType, userLocations } from "./studyDatas";
+import Auth from './auth';
+import NavBar from './navbar';
+import { stackType, locations } from "./studyDatas";
 import { BASE_URL } from "./api";
 
 const editButton = document.querySelector(".mypage-form .button-edit");
@@ -131,7 +132,7 @@ function renderUpdateProfile() {
   addLocationOptions();  
   addStackType(); 
   editUserProfileInfo();
-} 
+}
 
 async function requestUpdateUserInfo() {
   const body = {};
@@ -149,7 +150,18 @@ function init() {
 
 init();
 
-// 데이터 전송
+const authCheck = async () => {
+  const userData = await Auth.getUserData();
+  if (!userData.isLoggedIn) {
+    window.location.href = "./index.html";
+  }
+  new NavBar({
+    $target: document.querySelector(".navbar-list"),
+    userData: userData.isLoggedIn ? userData : null,
+  });
+};
+authCheck();
+
 function sendUserData() {
   saveButton.addEventListener("click", async (event) => {
     const profileData = {

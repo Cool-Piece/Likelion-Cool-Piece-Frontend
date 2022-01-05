@@ -10,8 +10,9 @@ import Auth from "./auth.js";
 
 class Main {
   $floatingButton = null;
-  constructor($target) {
+  constructor({$target, userId}) {
     this.$target = $target;
+    this.userId = userId;
 
     this.$initButton = new InitButton({
       $target: this.$target.querySelector(".initButton"),
@@ -27,6 +28,7 @@ class Main {
     this.$card = new Card({
       $target: this.$target.querySelector(".studyList"),
       initFilterData: this.$category.getSelectedCategory(),
+      userId: this.userId
     });
 
     this.$search = new Search({
@@ -43,8 +45,11 @@ const main = async () => {
   const userData = await Auth.getUserData();
   new NavBar({
     $target: document.querySelector(".navbar-list"),
-    userData,
+    userData: userData.isLoggedIn ? userData : null,
   });
-  new Main(document.querySelector(".main-wrap"));
+  new Main({
+    $target: document.querySelector(".main-wrap"),
+    userId: userData.isLoggedIn ? userData.userId : null,
+  });
 };
 main();

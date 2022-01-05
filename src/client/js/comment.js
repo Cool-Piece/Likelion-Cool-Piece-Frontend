@@ -1,9 +1,11 @@
 import CommentModel from './commentModel';
+import { formatDate } from './utils';
 
 export default class Comment {
   data;
-  constructor({ $target, initData }) {
+  constructor({ $target, initData, userId }) {
     this.$target = $target;
+    this.userId = userId;
     this.$comments = $target.querySelector(".comment-lists");
     this.CommentModel = new CommentModel();
     this.initAddEvent();
@@ -16,19 +18,71 @@ export default class Comment {
     enrollButton.addEventListener("click", () => {
       this.addComment(commentInput.value);
     });
+
+    this.$comments.addEventListener('click', event => {
+      const commentItem = event.target.closest(".comment-item");
+
+      if (commentItem && commentItem.contains(event.target)) {
+        const id = commentItem.id;
+        if (event.target.classList.contains('edit')) {
+          if (event.target.classList.contains('on')) {
+            const editContent = commentItem.querySelector('.edit-comment').value;
+            this.editCommit(commentItem, editContent, id);
+          } else {
+            event.target.classList.toggle('on');
+            const userComment = commentItem.querySelector(".user-comment");
+            const editComment = commentItem.querySelector(".edit-comment");
+            const content = userComment.innerText;
+            userComment.classList.toggle('on');
+            editComment.classList.toggle('on');
+            editComment.value = content;
+          }
+        } else if (event.target.classList.contains('delete')) {
+          this.deleteCommit(id);
+        }
+      }
+    })
   }
 
-  addComment(description) {
-    this.CommentModel.addComment(description);
-    // TODO: 서버 받은 결과값에 맞춰서 댓글 리렌더링 작업
+  async addComment(content) {
+    try {
+      if (!this.userId) {
+        window.location.href = './login.html';
+      }
+      const comments = await this.CommentModel.addComment(content);
+      if (comments) {
+        this.$target.querySelector('.comment-box').value = "";
+        this.setState(comments.studyInfo.comments);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
 
-  editCommit() {
-    // TODO: 로그인 연동후 댓글 수정 작업
+  async editCommit(element, content, id) {
+    try {
+      const result = await this.CommentModel.editComment(content, id);
+      if (result) {
+        const userComment = element.querySelector('.user-comment');
+        const editComment = element.querySelector('.edit-comment');
+        editComment.classList.toggle("on");
+        userComment.classList.toggle("on");
+        userComment.innerText = content;
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
 
-  deleteCommit() {
-    // TODO: 로그인 연동후 댓글 삭제 작업
+  async deleteCommit(id) {
+    try {
+      const result = await this.CommentModel.deleteComment(id);
+      if (result) {
+        this.setState(this.data.filter(comment => comment._id != id));
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   setState(nextState) {
@@ -40,24 +94,29 @@ export default class Comment {
     this.$comments.innerHTML = this.data
       .map((comment) => {
         return `
-        <li class="comment-item" id=${comment.id}>
+        <li class="comment-item" id=${comment._id}>
           <section class="comment-header">
             <div class="user-info">
               <div class="image-wrap">
-                <img src=${comment.user.avatar_url} alt="${comment.creator}의 프로필 이미지입니다.">
+                <img src=${comment.creator.avatar_url} alt="${comment.creator.username}의 프로필 이미지입니다.">
               </div>
-              <p>${comment.user.creator}</p>
-              <p>${comment.createdAt}</p>
+              <p>${comment.creator.username}</p>
+              <p>${formatDate(comment.createdAt)}</p>
             </div>
             <div class="comment-control">
-              <a href="#">수정</a>
-              <a href="#">삭제</a>
+              ${
+                this.userId && this.userId === comment.creator._id
+                ? `
+                  <div class="comment-control edit">수정</div>
+                  <div class="comment-control delete">삭제</div>
+                ` : ""
+              }
             </div>
           </section>
-          <section class="user-comment">${comment.description}</section>
+          <section class="user-comment on">${comment.content}</section>
+          <textarea class="edit-comment" minlength="1" maxlength="500"></textarea>
         </li>
       `;
-      })
-      .join("");
+      }).join("");    
   }
 }
