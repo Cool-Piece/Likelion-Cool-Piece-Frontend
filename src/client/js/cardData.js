@@ -15,6 +15,7 @@ export default class CardModel {
   getNavData(path = '') {
     return getFetcher(path)
     .then(res => {
+      console.log("res => ", res);
       if (path === CARD_VIEW_TYPES.STUDY) { 
         return res.studies;
       }

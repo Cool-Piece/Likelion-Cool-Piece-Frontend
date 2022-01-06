@@ -69,7 +69,7 @@ class Detail {
         if (!this.userId) {
           window.location.href = './login.html';
         }
-
+        
         const result = await fetch(`http://localhost:5000/users/bookmark`, {
           method: "POST",
           headers: {
@@ -96,7 +96,7 @@ class Detail {
     const pageId = localStorage.getItem('detailPageId');
     const isJoin = this.data.participants.find(id => id === this.userId);
     const onBookmark = this.data.creator.bookmark.find(id => id === pageId);
-
+    
     this.$info.innerHTML = `
       <header class="detail-title">
         <h2>${this.data.title}</h2>

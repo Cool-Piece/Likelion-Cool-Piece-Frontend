@@ -27,7 +27,7 @@ const getEntry = () => {
 module.exports = (env) => ({
   mode: "development",
   entry: getEntry(),
-  // watch: true,
+  watch: true,
   output: {
     path: path.resolve(__dirname, "assets"),
     filename: "js/[name].js",

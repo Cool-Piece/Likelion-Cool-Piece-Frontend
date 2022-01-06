@@ -460,7 +460,6 @@ async function sendStudyData() {
         body: JSON.stringify(createStudyDatas),
       });
       const result = await request.json();
-      console.log(result.message); 
 
       if(result.message === "Internal Server Error"){
         alert("서버를 기다리는 중입니다. 잠시후 다시 시도해주세요!");

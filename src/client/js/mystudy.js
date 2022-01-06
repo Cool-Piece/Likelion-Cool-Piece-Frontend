@@ -8,7 +8,7 @@ export default class MyStudy {
   constructor($target) {
     this.$target = $target;
     this.$cardList = this.$target.querySelector(".study-list");
-
+    
     // TODO: 북마크, 참여중인 스터디 데이터를 가져와주세요
     // 가져온 '스터디카드' 타입의 '배열' 데이터 fetchData를 setState에 넣어주시면 됩니다
     // this.setState(fetchData)
