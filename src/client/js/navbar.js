@@ -34,8 +34,9 @@ export default class NavBar {
           <ul class="navBar-userRoutes">
             <li><a href="./mypage.html">프로필</a></li>
             <li><a href="./create.html">스터디 생성</a></li>
-            <li><a href="./#">스터디 현황</a></li>
-            <li><a href="./#">내 작성 글</a></li>
+            <li><a href="./mystudy.html">스터디 현황</a></li>
+            <!-- TODO: 내 작성글 기능 추가 -->
+            <!-- <li><a href="./#">내 작성 글</a></li> -->
             <li class="logoutBtn"><a>로그아웃</a></li>
           </ul>
         ` : ''}

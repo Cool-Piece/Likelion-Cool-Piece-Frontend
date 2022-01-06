@@ -1,49 +1,59 @@
 import "regenerator-runtime";
 import "../scss/styles.scss";
-import Auth from "../js/auth";
+import Auth from "./auth";
+import NavBar from "./navbar";
 
-const myStudyList = document.querySelector(".study-list"); 
-const studyTagList = document.querySelector(".tag-list"); 
-const studyTitle = document.querySelector(".study-title");
-const studyDate = document.querySelector(".study-date");
+export default class MyStudy {
+  data;
+  constructor($target) {
+    this.$target = $target;
+    this.$cardList = this.$target.querySelector(".study-list");
 
+    // TODO: 북마크, 참여중인 스터디 데이터를 가져와주세요
+    // 가져온 '스터디카드' 타입의 '배열' 데이터 fetchData를 setState에 넣어주시면 됩니다
+    // this.setState(fetchData)
+  }
 
+  setState(nextState) {
+    this.data = nextState;
+    this.render();
+  }
 
+  render() {
+    this.$cardList.innerHTML = this.data.map((card) => {
+      return `
+        <li class="study-card">
+          <div class="main-info">
+              <p class="study-title">${card.title}</p>
+              <p class="study-date">
+                ${formatDate(card.start_date)} ~ 
+                ${formatDate(card.due_date)}
+              </p>
+          </div>
+          <div class="study-status">
+              <ul class="tag-list">
+                ${card.skills.map((skill) => {
+                  return `<li>${skill}</li>`;
+                })}
+              </ul>
+              <!-- TODO: 참여기능 생기면 추가하기 -->
+              <!-- <div class="sutdy-status">참여중</div> -->
+          </div>
+          </li>
+      `;
+    })
+  }
+}
 
-
-// TODO 
-// 1. 유저 데이터 (참여한 스터디) 가져오기  
-// 유저데이터 가져오기 
-async function getUserData() {
-  const token = Auth.getToken();
-  const request = await fetch("http://localhost:5000/:id", {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer${token}`,
-    },
+const authCheck = async () => {
+  const userData = await Auth.getUserData();
+  if (!userData.isLoggedIn) {
+    window.location.href = './login.html';
+  }
+  new NavBar({
+    $target: document.querySelector(".navbar-list"),
+    userData: userData.isLoggedIn ? userData : null,
   });
-  const result = await request.json();
-  console.log(result, "api result");
-  userId = result.userId;
-  username = result.username;
-}
-getUserData();
-
-//유저 참여 스터디 데이터 가져오기.. 
-// const baseURL = "http://localhost:5000/:id";
-// const response = await fetch(baseURL, {
-//   method: "GET",
-//   headers: {
-//     "Content-Type": "application/json",
-//   },
-//   body: JSON.stringify(createStudyDatas),
-// });
-// const result = await response.json();
-// console.log(result.message); 
-
-function renderStudyCard() { 
-  // 2. 참여중인 스터디 카드 동적 생성 
-
-  // 3. 스터디 카드에 해당 정보 넣어주기
-  // 제목, 스킬 태그, 진행 기간 데이터 뿌려주기
-}
+  new MyStudy(document.querySelector(".mystudy-wrap"));
+};
+authCheck();
