@@ -1,0 +1,4 @@
+// netlify.toml
+[build]
+  command = "npm run assets"
+  publish = "assets/html"
