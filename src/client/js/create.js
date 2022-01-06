@@ -408,7 +408,6 @@ async function getUserData() {
     },
   });
   const result = await request.json();
-  console.log(result, "api result");
   userId = result.userId;
   username = result.username;
 }
@@ -449,7 +448,6 @@ async function sendStudyData() {
         description: textDetails.value,
         userId,
       };
-      console.log(createStudyDatas);
 
       const baseURL = "http://localhost:5000/create";
       const request = await fetch(baseURL, {

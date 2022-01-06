@@ -168,8 +168,8 @@ function sendUserData() {
       nickname: currentNickname.textContent, 
       user_location: currentLocation.textContent, 
       fav_stack: favStackList
-    } 
-    console.log(profileData);
+    }
+    
     const baseURL = "http://localhost:5000/users/edit";
       const request = await fetch(baseURL, {
         method: "POST",
@@ -180,7 +180,6 @@ function sendUserData() {
         body: JSON.stringify(profileData),
       });
       const result = await request.json();
-      console.log(result.message); 
 
       if (result.message === "Internal Server Error") {
         console.log("mypage update error");
@@ -190,4 +189,4 @@ function sendUserData() {
     
   })
 }
-sendUserData(); 
+sendUserData();

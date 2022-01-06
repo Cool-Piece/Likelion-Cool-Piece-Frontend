@@ -10,7 +10,6 @@ const githubLogin = document.querySelector(".login-github");
 
 const handleGithub = () => {
   const baseUrl = "https://github.com/login/oauth/authorize";
-  console.log(process.env.GITHUB_KEY, "check");
   const config = {
     client_id: process.env.GITHUB_KEY,
     allow_signup: false,
