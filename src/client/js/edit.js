@@ -451,9 +451,8 @@ async function sendEditedData() {
         description: textDetails.value,
         userId,
       };
-      console.log(editedDatas);
 
-      const baseURL = "http://localhost:5000/edit";
+      const baseURL = "http://localhost:5000/users/edit";
       const request = await fetch(baseURL, {
         method: "POST",
         headers: {
@@ -461,14 +460,31 @@ async function sendEditedData() {
         },
         body: JSON.stringify(editedDatas),
       });
-      const result = await request.json();
-      console.log(result, "request 결과");
+      
+      if (request.status === 201) {
+        window.location.href='./index.html';
+      } else {
+        console.error('수정 에러');
+      }
+
     }
     modalCreatePage.classList.remove("on");
-    window.location.href = "./index.html";
   });
 }
 sendEditedData();
+
+async function getDetailData() {
+  const pageId = localStorage.getItem('detailPageId');
+  return await fetch(`http://localhost:5000/${pageId}`)
+  .then(res => {
+    console.log("result => ", res);
+    if (res.status === 200) {
+      return res.json()
+    } else {
+      console.error('상세페이지 데이터 가져오는 중 에러');
+    }
+  })
+}
 
 const authCheck = async () => {
   const userData = await Auth.getUserData();
@@ -481,3 +497,7 @@ const authCheck = async () => {
   });
 };
 authCheck();
+
+(async function(){
+  const res = await getDetailData();
+})()
