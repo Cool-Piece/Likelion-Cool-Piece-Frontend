@@ -412,7 +412,6 @@ async function getUserData() {
     },
   });
   const result = await request.json();
-  console.log(result, "api result");
   userId = result.userId;
   username = result.username;
 }
@@ -477,7 +476,6 @@ async function getDetailData() {
   const pageId = localStorage.getItem('detailPageId');
   return await fetch(`http://localhost:5000/${pageId}`)
   .then(res => {
-    console.log("result => ", res);
     if (res.status === 200) {
       return res.json()
     } else {
