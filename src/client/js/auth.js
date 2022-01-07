@@ -50,15 +50,15 @@ export default class Auth {
   }
 
   static logout() {
-    fetch('http://localhost:5000/users/logout')
-    .then(res => {
-      if (res.status === 200) {
-        document.cookie = `${JWT_KEY}=${this.getToken()}; max-age=0;`;
-        window.location.reload();
-      } else {
-        return new Error('로그아웃 실패');
-      }
-    })
-    .catch(error => console.error(error))
+    // fetch('http://localhost:5000/users/logout')
+    // .then(res => {
+    //   if (res.status === 200) {
+    //   } else {
+    //     return new Error('로그아웃 실패');
+    //   }
+    // })
+    // .catch(error => console.error(error))
+    document.cookie = `${JWT_KEY}=${this.getToken()}; max-age=0;`;
+    window.location.reload();
   }
 }
