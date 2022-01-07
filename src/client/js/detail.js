@@ -6,9 +6,10 @@ import NavBar from "./navbar";
 import { formatDate } from './utils';
 
 class Detail {
-  constructor({$target, userId = null}) {
+  constructor({$target, userData = null}) {
     this.$target = $target;
-    this.userId = userId;
+    this.userData = userData;
+    this.userId = userData ? userData.userId : null;
     this.$info = $target.querySelector(".study-detail-info");
     this.detailModel = new DetailModel();
     this.detailModel.getData().then((res) => {
@@ -95,7 +96,7 @@ class Detail {
   render() {
     const pageId = localStorage.getItem('detailPageId');
     const isJoin = this.data.participants.find(id => id === this.userId);
-    const onBookmark = this.data.creator.bookmark.find(id => id === pageId);
+    const onBookmark = !this.userId ? false : (this.userData.bookmark.find(id => id === pageId) ? true : false);
     
     this.$info.innerHTML = `
       <header class="detail-title">
@@ -181,7 +182,7 @@ async function detail() {
   });
   new Detail({
     $target: document.querySelector(".study-detail-container"),
-    userId: userData.isLoggedIn ? userData.userId : null
+    userData: userData.isLoggedIn ? userData : null
   });
 }
 

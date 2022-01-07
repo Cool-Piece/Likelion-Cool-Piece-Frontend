@@ -145,7 +145,7 @@ async function requestUpdateUserInfo() {
 function init() {
   displayUserInfo();
   renderUpdateProfile();
-  requestUpdateUserInfo();
+  // requestUpdateUserInfo();
 }
 
 init();

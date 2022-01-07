@@ -3,17 +3,16 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    margin: 0 auto;
-    margin-top: 150px; 
+    margin: calc($header-search-off + 30px) auto 30px;
     width:400px; 
     min-width: 400px; 
+    min-height: calc(100vh - ($header-search-off + 30px) - ($footer-height-desktop + 30px));
     height: 530px;
     position: relative;
     border: 1px solid #ebebeb;
     border-radius: 30px;
     padding: 0 50px;
     box-sizing: border-box;
-    margin-bottom: 80px; 
     position: relative; 
  .profile-image-container {
     display: flex;
