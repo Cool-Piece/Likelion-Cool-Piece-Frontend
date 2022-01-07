@@ -17,9 +17,10 @@ export default class Card {
   navData;
   filterData;
 
-  constructor({$target, initFilterData, userId}) {
+  constructor({$target, initFilterData, userData = null}) {
     this.$target = $target;
-    this.userId = userId;
+    this.userData = userData
+    this.userId = userData ? userData.userId : null;
     this.cardModel = new CardModel();
     this.cardModel.getAllData().then(res => {
       this.data = res;
@@ -124,8 +125,9 @@ export default class Card {
     } else {
       emptyElement.style.display = 'block';
     }
+    
     this.$target.innerHTML = this.viewData.map(card => {
-      const onBookmark = !this.userId ? false : (card.creator.bookmark.find(id => id == card._id) ? true : false );
+      const onBookmark = !this.userId ? false : (this.userData.bookmark.find(id => id === card._id) ? true : false);
       return `
         <li class="studyItem"
         title="클릭시 해당 스터디의 상세페이지로 이동합니다."

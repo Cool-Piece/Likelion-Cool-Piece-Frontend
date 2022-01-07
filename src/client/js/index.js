@@ -10,9 +10,9 @@ import Auth from "./auth.js";
 
 class Main {
   $floatingButton = null;
-  constructor({$target, userId}) {
+  constructor({$target, userData = null}) {
     this.$target = $target;
-    this.userId = userId;
+    this.userData = userData;
 
     this.$initButton = new InitButton({
       $target: this.$target.querySelector(".initButton"),
@@ -28,7 +28,7 @@ class Main {
     this.$card = new Card({
       $target: this.$target.querySelector(".studyList"),
       initFilterData: this.$category.getSelectedCategory(),
-      userId: this.userId
+      userData: this.userData
     });
 
     this.$search = new Search({
@@ -49,7 +49,7 @@ const main = async () => {
   });
   new Main({
     $target: document.querySelector(".main-wrap"),
-    userId: userData.isLoggedIn ? userData.userId : null,
+    userData: userData.isLoggedIn ? userData : null,
   });
 };
 main();
