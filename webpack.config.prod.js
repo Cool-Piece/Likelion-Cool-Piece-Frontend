@@ -9,7 +9,7 @@ const jsFileNames = ["login", "index", "detail", "create", "edit", "mypage", "gi
 const multipleHtmlPlugins = htmlPageNames.map((name) => {
   return new HtmlWebpackPlugin({
     template: `./src/client/html/${name}.html`,
-    filename: `html/${name}.html`,
+    filename: `${name}.html`,
     chunks: [`${name}`],
   });
 });
