@@ -1,4 +1,4 @@
-const dotenv = require("dotenv-webpack");
+const webpack = require('webpack');
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -27,10 +27,10 @@ const getEntry = () => {
 module.exports = (env) => ({
   mode: "production",
   entry: getEntry(),
-  // watch: true,
   output: {
-    path: path.resolve(__dirname, "assets"),
+    path: path.resolve(__dirname, "dist"),
     filename: "js/[name].js",
+    publicPath: "/",
     clean: true,
   },
 
@@ -39,8 +39,12 @@ module.exports = (env) => ({
       filename: "css/styles.css",
     }),
 
-    new dotenv({
-      path: ".env",
+    new webpack.DefinePlugin({
+      "process.env": {
+        GITHUB_CLIENT_ID: JSON.stringify(process.env.GITHUB_CLIENT_ID),
+        GITHUB_KEY: JSON.stringify(process.env.GITHUB_KEY),
+        GITHUB_CLIENT_ID: JSON.stringify(process.env.GITHUB_CLIENT_ID),
+      },
     }),
 
     new HtmlWebpackPlugin({
