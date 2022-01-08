@@ -14,7 +14,7 @@
 Local 환경에서 실행 시 아래와 같은 준비가 필요합니다.
 
 ### Client
-- vscode liveServer extention이 설치합니다.
+- vscode liveServer extention을 설치합니다.
 - [Github OAuth App](https://github.com/settings/developers)을 설정합니다.
   - 로컬 주소는 **라이브 서버, port 5500**을 기준으로 합니다. 
   - Homepage URL : `http://127.0.0.1:5500/assets/html/index.html`
