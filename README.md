@@ -3,12 +3,10 @@
   <p>면접, 스터디 및 프로젝트 동료를 구하는 멋쟁이사자처럼 프론트엔드스쿨 참여자들을 위한 서비스</p>
 </div>
 
-[서비스 바로가기](url)
-
 ## Deploy
 
 ### Client
-
+- 배포 예정 입니다.
 ### BackEnd
 - heroku
 
@@ -16,22 +14,28 @@
 Local 환경에서 실행 시 아래와 같은 준비가 필요합니다.
 
 ### Client
-- Github 계정이 필요하며 Root 디렉토리에 .env 파일을 만들고 다음과 같이 설정합니다.
+- vscode liveServer extention을 설치합니다.
+- [Github OAuth App](https://github.com/settings/developers)을 설정합니다.
+  - 로컬 주소는 **라이브 서버, port 5500**을 기준으로 합니다. 
+  - Homepage URL : `http://127.0.0.1:5500/assets/html/index.html`
+  - Authoization callback URL: `http://127.0.0.1:5500/assets/html/gitCallback.html`
+
+- Root 디렉토리에 .env 파일을 만들고 다음과 같이 설정합니다.
+
 ```
 GITHUB_CLIENT_ID = <YOUR_GITHUB_CLIENT_ID>
 GITHUB_KEY = <YOUR_GITHUB_KEY>
 GITHUB_SECRET = <YOUR_GITHUB_SECRET>
 ```
-- vscode liveServer extention이 필요합니다.
-- Github development 에 계정을 등록하고 githubcallback.html을 리다이렉트 URI로 설정해주시면 됩니다.
 
 - 설정이 끝나면 아래와 같이 실행합니다.
+
 ```
 $npm install
 $npm run assets
 ```
 
-Root/assets/html/index.html을 liveServer로 실행합니다.
+root/assets/html/index.html을 liveServer로 실행합니다.
 
 ### Backend
 
@@ -92,23 +96,26 @@ HTML, CSS(SASS), JavaScript, Webpack
 - 스터디 상세 페이지 댓글 UI 구현
 
 ### 👨🏻‍💻 김준호
-- 공통 레이아웃 UI 및 기능을 담당
-  - 네비게이션을 구현
-  - 각 페이지별 라우팅을 구현
-  - 로그인을 연동한 동적 UI를 구현
+- 공통 레이아웃 및 인증 기능을 담당
+  - 네비게이션 구현
+  - 전체 페이지에 인증 적용
 
 - 메인페이지 UI 및 기능을 담당
-  - 각 기능을 모듈화
-  - 필터링 기능을 구현
-  - 검색 기능을 구현
-  - 새로고침을 고려한 데이터 작업을 구현
-  - 모바일 및 태블릿에 대응하기 위한 반응형 UI 구현
+  - 기능 모듈화
+  - 필터링 기능 구현
+  - 검색 기능 구현
+  - 페이지 갱신을 고려한 데이터 처리
+  - 인증이 연동된 동적 UI 구현
+  - 반응형 UI 구현
 
 - 로그인 기능에 참여
+  - Github OAuth 를 활용한 로그인 구현
 
-- 상세페이지 기능을 담당
-  - 유저 정보를 고려한 렌더링
+- 상세페이지 렌더링 및 기능을 담당
   - 댓글 기능을 구현
+  - 북마크 구현
+
+- 유저 현황 페이지 렌더링 구현
 
 ## 💼 How we worked
 ### 기획 및 디자인
@@ -127,6 +134,7 @@ HTML, CSS(SASS), JavaScript, Webpack
 
 
 ### 👩‍💻 박지윤
+
 -  #### 깃 워크플로우
 FE개발 공부를 시작하고 처음 참여하게 된 프로젝트 이다보니 깃사용, 자바스크립트를 활용한 기능 구현, 협업 시 사용되는 전문 용어 (merge, branch, 충돌) 등 에 대해 초반 어려움을 느꼈습니다. 하지만 팀원들의 친절한 설명과 반복 작업을 통해 깃을 활용한 워크플로우를 이해할 수 있었습니다. 협업 시 깃을 사용하며 최종 도착지인 main 브랜치와 그 아래 dev, 기능별 또는 작업자 별 브랜치를 만들어 작업한 후 진행 과정 중 개별 브랜치와 dev 브랜치, 최종적인 서비스 배포를 위해 main브랜치에 merge하는 과정을 이해할 수 있었고, 향후 프로젝트에 적용하는 단계까지 이해를 높일 수 있었습니다. 
 - #### 웹팩과 컴파일러
@@ -134,9 +142,7 @@ FE개발 공부를 시작하고 처음 참여하게 된 프로젝트 이다보�
 - #### 유저 데이터 요청 및 전달 (비동기 프로그래밍) 
 유저 데이터를 받아오며 구현한 로직이 동기적으로 실행되어 데이터가 전달이 되지 않는 이슈가 있었습니다. JavaScript 런타임에서 여러 로직이 순차적으로 실행이 되는 중 유저의 토큰을 가져오는 로직과 유저 아이디와 이름을 불러오는 로직이 동시에 실행되어 값이 할당되지 않았습니다. 해당 이슈를 해결하기 위해 동일 로직을 async와 await을 활용하여 비동기적으로 바꾸어 주었고, 유저 토큰을 가져오는 동안 유저 아이디와 이름을 불러오는 fetch에 await을 주었습니다. API에서 유저 데이터를 불러오는 과정에서 비동기적 프로그래밍에 대한 역할과 중요성을 경험할 수 있었습니다. 
  
-
 ### 👨🏻‍💻 김준호
-
 
 ## ✍️ Improvements
 
