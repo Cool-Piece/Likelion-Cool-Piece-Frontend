@@ -1,8 +1,7 @@
 .main-wrap {
   margin-top: $header-search-on;
   .main-section {
-    // min-height: calc(100vh - #{$header-search-on} - #{$footer-height-desktop});
-    min-height: 490px;
+    min-height: calc(100vh - #{$header-search-on});
     margin: 0 auto;
     padding: 40px 0;
     box-sizing: border-box;
@@ -147,7 +146,7 @@
     margin-top: $header-mobile;
     .main-section {
       width: 90%;
-      min-height: calc(100vh - #{$header-mobile} - #{$footer-height-mobile});
+      min-height: calc(100vh - #{$header-mobile});
       margin: 0 auto;
       padding: 20px 0;
       display: flex;
