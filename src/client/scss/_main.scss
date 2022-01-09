@@ -1,14 +1,16 @@
 .main-wrap {
   margin-top: $header-search-on;
   .main-section {
-    min-height: calc(100vh - #{$header-search-on} - #{$footer-height-desktop});
+    // min-height: calc(100vh - #{$header-search-on} - #{$footer-height-desktop});
+    min-height: 490px;
     margin: 0 auto;
     padding: 40px 0;
     box-sizing: border-box;
     display: grid;
     grid-template-columns: 250px calc(100% - 250px);
     .category-wrap {
-      position: fixed;
+      position: sticky;
+      top: calc($header-search-on + 40px);
       display: flex;
       flex-direction: column;
       .categoryRecruit {
