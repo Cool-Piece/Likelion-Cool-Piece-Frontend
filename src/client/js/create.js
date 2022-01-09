@@ -3,6 +3,7 @@ import "../scss/styles.scss";
 import Auth from "../js/auth";
 import NavBar from './navbar';
 import { studyType, stackType, months, locations } from "../js/studyDatas";
+import { BASE_URL } from './api';
 
 // 셀렉트박스 요소
 const selectBoxType = document.querySelector(".select-box.type");
@@ -401,7 +402,7 @@ let username;
 // 유저 데이터 요청
 async function getUserData() {
   const token = Auth.getToken();
-  const request = await fetch("http://localhost:5000/users", {
+  const request = await fetch(`${BASE_URL}/users`, {
     method: "GET",
     headers: {
       Authorization: `Bearer${token}`,
@@ -449,8 +450,7 @@ async function sendStudyData() {
         userId,
       };
 
-      const baseURL = "http://localhost:5000/create";
-      const request = await fetch(baseURL, {
+      const request = await fetch(`${BASE_URL}/create`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

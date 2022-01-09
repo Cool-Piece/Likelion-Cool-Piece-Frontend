@@ -4,6 +4,7 @@ import Comment from "./comment";
 import Auth from "./auth";
 import NavBar from "./navbar";
 import { formatDate } from './utils';
+import { BASE_URL } from './api';
 
 class Detail {
   constructor({$target, userData = null}) {
@@ -45,7 +46,7 @@ class Detail {
       const cancel = "modal-button no";
 
       if (event.target.className === ok) {
-        const result = await fetch(`http://localhost:5000/${localStorage.getItem('detailPageId')}`, {
+        const result = await fetch(`${BASE_URL}/${localStorage.getItem('detailPageId')}`, {
           method: 'POST',
           headers: {
             'Authorization': `Bearer${Auth.getToken()}`
@@ -71,7 +72,7 @@ class Detail {
           window.location.href = './login.html';
         }
         
-        const result = await fetch(`http://localhost:5000/users/bookmark`, {
+        const result = await fetch(`${BASE_URL}/users/bookmark`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

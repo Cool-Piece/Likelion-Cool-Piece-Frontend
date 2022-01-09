@@ -170,7 +170,7 @@ function sendUserData() {
       fav_stack: favStackList
     }
     
-    const baseURL = "http://localhost:5000/users/edit";
+    const baseURL = `${BASE_URL}/users/edit`;
       const request = await fetch(baseURL, {
         method: "POST",
         headers: {
