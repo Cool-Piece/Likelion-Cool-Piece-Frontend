@@ -3,10 +3,12 @@
   <p>면접, 스터디 및 프로젝트 동료를 구하는 멋쟁이사자처럼 프론트엔드스쿨 참여자들을 위한 서비스</p>
 </div>
 
+✔ [서비스 바로가기](https://cool-piece.netlify.app/)
+
 ## Deploy
 
 ### Client
-- 배포 예정 입니다.
+- netlify
 ### BackEnd
 - heroku
 
@@ -115,7 +117,11 @@ HTML, CSS(SASS), JavaScript, Webpack
   - 댓글 기능을 구현
   - 북마크 구현
 
-- 유저 현황 페이지 렌더링 구현
+- 유저 현황 페이지 구현
+
+- 웹팩 설정 및 Netlify 배포
+
+- 로딩 인디케이터 적용
 
 ## 💼 How we worked
 ### 기획 및 디자인

@@ -89,12 +89,12 @@
         width: 100%;
         float: right;
         height: 35px;
-        background-color: $defaultColor;
+        background-color: $mainColor;
         font-weight: bold;
         font-family: $font-family;
         cursor: pointer;
         &:hover {
-          transform: scale(1.03);
+          transform: scale(1.005);
         }
       }
     }

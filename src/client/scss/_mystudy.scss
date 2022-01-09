@@ -24,13 +24,18 @@
         box-sizing: border-box;
         padding: 10px 30px;
         margin-bottom: 20px;
+        cursor: pointer;
+
+        &:hover {
+          transform: scale(1.005);
+        }
       
         .main-info {
           display: flex;
           justify-content: space-between;
           align-content: center;
           .study-title {
-            font-size: 24px;
+            font-size: 18px;
             font-weight: 700;
            }
             .study-date {
@@ -54,18 +59,32 @@
                 font-size: 12px;
                 line-height: 2;
               }
+
+              span {
+                line-height: 25px;
+              }
             }
-            div {
-              width: 75px;
-              height: 25px; 
-              padding: 0 5px;
-              text-align: center;
-              color: #FFF;
-              background: #F25C05;
-              border-radius: 5px;
-              font-size: 12px;
-              line-height: 2;
+
+            .study-user-status {
+              display: flex;
+              
+              .join-status {
+                width: 75px;
+                height: 25px; 
+                padding: 0 5px;
+                text-align: center;
+                color: #FFF;
+                background: #F25C05;
+                border-radius: 5px;
+                font-size: 12px;
+                line-height: 2;
+              }
+              .bookmark-status {
+                font-size: 25px;
+                margin-left: 10px;
+              }
             }
+
           }
       }
     }
