@@ -130,9 +130,13 @@ class Detail {
         </ul>
         <div class="study-control">
           ${
-            isJoin
-              ? `<button class="join-study">참여 중</button>`
-              : `<button class="join-study">참여하기</button>`
+            this.data.participants.length == this.data.total
+            ? ''
+            : (
+              isJoin
+                ? `<button class="join-study">참여 중</button>`
+                : `<button class="join-study">참여하기</button>`
+            )
           }
           ${
             this.userId && this.userId === this.data.creator._id
