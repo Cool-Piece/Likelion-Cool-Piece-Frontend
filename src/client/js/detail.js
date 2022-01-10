@@ -57,7 +57,7 @@ class Detail {
         console.log(result)
         if (result.status === 200) {
           alert('참여 되었습니다.');
-          this.$target.querySelector('.join-study').innerText = '참여 중';
+          window.location.reload();
         } else {
           console.error('스터디 참여 에러');
         }
