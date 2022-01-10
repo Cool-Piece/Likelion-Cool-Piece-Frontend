@@ -29,7 +29,7 @@ class Detail {
     const modal = document.querySelector(".modal");
     const bookmark = this.$target.querySelector(".bookmark-icon");
 
-    joinButton.addEventListener("click", () => {
+    joinButton?.addEventListener("click", () => {
       if (!this.userId) {
         window.location.href = './login.html';
       } else {
