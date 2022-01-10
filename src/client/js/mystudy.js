@@ -58,7 +58,7 @@ export default class MyStudy {
   render() {
     this.$cardList.innerHTML = this.data.map((card) => {
       const onBookmark = this.userData.bookmark.find(id => id === card._id);
-      const isJoin = this.data.participants.find(id => id === this.userData.userId);
+      const isJoin = card.participants.find(id => id === this.userData.userId);
 
       return `
         <li class="study-card" id=${card._id}>
