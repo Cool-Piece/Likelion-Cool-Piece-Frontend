@@ -8,6 +8,10 @@ const logoBox = document.querySelector(".title");
 logoBox.src = logos;
 
 const sendToken = async () => {
+  console.log(
+    "Github API 로그인 요청후 받아오는 code => ",
+    new URL(window.location.href).searchParams.get("code")
+  );
   const tokenRequest = await fetch(
     `${BASE_URL}/users/github/callback`,
     {
@@ -23,6 +27,7 @@ const sendToken = async () => {
 
   const result = await tokenRequest.json();
   if (result.access_token) {
+    console.log("서버로부터 받은 토큰 => ", result.access_token);
     Auth.setToken(result.access_token);
     window.location.href = "./index.html";
   }
