@@ -45,12 +45,13 @@ class Detail {
     modal.addEventListener("click", async (event) => {
       const ok = "modal-button yes";
       const cancel = "modal-button no";
-
+      const 
       if (event.target.className === ok) {
         const result = await fetch(`${BASE_URL}/study/join`, {
           method: 'POST',
           headers: {
-            'Authorization': `Bearer${Auth.getToken()}`
+            'Authorization': `Bearer${Auth.getToken()}`,
+            'Content-Type': 'application/json'
           },
           body: JSON.stringify({studyId: localStorage.getItem('detailPageId')})
         });
