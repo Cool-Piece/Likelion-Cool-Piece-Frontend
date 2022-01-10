@@ -33,7 +33,8 @@ class Detail {
       if (!this.userId) {
         window.location.href = './login.html';
       } else {
-        if (this.userId === this.data.creator._id) {
+        const isJoin = this.data.participants.find(id => id === this.userId);
+        if (isJoin) {
           alert('참여 중 입니다.');
           return;
         }
@@ -46,16 +47,17 @@ class Detail {
       const cancel = "modal-button no";
 
       if (event.target.className === ok) {
-        const result = await fetch(`${BASE_URL}/${localStorage.getItem('detailPageId')}`, {
+        const result = await fetch(`${BASE_URL}/study/join`, {
           method: 'POST',
           headers: {
             'Authorization': `Bearer${Auth.getToken()}`
-          }
+          },
+          body: JSON.stringify({studyId: localStorage.getItem('detailPageId')})
         });
-
-        if (result.status === 201) {
-          this.$target.querySelector('.join-study').innerText = '참여 중';
+        console.log(result)
+        if (result.status === 200) {
           alert('참여 되었습니다.');
+          this.$target.querySelector('.join-study').innerText = '참여 중';
         } else {
           console.error('스터디 참여 에러');
         }
@@ -90,6 +92,8 @@ class Detail {
         } else {
           console.error('북마크 등록 에러');
         }
+      } else {
+        alert('북마크 해제 기능은 추가될 예정입니다!');
       }
     })
   }

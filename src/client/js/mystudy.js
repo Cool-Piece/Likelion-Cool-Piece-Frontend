@@ -57,7 +57,9 @@ export default class MyStudy {
 
   render() {
     this.$cardList.innerHTML = this.data.map((card) => {
-      const onBookmark = this.userData.bookmark.find(id => id === card._id) ? true : false;
+      const onBookmark = this.userData.bookmark.find(id => id === card._id);
+      const isJoin = this.data.participants.find(id => id === this.userData.userId);
+
       return `
         <li class="study-card" id=${card._id}>
           <div class="main-info">
@@ -75,9 +77,10 @@ export default class MyStudy {
                 }).join('')}
                 ${card.skills.length > 4 ? `<span>+${card.skills.length - 4}</span>` : ''}
               </ul>
-              <!-- TODO: 참여기능 생기면 추가하기 -->
               <div class="study-user-status">
-                <div class="join-status">참여중</div>
+                ${isJoin
+                  ? `<div class="join-status">참여 중</div>`
+                  : `<div class="join-status">참여하기</div>`}
                 <div class="bookmark-status">
                   ${onBookmark
                     ? `<i class="fas fa-bookmark bookmark-icon"></i>`
