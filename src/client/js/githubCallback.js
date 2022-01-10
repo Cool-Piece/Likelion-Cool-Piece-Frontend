@@ -29,7 +29,7 @@ const sendToken = async () => {
   if (result.access_token) {
     console.log("서버로부터 받은 토큰 => ", result.access_token);
     Auth.setToken(result.access_token);
-    window.location.href = "./index.html";
+    // window.location.href = "./index.html";
   }
 };
 
