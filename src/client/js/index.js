@@ -43,8 +43,6 @@ class Main {
 
 const main = async () => {
   const userData = await Auth.getUserData();
-  console.log("현재 유저 토큰 => ", Auth.getToken());
-  console.log("현재 유저 정보 => ", userData);
   new NavBar({
     $target: document.querySelector(".navbar-list"),
     userData: userData.isLoggedIn ? userData : null,
