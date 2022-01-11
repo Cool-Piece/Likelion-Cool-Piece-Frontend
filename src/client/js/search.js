@@ -9,7 +9,7 @@ export default class Search {
 
   initEvent() {
     this.$target.addEventListener("keydown", event => {
-      if(event.key === "Enter") {
+      if(event.keyCode === 13) {
         const searchData = this.$target.value;
         if(this.validateSearch(searchData)) {
           this.onSearch(searchData);
