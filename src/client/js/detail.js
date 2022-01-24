@@ -4,6 +4,7 @@ import Comment from "./comment";
 import Auth from "./auth";
 import NavBar from "./navbar";
 import { formatDate } from './utils';
+import { BASE_URL } from './api';
 
 class Detail {
   constructor({$target, userData = null}) {
@@ -28,11 +29,12 @@ class Detail {
     const modal = document.querySelector(".modal");
     const bookmark = this.$target.querySelector(".bookmark-icon");
 
-    joinButton.addEventListener("click", () => {
+    joinButton?.addEventListener("click", () => {
       if (!this.userId) {
         window.location.href = './login.html';
       } else {
-        if (this.userId === this.data.creator._id) {
+        const isJoin = this.data.participants.find(id => id === this.userId);
+        if (isJoin) {
           alert('참여 중 입니다.');
           return;
         }
@@ -43,18 +45,20 @@ class Detail {
     modal.addEventListener("click", async (event) => {
       const ok = "modal-button yes";
       const cancel = "modal-button no";
-
+      
       if (event.target.className === ok) {
-        const result = await fetch(`http://localhost:5000/${localStorage.getItem('detailPageId')}`, {
+        const result = await fetch(`${BASE_URL}/study/join`, {
           method: 'POST',
           headers: {
-            'Authorization': `Bearer${Auth.getToken()}`
-          }
+            'Authorization': `Bearer${Auth.getToken()}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({studyId: localStorage.getItem('detailPageId')})
         });
-
-        if (result.status === 201) {
-          this.$target.querySelector('.join-study').innerText = '참여 중';
+        console.log(result)
+        if (result.status === 200) {
           alert('참여 되었습니다.');
+          window.location.reload();
         } else {
           console.error('스터디 참여 에러');
         }
@@ -71,7 +75,7 @@ class Detail {
           window.location.href = './login.html';
         }
         
-        const result = await fetch(`http://localhost:5000/users/bookmark`, {
+        const result = await fetch(`${BASE_URL}/users/bookmark`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -89,6 +93,8 @@ class Detail {
         } else {
           console.error('북마크 등록 에러');
         }
+      } else {
+        alert('북마크 해제 기능은 추가될 예정입니다!');
       }
     })
   }
@@ -124,9 +130,13 @@ class Detail {
         </ul>
         <div class="study-control">
           ${
-            isJoin
-              ? `<button class="join-study">참여 중</button>`
-              : `<button class="join-study">참여하기</button>`
+            this.data.participants.length == this.data.total
+            ? ''
+            : (
+              isJoin
+                ? `<button class="join-study">참여 중</button>`
+                : `<button class="join-study">참여하기</button>`
+            )
           }
           ${
             this.userId && this.userId === this.data.creator._id

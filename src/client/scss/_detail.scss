@@ -306,6 +306,14 @@
         }
       }
 
+      .stack-container {
+        .stack-boxs {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 5px;
+        }
+      }
+
       & > .study-info {
         & > div {
           margin: 15px 0;
@@ -329,7 +337,9 @@
 @media (max-width: 1024px) {
   .study-detail-container {
     width: 90%;
-
+    .stack-boxs {
+      flex-wrap: wrap;
+    }
     .study-control {
       display: flex;
       flex-direction: column;

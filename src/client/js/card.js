@@ -1,4 +1,5 @@
 import CardModel from './cardData';
+import Spinner from './spinner';
 import { 
   CARD_VIEW_TYPES,
   CARD_VIEW_TYPE,
@@ -22,7 +23,10 @@ export default class Card {
     this.userData = userData
     this.userId = userData ? userData.userId : null;
     this.cardModel = new CardModel();
+    this.spinner = new Spinner(this.$target);
+    this.spinner.On();
     this.cardModel.getAllData().then(res => {
+      this.spinner.Off();
       this.data = res;
       this.filterData = initFilterData;
       this.initAddEvents();

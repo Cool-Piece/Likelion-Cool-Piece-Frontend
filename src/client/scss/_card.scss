@@ -5,6 +5,7 @@
     flex-direction: column;
     position: relative;
     width: 100%;
+    min-height: 410px;
     .studyItem {
       position: relative;
       width: 100%;
@@ -109,6 +110,7 @@
   .study-wrap {
     position: static;
     .studyList {
+      min-width: 325px;
       .studyItem {
         .studyItem-title {
           font-size: 14px;

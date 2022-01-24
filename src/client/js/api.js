@@ -1,7 +1,7 @@
-export const BASE_URL = "https://coolpiece-git.herokuapp.com/";
+export const BASE_URL = "https://coolpiece-git.herokuapp.com";
 
 export const getFetcher = (path) => {
-  return fetch(`http://localhost:5000/${path}`)
+  return fetch(`${BASE_URL}/${path}`)
     .then((res) => {
       if (res.status === 200) {
         return res.json()

@@ -1,5 +1,5 @@
 import Auth from './auth';
-import {getFetcher} from './api';
+import { getFetcher, BASE_URL } from './api';
 
 export default class CommentModel {
   constructor() {
@@ -13,7 +13,7 @@ export default class CommentModel {
     }
 
     const result = await fetch(
-      `http://localhost:5000/users/comments/create`,
+      `${BASE_URL}/users/comments/create`,
       {
         method: "POST",
         headers: {
@@ -40,7 +40,7 @@ export default class CommentModel {
 
   async editComment(contents, id) {
     const result = await fetch(
-      `http://localhost:5000/users/comments/${id}`,
+      `${BASE_URL}/users/comments/${id}`,
       {
         method: "PUT",
         headers: {
@@ -64,7 +64,7 @@ export default class CommentModel {
 
   async deleteComment(id) {
     const result = await fetch(
-      `http://localhost:5000/users/comments/${id}`,
+      `${BASE_URL}/users/comments/${id}`,
       {
         method: "DELETE",
         headers: {

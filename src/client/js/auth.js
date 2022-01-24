@@ -2,7 +2,6 @@ import "regenerator-runtime";
 import { BASE_URL } from './api.js';
 import {COOKIE_EXPIRES_TIME, JWT_KEY} from './constant.js';
 
-
 export default class Auth {
   static setToken(jwt, maxAge = COOKIE_EXPIRES_TIME) {
     document.cookie = `${JWT_KEY}=${jwt}; max-age=${maxAge};`;
@@ -30,7 +29,7 @@ export default class Auth {
       }
     }
 
-    const userData = await fetch(`http://localhost:5000/users`, {
+    const userData = await fetch(`${BASE_URL}/users`, {
       method: "GET",
       headers: {
         "Authorization":`Bearer${jwt}`
@@ -50,14 +49,6 @@ export default class Auth {
   }
 
   static logout() {
-    // fetch('http://localhost:5000/users/logout')
-    // .then(res => {
-    //   if (res.status === 200) {
-    //   } else {
-    //     return new Error('로그아웃 실패');
-    //   }
-    // })
-    // .catch(error => console.error(error))
     document.cookie = `${JWT_KEY}=${this.getToken()}; max-age=0;`;
     window.location.reload();
   }

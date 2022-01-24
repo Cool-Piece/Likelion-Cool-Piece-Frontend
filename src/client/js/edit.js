@@ -3,6 +3,8 @@ import "../scss/styles.scss";
 import Auth from './auth';
 import NavBar from './navbar';
 import { studyType, stackType, months, locations} from "../js/studyDatas";
+import { BASE_URL } from './api';
+
 // 셀렉트박스 요소
 const selectBoxType = document.querySelector(".select-box.type");
 const selectBoxStacks = document.querySelector(".select-box.stacks");
@@ -405,7 +407,7 @@ let username;
 // 유저 데이터 요청
 async function getUserData() {
   const token = Auth.getToken();
-  const request = await fetch("http://localhost:5000/users", {
+  const request = await fetch(`${BASE_URL}/users`, {
     method: "GET",
     headers: {
       Authorization: `Bearer${token}`,
@@ -451,8 +453,7 @@ async function sendEditedData() {
         userId,
       };
 
-      const baseURL = "http://localhost:5000/users/edit";
-      const request = await fetch(baseURL, {
+      const request = await fetch(`${BASE_URL}/users/edit`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -474,7 +475,7 @@ sendEditedData();
 
 async function getDetailData() {
   const pageId = localStorage.getItem('detailPageId');
-  return await fetch(`http://localhost:5000/${pageId}`)
+  return await fetch(`${BASE_URL}/${pageId}`)
   .then(res => {
     if (res.status === 200) {
       return res.json()
