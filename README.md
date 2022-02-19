@@ -12,6 +12,10 @@
 ### BackEnd
 - heroku
 
+### Repository
+Client: https://github.com/Cool-Piece/Likelion-Cool-Piece-Frontend
+Server: https://github.com/Cool-Piece/Likelion-Cool-Piece-Backend
+
 ## Install
 Local 환경에서 실행 시 아래와 같은 준비가 필요합니다.
 
